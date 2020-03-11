@@ -1,0 +1,200 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445183_1111466285",
+      "id": "20181005-074405_753539608",
+      "dateCreated": "2018-10-05 07:44:05.183",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.199",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445197_-425968664",
+      "id": "20181005-074405_591772139",
+      "dateCreated": "2018-10-05 07:44:05.197",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\ndf \u003d spark.read.load(\"/data/regression\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.211",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445210_103995672",
+      "id": "20181005-074405_1249399314",
+      "dateCreated": "2018-10-05 07:44:05.210",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.regression import LinearRegression\nlr \u003d LinearRegression().setMaxIter(10).setRegParam(0.3).setElasticNetParam(0.8)\nprint lr.explainParams()\nlrModel \u003d lr.fit(df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.224",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445223_603174679",
+      "id": "20181005-074405_248498121",
+      "dateCreated": "2018-10-05 07:44:05.223",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nsummary \u003d lrModel.summary\nsummary.residuals.show()\nprint summary.totalIterations\nprint summary.objectiveHistory\nprint summary.rootMeanSquaredError\nprint summary.r2\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.237",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445237_949553872",
+      "id": "20181005-074405_561424191",
+      "dateCreated": "2018-10-05 07:44:05.237",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.regression import GeneralizedLinearRegression\nglr \u003d GeneralizedLinearRegression()\\\n  .setFamily(\"gaussian\")\\\n  .setLink(\"identity\")\\\n  .setMaxIter(10)\\\n  .setRegParam(0.3)\\\n  .setLinkPredictionCol(\"linkOut\")\nprint glr.explainParams()\nglrModel \u003d glr.fit(df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.250",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445249_1126953470",
+      "id": "20181005-074405_418614516",
+      "dateCreated": "2018-10-05 07:44:05.249",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.regression import DecisionTreeRegressor\ndtr \u003d DecisionTreeRegressor()\nprint dtr.explainParams()\ndtrModel \u003d dtr.fit(df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.270",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445269_1917685398",
+      "id": "20181005-074405_1356309103",
+      "dateCreated": "2018-10-05 07:44:05.269",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.regression import RandomForestRegressor\nfrom pyspark.ml.regression import GBTRegressor\nrf \u003d  RandomForestRegressor()\nprint rf.explainParams()\nrfModel \u003d rf.fit(df)\ngbt \u003d GBTRegressor()\nprint gbt.explainParams()\ngbtModel \u003d gbt.fit(df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.294",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445293_1510168269",
+      "id": "20181005-074405_1280361128",
+      "dateCreated": "2018-10-05 07:44:05.293",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.evaluation import RegressionEvaluator\nfrom pyspark.ml.regression import GeneralizedLinearRegression\nfrom pyspark.ml import Pipeline\nfrom pyspark.ml.tuning import CrossValidator, ParamGridBuilder\nglr \u003d GeneralizedLinearRegression().setFamily(\"gaussian\").setLink(\"identity\")\npipeline \u003d Pipeline().setStages([glr])\nparams \u003d ParamGridBuilder().addGrid(glr.regParam, [0, 0.5, 1]).build()\nevaluator \u003d RegressionEvaluator()\\\n  .setMetricName(\"rmse\")\\\n  .setPredictionCol(\"prediction\")\\\n  .setLabelCol(\"label\")\ncv \u003d CrossValidator()\\\n  .setEstimator(pipeline)\\\n  .setEvaluator(evaluator)\\\n  .setEstimatorParamMaps(params)\\\n  .setNumFolds(2) # should always be 3 or more but this dataset is small\nmodel \u003d cv.fit(df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.318",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445317_303359806",
+      "id": "20181005-074405_341786321",
+      "dateCreated": "2018-10-05 07:44:05.318",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.mllib.evaluation import RegressionMetrics\nout \u003d model.transform(df)\\\n  .select(\"prediction\", \"label\").rdd.map(lambda x: (float(x[0]), float(x[1])))\nmetrics \u003d RegressionMetrics(out)\nprint \"MSE: \" + str(metrics.meanSquaredError)\nprint \"RMSE: \" + str(metrics.rootMeanSquaredError)\nprint \"R-squared: \" + str(metrics.r2)\nprint \"MAE: \" + str(metrics.meanAbsoluteError)\nprint \"Explained variance: \" + str(metrics.explainedVariance)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.340",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445339_2133990810",
+      "id": "20181005-074405_261184733",
+      "dateCreated": "2018-10-05 07:44:05.339",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.369",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445368_-144040665",
+      "id": "20181005-074405_1206474699",
+      "dateCreated": "2018-10-05 07:44:05.368",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Advanced_Analytics_and_Machine_Learning-Chapter_27_Regression.py",
+  "id": "2DUECY7XP",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

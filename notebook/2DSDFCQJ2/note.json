@@ -1,0 +1,438 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457592_330603937",
+      "id": "20181005-074417_501798896",
+      "dateCreated": "2018-10-05 07:44:17.592",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.608",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457607_-2069143567",
+      "id": "20181005-074417_94207704",
+      "dateCreated": "2018-10-05 07:44:17.607",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\ncase class Flight(DEST_COUNTRY_NAME: String,\n                  ORIGIN_COUNTRY_NAME: String, count: BigInt)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.622",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457620_-347458180",
+      "id": "20181005-074417_1267365157",
+      "dateCreated": "2018-10-05 07:44:17.620",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval flightsDF \u003d (spark.read\n  .parquet(\"/data/flight-data/parquet/2010-summary.parquet/\"))\nval flights \u003d flightsDF.as[Flight]\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.637",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457636_623062828",
+      "id": "20181005-074417_607895213",
+      "dateCreated": "2018-10-05 07:44:17.636",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nflights.show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.660",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457658_-1855701638",
+      "id": "20181005-074417_1170282867",
+      "dateCreated": "2018-10-05 07:44:17.658",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nflights.first.DEST_COUNTRY_NAME // United States\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.681",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457679_702605661",
+      "id": "20181005-074417_1780015114",
+      "dateCreated": "2018-10-05 07:44:17.679",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndef originIsDestination(flight_row: Flight): Boolean \u003d {\n  return flight_row.ORIGIN_COUNTRY_NAME \u003d\u003d flight_row.DEST_COUNTRY_NAME\n}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.703",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457702_-1526920325",
+      "id": "20181005-074417_369928371",
+      "dateCreated": "2018-10-05 07:44:17.702",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nflights.filter(flight_row \u003d\u003e originIsDestination(flight_row)).first()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.724",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457723_-1671302585",
+      "id": "20181005-074417_228789025",
+      "dateCreated": "2018-10-05 07:44:17.723",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nflights.collect().filter(flight_row \u003d\u003e originIsDestination(flight_row))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.747",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457746_-1377735395",
+      "id": "20181005-074417_1829318997",
+      "dateCreated": "2018-10-05 07:44:17.746",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval destinations \u003d flights.map(f \u003d\u003e f.DEST_COUNTRY_NAME)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.774",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457773_1284909600",
+      "id": "20181005-074417_143561466",
+      "dateCreated": "2018-10-05 07:44:17.773",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval localDestinations \u003d destinations.take(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.800",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457798_825374571",
+      "id": "20181005-074417_1360004215",
+      "dateCreated": "2018-10-05 07:44:17.798",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ncase class FlightMetadata(count: BigInt, randomData: BigInt)\n\nval flightsMeta \u003d (spark.range(500).map(x \u003d\u003e (x, scala.util.Random.nextLong))\n  .withColumnRenamed(\"_1\", \"count\").withColumnRenamed(\"_2\", \"randomData\")\n  .as[FlightMetadata])\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.829",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457828_-1993750930",
+      "id": "20181005-074417_413969652",
+      "dateCreated": "2018-10-05 07:44:17.828",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval flights2 \u003d (flights\n  .joinWith(flightsMeta, flights.col(\"count\") \u003d\u003d\u003d flightsMeta.col(\"count\")))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.859",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457858_1342130455",
+      "id": "20181005-074417_1508572731",
+      "dateCreated": "2018-10-05 07:44:17.858",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nflights2.selectExpr(\"_1.DEST_COUNTRY_NAME\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.894",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457892_745939749",
+      "id": "20181005-074417_1045410582",
+      "dateCreated": "2018-10-05 07:44:17.892",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nflights2.take(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.926",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457924_1277052370",
+      "id": "20181005-074417_1380788801",
+      "dateCreated": "2018-10-05 07:44:17.924",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval flights2 \u003d flights.join(flightsMeta, Seq(\"count\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.962",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457961_-8657958",
+      "id": "20181005-074417_1196148739",
+      "dateCreated": "2018-10-05 07:44:17.961",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval flights2 \u003d flights.join(flightsMeta.toDF(), Seq(\"count\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.998",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457996_-1870537091",
+      "id": "20181005-074417_1332200771",
+      "dateCreated": "2018-10-05 07:44:17.996",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nflights.groupBy(\"DEST_COUNTRY_NAME\").count()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:18.039",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725458038_-215117217",
+      "id": "20181005-074418_1754005257",
+      "dateCreated": "2018-10-05 07:44:18.038",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nflights.groupByKey(x \u003d\u003e x.DEST_COUNTRY_NAME).count()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:18.080",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725458079_-582305567",
+      "id": "20181005-074418_1742606086",
+      "dateCreated": "2018-10-05 07:44:18.079",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nflights.groupByKey(x \u003d\u003e x.DEST_COUNTRY_NAME).count().explain\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:18.118",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725458117_1789625950",
+      "id": "20181005-074418_1912535555",
+      "dateCreated": "2018-10-05 07:44:18.117",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndef grpSum(countryName:String, values: Iterator[Flight]) \u003d {\n  values.dropWhile(_.count \u003c 5).map(x \u003d\u003e (countryName, x))\n}\nflights.groupByKey(x \u003d\u003e x.DEST_COUNTRY_NAME).flatMapGroups(grpSum).show(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:18.162",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725458161_-2143425326",
+      "id": "20181005-074418_736594244",
+      "dateCreated": "2018-10-05 07:44:18.161",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndef grpSum2(f:Flight):Integer \u003d {\n  1\n}\nflights.groupByKey(x \u003d\u003e x.DEST_COUNTRY_NAME).mapValues(grpSum2).count().take(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:18.198",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725458197_491775394",
+      "id": "20181005-074418_562917414",
+      "dateCreated": "2018-10-05 07:44:18.197",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndef sum2(left:Flight, right:Flight) \u003d {\n  Flight(left.DEST_COUNTRY_NAME, null, left.count + right.count)\n}\n(flights.groupByKey(x \u003d\u003e x.DEST_COUNTRY_NAME).reduceGroups((l, r) \u003d\u003e sum2(l, r))\n  .take(5))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:18.243",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725458241_-194103695",
+      "id": "20181005-074418_56507578",
+      "dateCreated": "2018-10-05 07:44:18.241",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nflights.groupBy(\"DEST_COUNTRY_NAME\").count().explain\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:18.279",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725458277_1434037873",
+      "id": "20181005-074418_2059955510",
+      "dateCreated": "2018-10-05 07:44:18.277",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:18.329",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725458328_1303747345",
+      "id": "20181005-074418_397022894",
+      "dateCreated": "2018-10-05 07:44:18.328",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Structured_APIs-Chapter_11_Datasets.scala",
+  "id": "2DSDFCQJ2",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,608 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441668_1154170208",
+      "id": "20181005-074401_70454406",
+      "dateCreated": "2018-10-05 07:44:01.668",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.686",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441685_1948162516",
+      "id": "20181005-074401_1167382374",
+      "dateCreated": "2018-10-05 07:44:01.685",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nsales \u003d spark.read.format(\"csv\")\\\n  .option(\"header\", \"true\")\\\n  .option(\"inferSchema\", \"true\")\\\n  .load(\"/data/retail-data/by-day/*.csv\")\\\n  .coalesce(5)\\\n  .where(\"Description IS NOT NULL\")\nfakeIntDF \u003d spark.read.parquet(\"/data/simple-ml-integers\")\nsimpleDF \u003d spark.read.json(\"/data/simple-ml\")\nscaleDF \u003d spark.read.parquet(\"/data/simple-ml-scaling\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.695",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441695_278204095",
+      "id": "20181005-074401_443881884",
+      "dateCreated": "2018-10-05 07:44:01.695",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import RFormula\n\nsupervised \u003d RFormula(formula\u003d\"lab ~ . + color:value1 + color:value2\")\nsupervised.fit(simpleDF).transform(simpleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.708",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441707_1914833151",
+      "id": "20181005-074401_1017889967",
+      "dateCreated": "2018-10-05 07:44:01.707",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import SQLTransformer\n\nbasicTransformation \u003d SQLTransformer()\\\n  .setStatement(\"\"\"\n    SELECT sum(Quantity), count(*), CustomerID\n    FROM __THIS__\n    GROUP BY CustomerID\n  \"\"\")\n\nbasicTransformation.transform(sales).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.719",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441719_277258269",
+      "id": "20181005-074401_1130609951",
+      "dateCreated": "2018-10-05 07:44:01.719",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import VectorAssembler\nva \u003d VectorAssembler().setInputCols([\"int1\", \"int2\", \"int3\"])\nva.transform(fakeIntDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.737",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441737_1352700417",
+      "id": "20181005-074401_1604097063",
+      "dateCreated": "2018-10-05 07:44:01.737",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ncontDF \u003d spark.range(20).selectExpr(\"cast(id as double)\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.756",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441755_1495530623",
+      "id": "20181005-074401_1336810564",
+      "dateCreated": "2018-10-05 07:44:01.755",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import Bucketizer\nbucketBorders \u003d [-1.0, 5.0, 10.0, 250.0, 600.0]\nbucketer \u003d Bucketizer().setSplits(bucketBorders).setInputCol(\"id\")\nbucketer.transform(contDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.777",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441777_1741517493",
+      "id": "20181005-074401_1533105733",
+      "dateCreated": "2018-10-05 07:44:01.777",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import QuantileDiscretizer\nbucketer \u003d QuantileDiscretizer().setNumBuckets(5).setInputCol(\"id\")\nfittedBucketer \u003d bucketer.fit(contDF)\nfittedBucketer.transform(contDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.797",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441797_1034974153",
+      "id": "20181005-074401_1947817471",
+      "dateCreated": "2018-10-05 07:44:01.797",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import StandardScaler\nsScaler \u003d StandardScaler().setInputCol(\"features\")\nsScaler.fit(scaleDF).transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.817",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441816_-2078680643",
+      "id": "20181005-074401_1542826267",
+      "dateCreated": "2018-10-05 07:44:01.816",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import MinMaxScaler\nminMax \u003d MinMaxScaler().setMin(5).setMax(10).setInputCol(\"features\")\nfittedminMax \u003d minMax.fit(scaleDF)\nfittedminMax.transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.835",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441835_-170790460",
+      "id": "20181005-074401_1145944421",
+      "dateCreated": "2018-10-05 07:44:01.835",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import MaxAbsScaler\nmaScaler \u003d MaxAbsScaler().setInputCol(\"features\")\nfittedmaScaler \u003d maScaler.fit(scaleDF)\nfittedmaScaler.transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.855",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441855_-1131768739",
+      "id": "20181005-074401_1443869114",
+      "dateCreated": "2018-10-05 07:44:01.855",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import ElementwiseProduct\nfrom pyspark.ml.linalg import Vectors\nscaleUpVec \u003d Vectors.dense(10.0, 15.0, 20.0)\nscalingUp \u003d ElementwiseProduct()\\\n  .setScalingVec(scaleUpVec)\\\n  .setInputCol(\"features\")\nscalingUp.transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.877",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441876_-825858516",
+      "id": "20181005-074401_1090721333",
+      "dateCreated": "2018-10-05 07:44:01.876",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import Normalizer\nmanhattanDistance \u003d Normalizer().setP(1).setInputCol(\"features\")\nmanhattanDistance.transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.901",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441900_1380282575",
+      "id": "20181005-074401_1263051467",
+      "dateCreated": "2018-10-05 07:44:01.900",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import StringIndexer\nlblIndxr \u003d StringIndexer().setInputCol(\"lab\").setOutputCol(\"labelInd\")\nidxRes \u003d lblIndxr.fit(simpleDF).transform(simpleDF)\nidxRes.show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.924",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441923_938193430",
+      "id": "20181005-074401_381451680",
+      "dateCreated": "2018-10-05 07:44:01.923",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nvalIndexer \u003d StringIndexer().setInputCol(\"value1\").setOutputCol(\"valueInd\")\nvalIndexer.fit(simpleDF).transform(simpleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.950",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441950_-1326884168",
+      "id": "20181005-074401_948682030",
+      "dateCreated": "2018-10-05 07:44:01.950",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import IndexToString\nlabelReverse \u003d IndexToString().setInputCol(\"labelInd\")\nlabelReverse.transform(idxRes).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.985",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441984_273775030",
+      "id": "20181005-074401_24092150",
+      "dateCreated": "2018-10-05 07:44:01.984",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import VectorIndexer\nfrom pyspark.ml.linalg import Vectors\nidxIn \u003d spark.createDataFrame([\n  (Vectors.dense(1, 2, 3),1),\n  (Vectors.dense(2, 5, 6),2),\n  (Vectors.dense(1, 8, 9),3)\n]).toDF(\"features\", \"label\")\nindxr \u003d VectorIndexer()\\\n  .setInputCol(\"features\")\\\n  .setOutputCol(\"idxed\")\\\n  .setMaxCategories(2)\nindxr.fit(idxIn).transform(idxIn).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.012",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442011_1438484845",
+      "id": "20181005-074402_1252399871",
+      "dateCreated": "2018-10-05 07:44:02.011",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import OneHotEncoder, StringIndexer\nlblIndxr \u003d StringIndexer().setInputCol(\"color\").setOutputCol(\"colorInd\")\ncolorLab \u003d lblIndxr.fit(simpleDF).transform(simpleDF.select(\"color\"))\nohe \u003d OneHotEncoder().setInputCol(\"colorInd\")\nohe.transform(colorLab).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.052",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442051_-514874536",
+      "id": "20181005-074402_50263339",
+      "dateCreated": "2018-10-05 07:44:02.051",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import Tokenizer\ntkn \u003d Tokenizer().setInputCol(\"Description\").setOutputCol(\"DescOut\")\ntokenized \u003d tkn.transform(sales.select(\"Description\"))\ntokenized.show(20, False)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.091",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442089_1799712944",
+      "id": "20181005-074402_1080195317",
+      "dateCreated": "2018-10-05 07:44:02.089",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import RegexTokenizer\nrt \u003d RegexTokenizer()\\\n  .setInputCol(\"Description\")\\\n  .setOutputCol(\"DescOut\")\\\n  .setPattern(\" \")\\\n  .setToLowercase(True)\nrt.transform(sales.select(\"Description\")).show(20, False)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.132",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442131_-1938923188",
+      "id": "20181005-074402_1645534608",
+      "dateCreated": "2018-10-05 07:44:02.131",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import RegexTokenizer\nrt \u003d RegexTokenizer()\\\n  .setInputCol(\"Description\")\\\n  .setOutputCol(\"DescOut\")\\\n  .setPattern(\" \")\\\n  .setGaps(False)\\\n  .setToLowercase(True)\nrt.transform(sales.select(\"Description\")).show(20, False)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.176",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442175_-529458394",
+      "id": "20181005-074402_819792622",
+      "dateCreated": "2018-10-05 07:44:02.175",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import StopWordsRemover\nenglishStopWords \u003d StopWordsRemover.loadDefaultStopWords(\"english\")\nstops \u003d StopWordsRemover()\\\n  .setStopWords(englishStopWords)\\\n  .setInputCol(\"DescOut\")\nstops.transform(tokenized).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.231",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442230_-114720546",
+      "id": "20181005-074402_1962151221",
+      "dateCreated": "2018-10-05 07:44:02.230",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import NGram\nunigram \u003d NGram().setInputCol(\"DescOut\").setN(1)\nbigram \u003d NGram().setInputCol(\"DescOut\").setN(2)\nunigram.transform(tokenized.select(\"DescOut\")).show(10, False)\nbigram.transform(tokenized.select(\"DescOut\")).show(10, False)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.286",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442285_-75437302",
+      "id": "20181005-074402_2046891332",
+      "dateCreated": "2018-10-05 07:44:02.285",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import CountVectorizer\ncv \u003d CountVectorizer()\\\n  .setInputCol(\"DescOut\")\\\n  .setOutputCol(\"countVec\")\\\n  .setVocabSize(500)\\\n  .setMinTF(1)\\\n  .setMinDF(2)\nfittedCV \u003d cv.fit(tokenized)\nfittedCV.transform(tokenized).show(10, False)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.328",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442328_134647412",
+      "id": "20181005-074402_1942418124",
+      "dateCreated": "2018-10-05 07:44:02.328",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ntfIdfIn \u003d tokenized\\\n  .where(\"array_contains(DescOut, \u0027red\u0027)\")\\\n  .select(\"DescOut\")\\\n  .limit(10)\ntfIdfIn.show(10, False)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.365",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442365_-1651294415",
+      "id": "20181005-074402_958354942",
+      "dateCreated": "2018-10-05 07:44:02.365",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import HashingTF, IDF\ntf \u003d HashingTF()\\\n  .setInputCol(\"DescOut\")\\\n  .setOutputCol(\"TFOut\")\\\n  .setNumFeatures(10000)\nidf \u003d IDF()\\\n  .setInputCol(\"TFOut\")\\\n  .setOutputCol(\"IDFOut\")\\\n  .setMinDocFreq(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.400",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442400_-1887902265",
+      "id": "20181005-074402_1171605259",
+      "dateCreated": "2018-10-05 07:44:02.400",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nidf.fit(tf.transform(tfIdfIn)).transform(tf.transform(tfIdfIn)).show(10, False)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.435",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442434_624631857",
+      "id": "20181005-074402_496972923",
+      "dateCreated": "2018-10-05 07:44:02.435",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import Word2Vec\n# Input data: Each row is a bag of words from a sentence or document.\ndocumentDF \u003d spark.createDataFrame([\n    (\"Hi I heard about Spark\".split(\" \"), ),\n    (\"I wish Java could use case classes\".split(\" \"), ),\n    (\"Logistic regression models are neat\".split(\" \"), )\n], [\"text\"])\n# Learn a mapping from words to Vectors.\nword2Vec \u003d Word2Vec(vectorSize\u003d3, minCount\u003d0, inputCol\u003d\"text\",\n  outputCol\u003d\"result\")\nmodel \u003d word2Vec.fit(documentDF)\nresult \u003d model.transform(documentDF)\nfor row in result.collect():\n    text, vector \u003d row\n    print(\"Text: [%s] \u003d\u003e \\nVector: %s\\n\" % (\", \".join(text), str(vector)))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.473",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442472_1824494003",
+      "id": "20181005-074402_780220538",
+      "dateCreated": "2018-10-05 07:44:02.472",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import PCA\npca \u003d PCA().setInputCol(\"features\").setK(2)\npca.fit(scaleDF).transform(scaleDF).show(20, False)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.511",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442510_-214620993",
+      "id": "20181005-074402_631576535",
+      "dateCreated": "2018-10-05 07:44:02.510",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import PolynomialExpansion\npe \u003d PolynomialExpansion().setInputCol(\"features\").setDegree(2)\npe.transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.577",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442576_-744997706",
+      "id": "20181005-074402_1391969685",
+      "dateCreated": "2018-10-05 07:44:02.577",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import ChiSqSelector, Tokenizer\ntkn \u003d Tokenizer().setInputCol(\"Description\").setOutputCol(\"DescOut\")\ntokenized \u003d tkn\\\n  .transform(sales.select(\"Description\", \"CustomerId\"))\\\n  .where(\"CustomerId IS NOT NULL\")\nprechi \u003d fittedCV.transform(tokenized)\\\n  .where(\"CustomerId IS NOT NULL\")\nchisq \u003d ChiSqSelector()\\\n  .setFeaturesCol(\"countVec\")\\\n  .setLabelCol(\"CustomerId\")\\\n  .setNumTopFeatures(2)\nchisq.fit(prechi).transform(prechi)\\\n  .drop(\"customerId\", \"Description\", \"DescOut\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.634",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442633_1124116865",
+      "id": "20181005-074402_1813853083",
+      "dateCreated": "2018-10-05 07:44:02.633",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfittedPCA \u003d pca.fit(scaleDF)\nfittedPCA.write().overwrite().save(\"/tmp/fittedPCA\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.695",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442694_-184940007",
+      "id": "20181005-074402_1550110976",
+      "dateCreated": "2018-10-05 07:44:02.695",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import PCAModel\nloadedPCA \u003d PCAModel.load(\"/tmp/fittedPCA\")\nloadedPCA.transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.747",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442746_-771781457",
+      "id": "20181005-074402_1624200763",
+      "dateCreated": "2018-10-05 07:44:02.746",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.791",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442790_-1701333872",
+      "id": "20181005-074402_210653727",
+      "dateCreated": "2018-10-05 07:44:02.790",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Advanced_Analytics_and_Machine_Learning-Chapter_25_Preprocessing_and_Feature_Engineering.py",
+  "id": "2DUYGBZ38",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

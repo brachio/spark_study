@@ -1,0 +1,64 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456106_-501448648",
+      "id": "20181005-074416_1526117763",
+      "dateCreated": "2018-10-05 07:44:16.106",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.121",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456120_2101699605",
+      "id": "20181005-074416_309883822",
+      "dateCreated": "2018-10-05 07:44:16.120",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sql\nSELECT * FROM device_counts\n\n\n-- COMMAND ----------\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.131",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456130_272118110",
+      "id": "20181005-074416_654388094",
+      "dateCreated": "2018-10-05 07:44:16.130",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Sql/Streaming-Chapter_21_Structured_Streaming_Basics.sql",
+  "id": "2DSNWPY5Q",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

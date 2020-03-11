@@ -1,0 +1,574 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452417_113311529",
+      "id": "20181005-074412_1843981273",
+      "dateCreated": "2018-10-05 07:44:12.417",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.430",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452429_-856676832",
+      "id": "20181005-074412_818384638",
+      "dateCreated": "2018-10-05 07:44:12.429",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nval myCollection \u003d (\"Spark The Definitive Guide : Big Data Processing Made Simple\"\n  .split(\" \"))\nval words \u003d spark.sparkContext.parallelize(myCollection, 2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.442",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452441_1174515324",
+      "id": "20181005-074412_1998394227",
+      "dateCreated": "2018-10-05 07:44:12.441",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nwords.map(word \u003d\u003e (word.toLowerCase, 1))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.455",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452454_1738795190",
+      "id": "20181005-074412_1240477161",
+      "dateCreated": "2018-10-05 07:44:12.454",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval keyword \u003d words.keyBy(word \u003d\u003e word.toLowerCase.toSeq(0).toString)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.473",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452472_-2122241783",
+      "id": "20181005-074412_243217402",
+      "dateCreated": "2018-10-05 07:44:12.472",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nkeyword.mapValues(word \u003d\u003e word.toUpperCase).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.493",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452491_-301266889",
+      "id": "20181005-074412_713169711",
+      "dateCreated": "2018-10-05 07:44:12.492",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nkeyword.flatMapValues(word \u003d\u003e word.toUpperCase).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.518",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452517_1146374138",
+      "id": "20181005-074412_1329413293",
+      "dateCreated": "2018-10-05 07:44:12.517",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nkeyword.keys.collect()\nkeyword.values.collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.539",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452538_-1193213478",
+      "id": "20181005-074412_907049633",
+      "dateCreated": "2018-10-05 07:44:12.538",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nkeyword.lookup(\"s\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.566",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452565_1723641985",
+      "id": "20181005-074412_121549237",
+      "dateCreated": "2018-10-05 07:44:12.565",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval distinctChars \u003d (words.flatMap(word \u003d\u003e word.toLowerCase.toSeq).distinct\n  .collect())\nimport scala.util.Random\nval sampleMap \u003d distinctChars.map(c \u003d\u003e (c, new Random().nextDouble())).toMap\n(words.map(word \u003d\u003e (word.toLowerCase.toSeq(0), word))\n  .sampleByKey(true, sampleMap, 6L)\n  .collect())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.595",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452594_-1692976488",
+      "id": "20181005-074412_1867665974",
+      "dateCreated": "2018-10-05 07:44:12.594",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n(words.map(word \u003d\u003e (word.toLowerCase.toSeq(0), word))\n  .sampleByKeyExact(true, sampleMap, 6L).collect())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.624",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452623_253244956",
+      "id": "20181005-074412_89295181",
+      "dateCreated": "2018-10-05 07:44:12.623",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval chars \u003d words.flatMap(word \u003d\u003e word.toLowerCase.toSeq)\nval KVcharacters \u003d chars.map(letter \u003d\u003e (letter, 1))\ndef maxFunc(left:Int, right:Int) \u003d math.max(left, right)\ndef addFunc(left:Int, right:Int) \u003d left + right\nval nums \u003d sc.parallelize(1 to 30, 5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.651",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452650_-138477415",
+      "id": "20181005-074412_374255883",
+      "dateCreated": "2018-10-05 07:44:12.650",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval timeout \u003d 1000L //milliseconds\nval confidence \u003d 0.95\nKVcharacters.countByKey()\nKVcharacters.countByKeyApprox(timeout, confidence)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.683",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452682_1805727331",
+      "id": "20181005-074412_2087818444",
+      "dateCreated": "2018-10-05 07:44:12.682",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nKVcharacters.groupByKey().map(row \u003d\u003e (row._1, row._2.reduce(addFunc))).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.720",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452718_535261060",
+      "id": "20181005-074412_2121313715",
+      "dateCreated": "2018-10-05 07:44:12.719",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nKVcharacters.reduceByKey(addFunc).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.757",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452756_-2044262011",
+      "id": "20181005-074412_973663974",
+      "dateCreated": "2018-10-05 07:44:12.756",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nnums.aggregate(0)(maxFunc, addFunc)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.792",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452790_720219830",
+      "id": "20181005-074412_1787687953",
+      "dateCreated": "2018-10-05 07:44:12.790",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval depth \u003d 3\nnums.treeAggregate(0)(maxFunc, addFunc, depth)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.836",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452835_-2095295020",
+      "id": "20181005-074412_2010516012",
+      "dateCreated": "2018-10-05 07:44:12.835",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nKVcharacters.aggregateByKey(0)(addFunc, maxFunc).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.873",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452871_-595166055",
+      "id": "20181005-074412_1932984018",
+      "dateCreated": "2018-10-05 07:44:12.871",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval valToCombiner \u003d (value:Int) \u003d\u003e List(value)\nval mergeValuesFunc \u003d (vals:List[Int], valToAppend:Int) \u003d\u003e valToAppend :: vals\nval mergeCombinerFunc \u003d (vals1:List[Int], vals2:List[Int]) \u003d\u003e vals1 ::: vals2\n// now we define these as function variables\nval outputPartitions \u003d 6\n(KVcharacters\n  .combineByKey(\n    valToCombiner,\n    mergeValuesFunc,\n    mergeCombinerFunc,\n    outputPartitions)\n  .collect())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.914",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452912_2110055525",
+      "id": "20181005-074412_1493901147",
+      "dateCreated": "2018-10-05 07:44:12.912",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nKVcharacters.foldByKey(0)(addFunc).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.956",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452955_1573296797",
+      "id": "20181005-074412_526047253",
+      "dateCreated": "2018-10-05 07:44:12.955",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport scala.util.Random\nval distinctChars \u003d words.flatMap(word \u003d\u003e word.toLowerCase.toSeq).distinct\nval charRDD \u003d distinctChars.map(c \u003d\u003e (c, new Random().nextDouble()))\nval charRDD2 \u003d distinctChars.map(c \u003d\u003e (c, new Random().nextDouble()))\nval charRDD3 \u003d distinctChars.map(c \u003d\u003e (c, new Random().nextDouble()))\ncharRDD.cogroup(charRDD2, charRDD3).take(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452999_231919202",
+      "id": "20181005-074412_71752291",
+      "dateCreated": "2018-10-05 07:44:12.999",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval keyedChars \u003d distinctChars.map(c \u003d\u003e (c, new Random().nextDouble()))\nval outputPartitions \u003d 10\nKVcharacters.join(keyedChars).count()\nKVcharacters.join(keyedChars, outputPartitions).count()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.056",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453054_373768295",
+      "id": "20181005-074413_1491375459",
+      "dateCreated": "2018-10-05 07:44:13.054",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval numRange \u003d sc.parallelize(0 to 9, 2)\nwords.zip(numRange).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.110",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453109_1435508059",
+      "id": "20181005-074413_2099116848",
+      "dateCreated": "2018-10-05 07:44:13.109",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nwords.coalesce(1).getNumPartitions // 1\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.152",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453151_1289892300",
+      "id": "20181005-074413_1672416607",
+      "dateCreated": "2018-10-05 07:44:13.151",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nwords.repartition(10) // gives us 10 partitions\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.192",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453191_381541420",
+      "id": "20181005-074413_521918575",
+      "dateCreated": "2018-10-05 07:44:13.191",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval df \u003d (spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\")\n  .csv(\"/data/retail-data/all/\"))\nval rdd \u003d df.coalesce(10).rdd\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.226",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453225_1261606015",
+      "id": "20181005-074413_912437892",
+      "dateCreated": "2018-10-05 07:44:13.225",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndf.printSchema()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.271",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453270_-1135824952",
+      "id": "20181005-074413_1915900717",
+      "dateCreated": "2018-10-05 07:44:13.270",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.HashPartitioner\nrdd.map(r \u003d\u003e r(6)).take(5).foreach(println)\nval keyedRDD \u003d rdd.keyBy(row \u003d\u003e row(6).asInstanceOf[Int].toDouble)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.318",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453317_-1257092613",
+      "id": "20181005-074413_1280478145",
+      "dateCreated": "2018-10-05 07:44:13.317",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nkeyedRDD.partitionBy(new HashPartitioner(10)).take(10)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.350",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453349_-301817001",
+      "id": "20181005-074413_1263239197",
+      "dateCreated": "2018-10-05 07:44:13.349",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.Partitioner\nclass DomainPartitioner extends Partitioner {\n def numPartitions \u003d 3\n def getPartition(key: Any): Int \u003d {\n   val customerId \u003d key.asInstanceOf[Double].toInt\n   if (customerId \u003d\u003d 17850.0 || customerId \u003d\u003d 12583.0) {\n     return 0\n   } else {\n     return new java.util.Random().nextInt(2) + 1\n   }\n }\n}\n\n(keyedRDD\n  .partitionBy(new DomainPartitioner).map(_._1).glom().map(_.toSet.toSeq.length)\n  .take(5))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.382",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453381_-1992665589",
+      "id": "20181005-074413_1936376030",
+      "dateCreated": "2018-10-05 07:44:13.381",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nclass SomeClass extends Serializable {\n  var someValue \u003d 0\n  def setSomeValue(i:Int) \u003d {\n    someValue \u003d i\n    this\n  }\n}\n\nsc.parallelize(1 to 10).map(num \u003d\u003e new SomeClass().setSomeValue(num))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.418",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453417_-1103391051",
+      "id": "20181005-074413_213939140",
+      "dateCreated": "2018-10-05 07:44:13.417",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n/*\n// in Scala\nval conf \u003d new SparkConf().setMaster(...).setAppName(...)\nconf.registerKryoClasses(Array(classOf[MyClass1], classOf[MyClass2]))\nval sc \u003d new SparkContext(conf)\n*/\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.471",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453469_-2086218833",
+      "id": "20181005-074413_430410531",
+      "dateCreated": "2018-10-05 07:44:13.470",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.528",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453526_1618537180",
+      "id": "20181005-074413_1444683735",
+      "dateCreated": "2018-10-05 07:44:13.527",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Low_Level_APIs-Chapter_13_Advanced_RDDs.scala",
+  "id": "2DUHFA8WQ",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

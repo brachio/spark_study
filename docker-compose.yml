@@ -1,0 +1,11 @@
+version: "3"
+services:
+  spark:
+    image: rheor108/spark_the_definitive_guide_practice:latest
+    ports:
+      - 8080:8080
+      - 4040:4040
+    container_name: spark
+    volumes:
+      - ./notebook:/zeppelin/notebook
+

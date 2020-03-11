@@ -1,0 +1,81 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457075_-1242577353",
+      "id": "20181005-074417_376636883",
+      "dateCreated": "2018-10-05 07:44:17.075",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.090",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457088_-563117445",
+      "id": "20181005-074417_338372949",
+      "dateCreated": "2018-10-05 07:44:17.088",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nstatic \u003d spark.read.json(\"/data/activity-data\")\nstreaming \u003d spark\\\n  .readStream\\\n  .schema(static.schema)\\\n  .option(\"maxFilesPerTrigger\", 10)\\\n  .json(\"/data/activity-data\")\\\n  .groupBy(\"gt\")\\\n  .count()\nquery \u003d streaming\\\n  .writeStream\\\n  .outputMode(\"complete\")\\\n  .option(\"checkpointLocation\", \"/some/python/location/\")\\\n  .queryName(\"test_python_stream\")\\\n  .format(\"memory\")\\\n  .start()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.104",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457102_2024746254",
+      "id": "20181005-074417_1516630631",
+      "dateCreated": "2018-10-05 07:44:17.102",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.119",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457118_1253891657",
+      "id": "20181005-074417_1658012033",
+      "dateCreated": "2018-10-05 07:44:17.118",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Streaming-Chapter_23_Structured_Streaming_in_Production.py",
+  "id": "2DUBHPWWR",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

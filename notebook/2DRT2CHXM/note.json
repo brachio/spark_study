@@ -1,0 +1,200 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445870_1062518830",
+      "id": "20181005-074405_1163163895",
+      "dateCreated": "2018-10-05 07:44:05.870",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.885",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445884_44014398",
+      "id": "20181005-074405_1505636031",
+      "dateCreated": "2018-10-05 07:44:05.884",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nimport org.apache.spark.ml.recommendation.ALS\nval ratings \u003d (spark.read.textFile(\"/data/sample_movielens_ratings.txt\")\n  .selectExpr(\"split(value , \u0027::\u0027) as col\")\n  .selectExpr(\n    \"cast(col[0] as int) as userId\",\n    \"cast(col[1] as int) as movieId\",\n    \"cast(col[2] as float) as rating\",\n    \"cast(col[3] as long) as timestamp\"))\nval Array(training, test) \u003d ratings.randomSplit(Array(0.8, 0.2))\nval als \u003d (new ALS()\n  .setMaxIter(5)\n  .setRegParam(0.01)\n  .setUserCol(\"userId\")\n  .setItemCol(\"movieId\")\n  .setRatingCol(\"rating\"))\nprintln(als.explainParams())\nval alsModel \u003d als.fit(training)\nval predictions \u003d alsModel.transform(test)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.899",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445897_2085168287",
+      "id": "20181005-074405_389118662",
+      "dateCreated": "2018-10-05 07:44:05.897",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n(alsModel.recommendForAllUsers(10)\n  .selectExpr(\"userId\", \"explode(recommendations)\").show())\n(alsModel.recommendForAllItems(10)\n  .selectExpr(\"movieId\", \"explode(recommendations)\").show())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.916",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445915_-1863790083",
+      "id": "20181005-074405_1989403874",
+      "dateCreated": "2018-10-05 07:44:05.915",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.evaluation.RegressionEvaluator\nval evaluator \u003d (new RegressionEvaluator()\n  .setMetricName(\"rmse\")\n  .setLabelCol(\"rating\")\n  .setPredictionCol(\"prediction\"))\nval rmse \u003d evaluator.evaluate(predictions)\nprintln(s\"Root-mean-square error \u003d $rmse\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.947",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445946_-36946309",
+      "id": "20181005-074405_1172648049",
+      "dateCreated": "2018-10-05 07:44:05.946",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.mllib.evaluation.{\n  RankingMetrics,\n  RegressionMetrics}\nval regComparison \u003d (predictions.select(\"rating\", \"prediction\")\n  .rdd.map(x \u003d\u003e (x.getFloat(0).toDouble,x.getFloat(1).toDouble)))\nval metrics \u003d new RegressionMetrics(regComparison)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.968",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445967_1063269415",
+      "id": "20181005-074405_168900210",
+      "dateCreated": "2018-10-05 07:44:05.967",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.mllib.evaluation.{RankingMetrics, RegressionMetrics}\nimport org.apache.spark.sql.functions.{col, expr}\nval perUserActual \u003d (predictions\n  .where(\"rating \u003e 2.5\")\n  .groupBy(\"userId\")\n  .agg(expr(\"collect_set(movieId) as movies\")))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.988",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445987_-1158418093",
+      "id": "20181005-074405_1790506713",
+      "dateCreated": "2018-10-05 07:44:05.987",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval perUserPredictions \u003d (predictions\n  .orderBy(col(\"userId\"), col(\"prediction\").desc)\n  .groupBy(\"userId\")\n  .agg(expr(\"collect_list(movieId) as movies\")))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.005",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446004_-310806713",
+      "id": "20181005-074406_1017259860",
+      "dateCreated": "2018-10-05 07:44:06.004",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval perUserActualvPred \u003d (perUserActual.join(perUserPredictions, Seq(\"userId\"))\n  .map(row \u003d\u003e (\n    row(1).asInstanceOf[Seq[Integer]].toArray,\n    row(2).asInstanceOf[Seq[Integer]].toArray.take(15)\n  )))\nval ranks \u003d new RankingMetrics(perUserActualvPred.rdd)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.033",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446032_853767496",
+      "id": "20181005-074406_259421236",
+      "dateCreated": "2018-10-05 07:44:06.032",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nranks.meanAveragePrecision\nranks.precisionAt(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.057",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446057_-588356022",
+      "id": "20181005-074406_628597188",
+      "dateCreated": "2018-10-05 07:44:06.057",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.082",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446081_2093290163",
+      "id": "20181005-074406_906386690",
+      "dateCreated": "2018-10-05 07:44:06.081",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Advanced_Analytics_and_Machine_Learning-Chapter_28_Recommendation.scala",
+  "id": "2DRT2CHXM",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

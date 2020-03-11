@@ -1,0 +1,64 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457536_-91367199",
+      "id": "20181005-074417_1840856160",
+      "dateCreated": "2018-10-05 07:44:17.536",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.549",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457548_-3362789",
+      "id": "20181005-074417_1351470456",
+      "dateCreated": "2018-10-05 07:44:17.548",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sql\nCREATE TABLE flights (\n  DEST_COUNTRY_NAME STRING, ORIGIN_COUNTRY_NAME STRING, count LONG)\nUSING JSON OPTIONS (path \u0027/data/flight-data/json/2015-summary.json\u0027)\n\n\n-- COMMAND ----------\n\nCREATE TABLE flights_csv (\n  DEST_COUNTRY_NAME STRING,\n  ORIGIN_COUNTRY_NAME STRING COMMENT \"remember, the US will be most prevalent\",\n  count LONG)\nUSING csv OPTIONS (header true, path \u0027/data/flight-data/csv/2015-summary.csv\u0027)\n\n\n-- COMMAND ----------\n\nCREATE TABLE flights_from_select USING parquet AS SELECT * FROM flights\n\n\n-- COMMAND ----------\n\nCREATE TABLE IF NOT EXISTS flights_from_select\n  AS SELECT * FROM flights\n\n\n-- COMMAND ----------\n\nCREATE TABLE partitioned_flights USING parquet PARTITIONED BY (DEST_COUNTRY_NAME)\nAS SELECT DEST_COUNTRY_NAME, ORIGIN_COUNTRY_NAME, count FROM flights LIMIT 5\n\n\n-- COMMAND ----------\n\nCREATE EXTERNAL TABLE hive_flights (\n  DEST_COUNTRY_NAME STRING, ORIGIN_COUNTRY_NAME STRING, count LONG)\nROW FORMAT DELIMITED FIELDS TERMINATED BY \u0027,\u0027 LOCATION \u0027/data/flight-data-hive/\u0027\n\n\n-- COMMAND ----------\n\nCREATE EXTERNAL TABLE hive_flights_2\nROW FORMAT DELIMITED FIELDS TERMINATED BY \u0027,\u0027\nLOCATION \u0027/data/flight-data-hive/\u0027 AS SELECT * FROM flights\n\n\n-- COMMAND ----------\n\nINSERT INTO flights_from_select\n  SELECT DEST_COUNTRY_NAME, ORIGIN_COUNTRY_NAME, count FROM flights LIMIT 20\n\n\n-- COMMAND ----------\n\nINSERT INTO partitioned_flights\n  PARTITION (DEST_COUNTRY_NAME\u003d\"UNITED STATES\")\n  SELECT count, ORIGIN_COUNTRY_NAME FROM flights\n  WHERE DEST_COUNTRY_NAME\u003d\u0027UNITED STATES\u0027 LIMIT 12\n\n\n-- COMMAND ----------\n\nDESCRIBE TABLE flights_csv\n\n\n-- COMMAND ----------\n\nSHOW PARTITIONS partitioned_flights\n\n\n-- COMMAND ----------\n\nREFRESH table partitioned_flights\n\n\n-- COMMAND ----------\n\nMSCK REPAIR TABLE partitioned_flights\n\n\n-- COMMAND ----------\n\nDROP TABLE flights_csv;\n\n\n-- COMMAND ----------\n\nDROP TABLE IF EXISTS flights_csv;\n\n\n-- COMMAND ----------\n\nCACHE TABLE flights\n\n\n-- COMMAND ----------\n\nUNCACHE TABLE FLIGHTS\n\n\n-- COMMAND ----------\n\nCREATE VIEW just_usa_view AS\n  SELECT * FROM flights WHERE dest_country_name \u003d \u0027United States\u0027\n\n\n-- COMMAND ----------\n\nCREATE TEMP VIEW just_usa_view_temp AS\n  SELECT * FROM flights WHERE dest_country_name \u003d \u0027United States\u0027\n\n\n-- COMMAND ----------\n\nCREATE GLOBAL TEMP VIEW just_usa_global_view_temp AS\n  SELECT * FROM flights WHERE dest_country_name \u003d \u0027United States\u0027\n\n\n-- COMMAND ----------\n\nSHOW TABLES\n\n\n-- COMMAND ----------\n\nCREATE OR REPLACE TEMP VIEW just_usa_view_temp AS\n  SELECT * FROM flights WHERE dest_country_name \u003d \u0027United States\u0027\n\n\n-- COMMAND ----------\n\nSELECT * FROM just_usa_view_temp\n\n\n-- COMMAND ----------\n\nEXPLAIN SELECT * FROM just_usa_view\n\n\n-- COMMAND ----------\n\nEXPLAIN SELECT * FROM flights WHERE dest_country_name \u003d \u0027United States\u0027\n\n\n-- COMMAND ----------\n\nDROP VIEW IF EXISTS just_usa_view;\n\n\n-- COMMAND ----------\n\nSHOW DATABASES\n\n\n-- COMMAND ----------\n\nCREATE DATABASE some_db\n\n\n-- COMMAND ----------\n\nUSE some_db\n\n\n-- COMMAND ----------\n\nSHOW tables\n\nSELECT * FROM flights -- fails with table/view not found\n\n\n-- COMMAND ----------\n\nSELECT * FROM default.flights\n\n\n-- COMMAND ----------\n\nSELECT current_database()\n\n\n-- COMMAND ----------\n\nUSE default;\n\n\n-- COMMAND ----------\n\nDROP DATABASE IF EXISTS some_db;\n\n\n-- COMMAND ----------\n\nSELECT [ALL|DISTINCT] named_expression[, named_expression, ...]\n    FROM relation[, relation, ...]\n    [lateral_view[, lateral_view, ...]]\n    [WHERE boolean_expression]\n    [aggregation [HAVING boolean_expression]]\n    [ORDER BY sort_expressions]\n    [CLUSTER BY expressions]\n    [DISTRIBUTE BY expressions]\n    [SORT BY sort_expressions]\n    [WINDOW named_window[, WINDOW named_window, ...]]\n    [LIMIT num_rows]\n\nnamed_expression:\n    : expression [AS alias]\n\nrelation:\n    | join_relation\n    | (table_name|query|relation) [sample] [AS alias]\n    : VALUES (expressions)[, (expressions), ...]\n          [AS (column_name[, column_name, ...])]\n\nexpressions:\n    : expression[, expression, ...]\n\nsort_expressions:\n    : expression [ASC|DESC][, expression [ASC|DESC], ...]\n\n\n-- COMMAND ----------\n\nSELECT\n  CASE WHEN DEST_COUNTRY_NAME \u003d \u0027UNITED STATES\u0027 THEN 1\n       WHEN DEST_COUNTRY_NAME \u003d \u0027Egypt\u0027 THEN 0\n       ELSE -1 END\nFROM partitioned_flights\n\n\n-- COMMAND ----------\n\nCREATE VIEW IF NOT EXISTS nested_data AS\n  SELECT (DEST_COUNTRY_NAME, ORIGIN_COUNTRY_NAME) as country, count FROM flights\n\n\n-- COMMAND ----------\n\nSELECT * FROM nested_data\n\n\n-- COMMAND ----------\n\nSELECT country.DEST_COUNTRY_NAME, count FROM nested_data\n\n\n-- COMMAND ----------\n\nSELECT country.*, count FROM nested_data\n\n\n-- COMMAND ----------\n\nSELECT DEST_COUNTRY_NAME as new_name, collect_list(count) as flight_counts,\n  collect_set(ORIGIN_COUNTRY_NAME) as origin_set\nFROM flights GROUP BY DEST_COUNTRY_NAME\n\n\n-- COMMAND ----------\n\nSELECT DEST_COUNTRY_NAME, ARRAY(1, 2, 3) FROM flights\n\n\n-- COMMAND ----------\n\nSELECT DEST_COUNTRY_NAME as new_name, collect_list(count)[0]\nFROM flights GROUP BY DEST_COUNTRY_NAME\n\n\n-- COMMAND ----------\n\nCREATE OR REPLACE TEMP VIEW flights_agg AS\n  SELECT DEST_COUNTRY_NAME, collect_list(count) as collected_counts\n  FROM flights GROUP BY DEST_COUNTRY_NAME\n\n\n-- COMMAND ----------\n\nSELECT explode(collected_counts), DEST_COUNTRY_NAME FROM flights_agg\n\n\n-- COMMAND ----------\n\nSHOW FUNCTIONS\n\n\n-- COMMAND ----------\n\nSHOW SYSTEM FUNCTIONS\n\n\n-- COMMAND ----------\n\nSHOW USER FUNCTIONS\n\n\n-- COMMAND ----------\n\nSHOW FUNCTIONS \"s*\";\n\n\n-- COMMAND ----------\n\nSHOW FUNCTIONS LIKE \"collect*\";\n\n\n-- COMMAND ----------\n\nSELECT count, power3(count) FROM flights\n\n\n-- COMMAND ----------\n\nSELECT dest_country_name FROM flights\nGROUP BY dest_country_name ORDER BY sum(count) DESC LIMIT 5\n\n\n-- COMMAND ----------\n\nSELECT * FROM flights\nWHERE origin_country_name IN (SELECT dest_country_name FROM flights\n      GROUP BY dest_country_name ORDER BY sum(count) DESC LIMIT 5)\n\n\n-- COMMAND ----------\n\nSELECT * FROM flights f1\nWHERE EXISTS (SELECT 1 FROM flights f2\n            WHERE f1.dest_country_name \u003d f2.origin_country_name)\nAND EXISTS (SELECT 1 FROM flights f2\n            WHERE f2.dest_country_name \u003d f1.origin_country_name)\n\n\n-- COMMAND ----------\n\nSELECT *, (SELECT max(count) FROM flights) AS maximum FROM flights\n\n\n-- COMMAND ----------\n\nSET spark.sql.shuffle.partitions\u003d20\n\n\n-- COMMAND ----------\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.568",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457567_1601242056",
+      "id": "20181005-074417_181379409",
+      "dateCreated": "2018-10-05 07:44:17.567",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Sql/Structured_APIs-Chapter_10_Spark_SQL.sql",
+  "id": "2DSSM6HJV",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

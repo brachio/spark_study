@@ -1,0 +1,200 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725437803_669444889",
+      "id": "20181005-074357_1991044897",
+      "dateCreated": "2018-10-05 07:43:57.803",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:57.821",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725437820_-1916419347",
+      "id": "20181005-074357_1212279087",
+      "dateCreated": "2018-10-05 07:43:57.820",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nmyRange \u003d spark.range(1000).toDF(\"number\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:57.844",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725437842_1726296125",
+      "id": "20181005-074357_994095592",
+      "dateCreated": "2018-10-05 07:43:57.843",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndivisBy2 \u003d myRange.where(\"number % 2 \u003d 0\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:57.884",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725437884_-808222065",
+      "id": "20181005-074357_1920328548",
+      "dateCreated": "2018-10-05 07:43:57.884",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nflightData2015 \u003d spark\\\n  .read\\\n  .option(\"inferSchema\", \"true\")\\\n  .option(\"header\", \"true\")\\\n  .csv(\"/data/flight-data/csv/2015-summary.csv\")\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:57.920",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725437919_-1867628908",
+      "id": "20181005-074357_878736052",
+      "dateCreated": "2018-10-05 07:43:57.919",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nflightData2015.createOrReplaceTempView(\"flight_data_2015\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:57.960",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725437959_436283884",
+      "id": "20181005-074357_86398309",
+      "dateCreated": "2018-10-05 07:43:57.959",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nsqlWay \u003d spark.sql(\"\"\"\nSELECT DEST_COUNTRY_NAME, count(1)\nFROM flight_data_2015\nGROUP BY DEST_COUNTRY_NAME\n\"\"\")\n\ndataFrameWay \u003d flightData2015\\\n  .groupBy(\"DEST_COUNTRY_NAME\")\\\n  .count()\n\nsqlWay.explain()\ndataFrameWay.explain()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:57.996",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725437995_533157130",
+      "id": "20181005-074357_436858626",
+      "dateCreated": "2018-10-05 07:43:57.995",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.sql.functions import max\n\nflightData2015.select(max(\"count\")).take(1)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:58.044",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725438043_1714724426",
+      "id": "20181005-074358_517522096",
+      "dateCreated": "2018-10-05 07:43:58.043",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nmaxSql \u003d spark.sql(\"\"\"\nSELECT DEST_COUNTRY_NAME, sum(count) as destination_total\nFROM flight_data_2015\nGROUP BY DEST_COUNTRY_NAME\nORDER BY sum(count) DESC\nLIMIT 5\n\"\"\")\n\nmaxSql.show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:58.102",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725438102_-1087784090",
+      "id": "20181005-074358_209821859",
+      "dateCreated": "2018-10-05 07:43:58.102",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.sql.functions import desc\n\nflightData2015\\\n  .groupBy(\"DEST_COUNTRY_NAME\")\\\n  .sum(\"count\")\\\n  .withColumnRenamed(\"sum(count)\", \"destination_total\")\\\n  .sort(desc(\"destination_total\"))\\\n  .limit(5)\\\n  .show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:58.165",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725438164_-815372402",
+      "id": "20181005-074358_676696974",
+      "dateCreated": "2018-10-05 07:43:58.165",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nflightData2015\\\n  .groupBy(\"DEST_COUNTRY_NAME\")\\\n  .sum(\"count\")\\\n  .withColumnRenamed(\"sum(count)\", \"destination_total\")\\\n  .sort(desc(\"destination_total\"))\\\n  .limit(5)\\\n  .explain()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:58.214",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725438213_1741472256",
+      "id": "20181005-074358_1835827468",
+      "dateCreated": "2018-10-05 07:43:58.213",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/A_Gentle_Introduction_to_Spark-Chapter_2_A_Gentle_Introduction_to_Spark.py",
+  "id": "2DSV1R4WT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

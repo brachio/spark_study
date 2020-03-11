@@ -1,0 +1,200 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445401_1506023222",
+      "id": "20181005-074405_355750676",
+      "dateCreated": "2018-10-05 07:44:05.401",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.417",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445415_-1164646671",
+      "id": "20181005-074405_1591644880",
+      "dateCreated": "2018-10-05 07:44:05.416",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nval df \u003d spark.read.load(\"/data/regression\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.430",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445430_602819329",
+      "id": "20181005-074405_492895582",
+      "dateCreated": "2018-10-05 07:44:05.430",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.regression.LinearRegression\nval lr \u003d (new LinearRegression().setMaxIter(10).setRegParam(0.3)\n  .setElasticNetParam(0.8))\nprintln(lr.explainParams())\nval lrModel \u003d lr.fit(df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.444",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445443_2018366888",
+      "id": "20181005-074405_823973170",
+      "dateCreated": "2018-10-05 07:44:05.443",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval summary \u003d lrModel.summary\nsummary.residuals.show()\nprintln(summary.objectiveHistory.toSeq.toDF.show())\nprintln(summary.rootMeanSquaredError)\nprintln(summary.r2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.458",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445457_-818728075",
+      "id": "20181005-074405_347334532",
+      "dateCreated": "2018-10-05 07:44:05.457",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.regression.GeneralizedLinearRegression\nval glr \u003d (new GeneralizedLinearRegression()\n  .setFamily(\"gaussian\")\n  .setLink(\"identity\")\n  .setMaxIter(10)\n  .setRegParam(0.3)\n  .setLinkPredictionCol(\"linkOut\"))\nprintln(glr.explainParams())\nval glrModel \u003d glr.fit(df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.479",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445478_-1793272771",
+      "id": "20181005-074405_1383764735",
+      "dateCreated": "2018-10-05 07:44:05.478",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.regression.DecisionTreeRegressor\nval dtr \u003d new DecisionTreeRegressor()\nprintln(dtr.explainParams())\nval dtrModel \u003d dtr.fit(df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.502",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445502_2015124578",
+      "id": "20181005-074405_558442241",
+      "dateCreated": "2018-10-05 07:44:05.502",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.regression.RandomForestRegressor\nimport org.apache.spark.ml.regression.GBTRegressor\nval rf \u003d new RandomForestRegressor()\nprintln(rf.explainParams())\nval rfModel \u003d rf.fit(df)\nval gbt \u003d new GBTRegressor()\nprintln(gbt.explainParams())\nval gbtModel \u003d gbt.fit(df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.518",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445518_-843434986",
+      "id": "20181005-074405_2018161634",
+      "dateCreated": "2018-10-05 07:44:05.518",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.evaluation.RegressionEvaluator\nimport org.apache.spark.ml.regression.GeneralizedLinearRegression\nimport org.apache.spark.ml.Pipeline\nimport org.apache.spark.ml.tuning.{CrossValidator, ParamGridBuilder}\nval glr \u003d (new GeneralizedLinearRegression()\n  .setFamily(\"gaussian\")\n  .setLink(\"identity\"))\nval pipeline \u003d new Pipeline().setStages(Array(glr))\nval params \u003d (new ParamGridBuilder().addGrid(glr.regParam, Array(0, 0.5, 1))\n  .build())\nval evaluator \u003d (new RegressionEvaluator()\n  .setMetricName(\"rmse\")\n  .setPredictionCol(\"prediction\")\n  .setLabelCol(\"label\"))\nval cv \u003d (new CrossValidator()\n  .setEstimator(pipeline)\n  .setEvaluator(evaluator)\n  .setEstimatorParamMaps(params)\n  .setNumFolds(2)) // should always be 3 or more but this dataset is small\nval model \u003d cv.fit(df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.540",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445539_148990508",
+      "id": "20181005-074405_511692127",
+      "dateCreated": "2018-10-05 07:44:05.539",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.mllib.evaluation.RegressionMetrics\nval out \u003d (model.transform(df)\n  .select(\"prediction\", \"label\")\n  .rdd.map(x \u003d\u003e (x(0).asInstanceOf[Double], x(1).asInstanceOf[Double])))\nval metrics \u003d new RegressionMetrics(out)\nprintln(s\"MSE \u003d ${metrics.meanSquaredError}\")\nprintln(s\"RMSE \u003d ${metrics.rootMeanSquaredError}\")\nprintln(s\"R-squared \u003d ${metrics.r2}\")\nprintln(s\"MAE \u003d ${metrics.meanAbsoluteError}\")\nprintln(s\"Explained variance \u003d ${metrics.explainedVariance}\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.565",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445564_-2007185744",
+      "id": "20181005-074405_752100052",
+      "dateCreated": "2018-10-05 07:44:05.564",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.592",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445591_1181643550",
+      "id": "20181005-074405_1983526262",
+      "dateCreated": "2018-10-05 07:44:05.591",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Advanced_Analytics_and_Machine_Learning-Chapter_27_Regression.scala",
+  "id": "2DUC48KNE",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

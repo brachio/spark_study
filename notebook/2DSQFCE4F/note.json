@@ -1,0 +1,234 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444866_102864528",
+      "id": "20181005-074404_1217487070",
+      "dateCreated": "2018-10-05 07:44:04.866",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.879",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444878_667152430",
+      "id": "20181005-074404_1611085106",
+      "dateCreated": "2018-10-05 07:44:04.878",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nval bInput \u003d (spark.read.format(\"parquet\").load(\"/data/binary-classification\")\n  .selectExpr(\"features\", \"cast(label as double) as label\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.890",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444889_2131039897",
+      "id": "20181005-074404_1151962877",
+      "dateCreated": "2018-10-05 07:44:04.889",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.classification.LogisticRegression\nval lr \u003d new LogisticRegression()\nprintln(lr.explainParams()) // see all parameters\nval lrModel \u003d lr.fit(bInput)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.909",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444908_-478099674",
+      "id": "20181005-074404_877198899",
+      "dateCreated": "2018-10-05 07:44:04.908",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nprintln(lrModel.coefficients)\nprintln(lrModel.intercept)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.925",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444925_17215072",
+      "id": "20181005-074404_404244889",
+      "dateCreated": "2018-10-05 07:44:04.925",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.classification.BinaryLogisticRegressionSummary\nval summary \u003d lrModel.summary\nval bSummary \u003d summary.asInstanceOf[BinaryLogisticRegressionSummary]\nprintln(bSummary.areaUnderROC)\nbSummary.roc.show()\nbSummary.pr.show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.942",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444942_-1028442914",
+      "id": "20181005-074404_1477989061",
+      "dateCreated": "2018-10-05 07:44:04.942",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.classification.DecisionTreeClassifier\nval dt \u003d new DecisionTreeClassifier()\nprintln(dt.explainParams())\nval dtModel \u003d dt.fit(bInput)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.962",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444962_889027929",
+      "id": "20181005-074404_2114387160",
+      "dateCreated": "2018-10-05 07:44:04.962",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.classification.RandomForestClassifier\nval rfClassifier \u003d new RandomForestClassifier()\nprintln(rfClassifier.explainParams())\nval trainedModel \u003d rfClassifier.fit(bInput)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.981",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444980_-1009423231",
+      "id": "20181005-074404_628805904",
+      "dateCreated": "2018-10-05 07:44:04.980",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.classification.GBTClassifier\nval gbtClassifier \u003d new GBTClassifier()\nprintln(gbtClassifier.explainParams())\nval trainedModel \u003d gbtClassifier.fit(bInput)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.016",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445015_1433652661",
+      "id": "20181005-074405_1754781953",
+      "dateCreated": "2018-10-05 07:44:05.015",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.classification.NaiveBayes\nval nb \u003d new NaiveBayes()\nprintln(nb.explainParams())\nval trainedModel \u003d nb.fit(bInput.where(\"label !\u003d 0\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.045",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445044_1632485631",
+      "id": "20181005-074405_262251735",
+      "dateCreated": "2018-10-05 07:44:05.044",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.mllib.evaluation.BinaryClassificationMetrics\nval out \u003d (model.transform(bInput)\n  .select(\"prediction\", \"label\")\n  .rdd.map(x \u003d\u003e (x(0).asInstanceOf[Double], x(1).asInstanceOf[Double])))\nval metrics \u003d new BinaryClassificationMetrics(out)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.075",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445074_243017010",
+      "id": "20181005-074405_271710727",
+      "dateCreated": "2018-10-05 07:44:05.075",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nmetrics.areaUnderPR\nmetrics.areaUnderROC\nprintln(\"Receiver Operating Characteristic\")\nmetrics.roc.toDF().show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.106",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445105_-1977843090",
+      "id": "20181005-074405_1553143650",
+      "dateCreated": "2018-10-05 07:44:05.105",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:05.136",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725445135_-814717508",
+      "id": "20181005-074405_1146611671",
+      "dateCreated": "2018-10-05 07:44:05.135",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Advanced_Analytics_and_Machine_Learning-Chapter_26_Classification.scala",
+  "id": "2DSQFCE4F",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

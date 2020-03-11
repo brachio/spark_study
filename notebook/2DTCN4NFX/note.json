@@ -1,0 +1,98 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454553_-1871247526",
+      "id": "20181005-074414_332743964",
+      "dateCreated": "2018-10-05 07:44:14.553",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.568",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454566_-2220564",
+      "id": "20181005-074414_1121522089",
+      "dateCreated": "2018-10-05 07:44:14.566",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nfrom __future__ import print_function\nif __name__ \u003d\u003d \u0027__main__\u0027:\n    from pyspark.sql import SparkSession\n    spark \u003d SparkSession.builder \\\n        .master(\"local\") \\\n        .appName(\"Word Count\") \\\n        .config(\"spark.some.config.option\", \"some-value\") \\\n        .getOrCreate()\n\n    print(spark.range(5000).where(\"id \u003e 500\").selectExpr(\"sum(id)\").collect())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.579",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454578_-1626158208",
+      "id": "20181005-074414_679221259",
+      "dateCreated": "2018-10-05 07:44:14.578",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark import SparkConf\nconf \u003d SparkConf().setMaster(\"local[2]\").setAppName(\"DefinitiveGuide\")\\\n  .set(\"some.conf\", \"to.some.value\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.591",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454590_-1531623563",
+      "id": "20181005-074414_204716007",
+      "dateCreated": "2018-10-05 07:44:14.590",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.611",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454610_1687633312",
+      "id": "20181005-074414_1259009845",
+      "dateCreated": "2018-10-05 07:44:14.610",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Production_Applications-Chapter_16_Spark_Applications.py",
+  "id": "2DTCN4NFX",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

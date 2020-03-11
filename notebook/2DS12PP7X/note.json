@@ -1,0 +1,319 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440674_-2017522773",
+      "id": "20181005-074400_1508154332",
+      "dateCreated": "2018-10-05 07:44:00.674",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.690",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440690_-922777833",
+      "id": "20181005-074400_539469734",
+      "dateCreated": "2018-10-05 07:44:00.690",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nfrom pyspark.ml.linalg import Vectors\ndenseVec \u003d Vectors.dense(1.0, 2.0, 3.0)\nsize \u003d 3\nidx \u003d [1, 2] # locations of non-zero elements in vector\nvalues \u003d [2.0, 3.0]\nsparseVec \u003d Vectors.sparse(size, idx, values)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.704",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440704_-418904434",
+      "id": "20181005-074400_851485956",
+      "dateCreated": "2018-10-05 07:44:00.704",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndf \u003d spark.read.json(\"/data/simple-ml\")\ndf.orderBy(\"value2\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.720",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440720_1050917662",
+      "id": "20181005-074400_2095720848",
+      "dateCreated": "2018-10-05 07:44:00.720",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import RFormula\nsupervised \u003d RFormula(formula\u003d\"lab ~ . + color:value1 + color:value2\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.735",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440734_-757248034",
+      "id": "20181005-074400_2105953522",
+      "dateCreated": "2018-10-05 07:44:00.734",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfittedRF \u003d supervised.fit(df)\npreparedDF \u003d fittedRF.transform(df)\npreparedDF.show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.751",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440750_-2028474146",
+      "id": "20181005-074400_1463095366",
+      "dateCreated": "2018-10-05 07:44:00.750",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ntrain, test \u003d preparedDF.randomSplit([0.7, 0.3])\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.768",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440767_1009317599",
+      "id": "20181005-074400_1866339024",
+      "dateCreated": "2018-10-05 07:44:00.767",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.classification import LogisticRegression\nlr \u003d LogisticRegression(labelCol\u003d\"label\",featuresCol\u003d\"features\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.786",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440785_1074327348",
+      "id": "20181005-074400_720552611",
+      "dateCreated": "2018-10-05 07:44:00.785",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nprint lr.explainParams()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.805",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440804_-1921642048",
+      "id": "20181005-074400_1668533409",
+      "dateCreated": "2018-10-05 07:44:00.804",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfittedLR \u003d lr.fit(train)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.828",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440827_-1416738504",
+      "id": "20181005-074400_698689980",
+      "dateCreated": "2018-10-05 07:44:00.827",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ntrain, test \u003d df.randomSplit([0.7, 0.3])\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.852",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440851_-1829018597",
+      "id": "20181005-074400_487235333",
+      "dateCreated": "2018-10-05 07:44:00.851",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nrForm \u003d RFormula()\nlr \u003d LogisticRegression().setLabelCol(\"label\").setFeaturesCol(\"features\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.874",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440873_523792757",
+      "id": "20181005-074400_1432892949",
+      "dateCreated": "2018-10-05 07:44:00.873",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml import Pipeline\nstages \u003d [rForm, lr]\npipeline \u003d Pipeline().setStages(stages)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.897",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440897_610687919",
+      "id": "20181005-074400_833014781",
+      "dateCreated": "2018-10-05 07:44:00.897",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.tuning import ParamGridBuilder\nparams \u003d ParamGridBuilder()\\\n  .addGrid(rForm.formula, [\n    \"lab ~ . + color:value1\",\n    \"lab ~ . + color:value1 + color:value2\"])\\\n  .addGrid(lr.elasticNetParam, [0.0, 0.5, 1.0])\\\n  .addGrid(lr.regParam, [0.1, 2.0])\\\n  .build()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.928",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440928_-824066902",
+      "id": "20181005-074400_617847612",
+      "dateCreated": "2018-10-05 07:44:00.928",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.evaluation import BinaryClassificationEvaluator\nevaluator \u003d BinaryClassificationEvaluator()\\\n  .setMetricName(\"areaUnderROC\")\\\n  .setRawPredictionCol(\"prediction\")\\\n  .setLabelCol(\"label\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.954",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440954_-390946921",
+      "id": "20181005-074400_1450192889",
+      "dateCreated": "2018-10-05 07:44:00.954",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.tuning import TrainValidationSplit\ntvs \u003d TrainValidationSplit()\\\n  .setTrainRatio(0.75)\\\n  .setEstimatorParamMaps(params)\\\n  .setEstimator(pipeline)\\\n  .setEvaluator(evaluator)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:00.982",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725440981_-725101358",
+      "id": "20181005-074400_29034734",
+      "dateCreated": "2018-10-05 07:44:00.981",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ntvsFitted \u003d tvs.fit(train)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.009",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441009_-589498925",
+      "id": "20181005-074401_1090194223",
+      "dateCreated": "2018-10-05 07:44:01.009",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.037",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441036_-61499155",
+      "id": "20181005-074401_2141794358",
+      "dateCreated": "2018-10-05 07:44:01.036",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Advanced_Analytics_and_Machine_Learning-Chapter_24_Advanced_Analytics_and_Machine_Learning.py",
+  "id": "2DS12PP7X",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,421 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451685_-766474365",
+      "id": "20181005-074411_1028364707",
+      "dateCreated": "2018-10-05 07:44:11.685",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.701",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451700_1198154828",
+      "id": "20181005-074411_874065205",
+      "dateCreated": "2018-10-05 07:44:11.700",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nmyCollection \u003d \"Spark The Definitive Guide : Big Data Processing Made Simple\"\\\n  .split(\" \")\nwords \u003d spark.sparkContext.parallelize(myCollection, 2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.714",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451713_2101728646",
+      "id": "20181005-074411_893516317",
+      "dateCreated": "2018-10-05 07:44:11.713",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwords.map(lambda word: (word.lower(), 1))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.730",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451728_-232876663",
+      "id": "20181005-074411_511666717",
+      "dateCreated": "2018-10-05 07:44:11.729",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nkeyword \u003d words.keyBy(lambda word: word.lower()[0])\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.743",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451742_-611042655",
+      "id": "20181005-074411_1659426744",
+      "dateCreated": "2018-10-05 07:44:11.742",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nkeyword.mapValues(lambda word: word.upper()).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.760",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451759_-26890569",
+      "id": "20181005-074411_1252986375",
+      "dateCreated": "2018-10-05 07:44:11.759",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nkeyword.flatMapValues(lambda word: word.upper()).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.779",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451778_106543700",
+      "id": "20181005-074411_541141629",
+      "dateCreated": "2018-10-05 07:44:11.778",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nkeyword.keys().collect()\nkeyword.values().collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.802",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451800_1643269996",
+      "id": "20181005-074411_1024919262",
+      "dateCreated": "2018-10-05 07:44:11.800",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nimport random\ndistinctChars \u003d words.flatMap(lambda word: list(word.lower())).distinct()\\\n  .collect()\nsampleMap \u003d dict(map(lambda c: (c, random.random()), distinctChars))\nwords.map(lambda word: (word.lower()[0], word))\\\n  .sampleByKey(True, sampleMap, 6).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.831",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451830_-814392814",
+      "id": "20181005-074411_1536783724",
+      "dateCreated": "2018-10-05 07:44:11.831",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nchars \u003d words.flatMap(lambda word: word.lower())\nKVcharacters \u003d chars.map(lambda letter: (letter, 1))\ndef maxFunc(left, right):\n  return max(left, right)\ndef addFunc(left, right):\n  return left + right\nnums \u003d sc.parallelize(range(1,31), 5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.855",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451854_-789728601",
+      "id": "20181005-074411_705922250",
+      "dateCreated": "2018-10-05 07:44:11.854",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nKVcharacters.countByKey()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.875",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451874_1540305130",
+      "id": "20181005-074411_834333757",
+      "dateCreated": "2018-10-05 07:44:11.874",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nKVcharacters.groupByKey().map(lambda row: (row[0], reduce(addFunc, row[1])))\\\n  .collect()\n# note this is Python 2, reduce must be imported from functools in Python 3\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.897",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451897_1561979448",
+      "id": "20181005-074411_1837947145",
+      "dateCreated": "2018-10-05 07:44:11.897",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nnums.aggregate(0, maxFunc, addFunc)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.917",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451916_1891231547",
+      "id": "20181005-074411_1271549888",
+      "dateCreated": "2018-10-05 07:44:11.917",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndepth \u003d 3\nnums.treeAggregate(0, maxFunc, addFunc, depth)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.942",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451941_921549812",
+      "id": "20181005-074411_177202692",
+      "dateCreated": "2018-10-05 07:44:11.941",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nKVcharacters.aggregateByKey(0, addFunc, maxFunc).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:11.971",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725451970_1473864897",
+      "id": "20181005-074411_1426543095",
+      "dateCreated": "2018-10-05 07:44:11.970",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndef valToCombiner(value):\n  return [value]\ndef mergeValuesFunc(vals, valToAppend):\n  vals.append(valToAppend)\n  return vals\ndef mergeCombinerFunc(vals1, vals2):\n  return vals1 + vals2\noutputPartitions \u003d 6\nKVcharacters\\\n  .combineByKey(\n    valToCombiner,\n    mergeValuesFunc,\n    mergeCombinerFunc,\n    outputPartitions)\\\n  .collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.012",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452011_-545509104",
+      "id": "20181005-074412_1321005418",
+      "dateCreated": "2018-10-05 07:44:12.011",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nKVcharacters.foldByKey(0, addFunc).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.049",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452048_760291264",
+      "id": "20181005-074412_1196090031",
+      "dateCreated": "2018-10-05 07:44:12.048",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nimport random\ndistinctChars \u003d words.flatMap(lambda word: word.lower()).distinct()\ncharRDD \u003d distinctChars.map(lambda c: (c, random.random()))\ncharRDD2 \u003d distinctChars.map(lambda c: (c, random.random()))\ncharRDD.cogroup(charRDD2).take(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.080",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452079_-1755299701",
+      "id": "20181005-074412_854874226",
+      "dateCreated": "2018-10-05 07:44:12.079",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nkeyedChars \u003d distinctChars.map(lambda c: (c, random.random()))\noutputPartitions \u003d 10\nKVcharacters.join(keyedChars).count()\nKVcharacters.join(keyedChars, outputPartitions).count()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.124",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452123_-1182577009",
+      "id": "20181005-074412_629680170",
+      "dateCreated": "2018-10-05 07:44:12.123",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nnumRange \u003d sc.parallelize(range(10), 2)\nwords.zip(numRange).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.167",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452166_-1085725339",
+      "id": "20181005-074412_1817537089",
+      "dateCreated": "2018-10-05 07:44:12.166",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwords.coalesce(1).getNumPartitions() # 1\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.210",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452208_-1834596281",
+      "id": "20181005-074412_96539458",
+      "dateCreated": "2018-10-05 07:44:12.209",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndf \u003d spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\")\\\n  .csv(\"/data/retail-data/all/\")\nrdd \u003d df.coalesce(10).rdd\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.261",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452259_454177799",
+      "id": "20181005-074412_950788524",
+      "dateCreated": "2018-10-05 07:44:12.259",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndef partitionFunc(key):\n  import random\n  if key \u003d\u003d 17850 or key \u003d\u003d 12583:\n    return 0\n  else:\n    return random.randint(1,2)\n\nkeyedRDD \u003d rdd.keyBy(lambda row: row[6])\nkeyedRDD\\\n  .partitionBy(3, partitionFunc)\\\n  .map(lambda x: x[0])\\\n  .glom()\\\n  .map(lambda x: len(set(x)))\\\n  .take(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.306",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452306_-153075580",
+      "id": "20181005-074412_1658099079",
+      "dateCreated": "2018-10-05 07:44:12.306",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:12.345",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725452343_234579074",
+      "id": "20181005-074412_670608632",
+      "dateCreated": "2018-10-05 07:44:12.343",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Low_Level_APIs-Chapter_13_Advanced_RDDs.py",
+  "id": "2DTYKCFEX",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

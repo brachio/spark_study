@@ -1,0 +1,64 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461585_2051908742",
+      "id": "20181005-074421_639337955",
+      "dateCreated": "2018-10-05 07:44:21.585",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.597",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461596_-1906635125",
+      "id": "20181005-074421_565697311",
+      "dateCreated": "2018-10-05 07:44:21.596",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sql\nSELECT COUNT(*) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT COUNT(DISTINCT *) FROM DFTABLE\n\n\n-- COMMAND ----------\n\nSELECT approx_count_distinct(StockCode, 0.1) FROM DFTABLE\n\n\n-- COMMAND ----------\n\nSELECT first(StockCode), last(StockCode) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT min(Quantity), max(Quantity) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT sum(Quantity) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT SUM(Quantity) FROM dfTable -- 29310\n\n\n-- COMMAND ----------\n\nSELECT var_pop(Quantity), var_samp(Quantity),\n  stddev_pop(Quantity), stddev_samp(Quantity)\nFROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT skewness(Quantity), kurtosis(Quantity) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT corr(InvoiceNo, Quantity), covar_samp(InvoiceNo, Quantity),\n  covar_pop(InvoiceNo, Quantity)\nFROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT collect_set(Country), collect_set(Country) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT count(*) FROM dfTable GROUP BY InvoiceNo, CustomerId\n\n\n-- COMMAND ----------\n\nSELECT avg(Quantity), stddev_pop(Quantity), InvoiceNo FROM dfTable\nGROUP BY InvoiceNo\n\n\n-- COMMAND ----------\n\nSELECT CustomerId, date, Quantity,\n  rank(Quantity) OVER (PARTITION BY CustomerId, date\n                       ORDER BY Quantity DESC NULLS LAST\n                       ROWS BETWEEN\n                         UNBOUNDED PRECEDING AND\n                         CURRENT ROW) as rank,\n\n  dense_rank(Quantity) OVER (PARTITION BY CustomerId, date\n                             ORDER BY Quantity DESC NULLS LAST\n                             ROWS BETWEEN\n                               UNBOUNDED PRECEDING AND\n                               CURRENT ROW) as dRank,\n\n  max(Quantity) OVER (PARTITION BY CustomerId, date\n                      ORDER BY Quantity DESC NULLS LAST\n                      ROWS BETWEEN\n                        UNBOUNDED PRECEDING AND\n                        CURRENT ROW) as maxPurchase\nFROM dfWithDate WHERE CustomerId IS NOT NULL ORDER BY CustomerId\n\n\n-- COMMAND ----------\n\nSELECT CustomerId, stockCode, sum(Quantity) FROM dfNoNull\nGROUP BY customerId, stockCode\nORDER BY CustomerId DESC, stockCode DESC\n\n\n-- COMMAND ----------\n\nSELECT CustomerId, stockCode, sum(Quantity) FROM dfNoNull\nGROUP BY customerId, stockCode GROUPING SETS((customerId, stockCode))\nORDER BY CustomerId DESC, stockCode DESC\n\n\n-- COMMAND ----------\n\nSELECT CustomerId, stockCode, sum(Quantity) FROM dfNoNull\nGROUP BY customerId, stockCode GROUPING SETS((customerId, stockCode),())\nORDER BY CustomerId DESC, stockCode DESC\n\n\n-- COMMAND ----------\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.609",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461607_1258447045",
+      "id": "20181005-074421_85053906",
+      "dateCreated": "2018-10-05 07:44:21.607",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Sql/Structured_APIs-Chapter_7_Aggregations.sql",
+  "id": "2DTZB49XB",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,64 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457021_-64450339",
+      "id": "20181005-074417_1528433336",
+      "dateCreated": "2018-10-05 07:44:17.021",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.036",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457035_-472640322",
+      "id": "20181005-074417_15871627",
+      "dateCreated": "2018-10-05 07:44:17.035",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sql\nSELECT * FROM events_per_window\n\n\n-- COMMAND ----------\n\nSELECT * FROM events_per_window\n\n\n-- COMMAND ----------\n\nSELECT * FROM events_per_window\n\n\n-- COMMAND ----------\n\nSELECT * FROM events_per_window order by user, start\n\n\n-- COMMAND ----------\n\nSELECT * FROM count_based_device\n\n\n-- COMMAND ----------\n\nSELECT * FROM count_based_device\n\n\n-- COMMAND ----------\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.048",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457047_257322462",
+      "id": "20181005-074417_2080216429",
+      "dateCreated": "2018-10-05 07:44:17.047",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Sql/Streaming-Chapter_22_Event-Time_and_Stateful_Processing.sql",
+  "id": "2DU7SPGQE",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

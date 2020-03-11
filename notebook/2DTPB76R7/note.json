@@ -1,0 +1,234 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453602_583628627",
+      "id": "20181005-074413_1521629264",
+      "dateCreated": "2018-10-05 07:44:13.602",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.618",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453616_-224067875",
+      "id": "20181005-074413_1814058963",
+      "dateCreated": "2018-10-05 07:44:13.616",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nmy_collection \u003d \"Spark The Definitive Guide : Big Data Processing Made Simple\"\\\n  .split(\" \")\nwords \u003d spark.sparkContext.parallelize(my_collection, 2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.629",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453628_499377965",
+      "id": "20181005-074413_388733975",
+      "dateCreated": "2018-10-05 07:44:13.628",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nsupplementalData \u003d {\"Spark\":1000, \"Definitive\":200,\n                    \"Big\":-300, \"Simple\":100}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.642",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453641_-87173249",
+      "id": "20181005-074413_934099717",
+      "dateCreated": "2018-10-05 07:44:13.641",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nsuppBroadcast \u003d spark.sparkContext.broadcast(supplementalData)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.659",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453657_930484568",
+      "id": "20181005-074413_883803740",
+      "dateCreated": "2018-10-05 07:44:13.657",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nsuppBroadcast.value\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.679",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453678_-568161975",
+      "id": "20181005-074413_561196948",
+      "dateCreated": "2018-10-05 07:44:13.678",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwords.map(lambda word: (word, suppBroadcast.value.get(word, 0)))\\\n  .sortBy(lambda wordPair: wordPair[1])\\\n  .collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.701",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453700_-1279357705",
+      "id": "20181005-074413_1514187238",
+      "dateCreated": "2018-10-05 07:44:13.700",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nflights \u003d spark.read\\\n  .parquet(\"/data/flight-data/parquet/2010-summary.parquet\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.723",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453721_1570155768",
+      "id": "20181005-074413_246648124",
+      "dateCreated": "2018-10-05 07:44:13.721",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\naccChina \u003d spark.sparkContext.accumulator(0)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.748",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453747_1416931646",
+      "id": "20181005-074413_1417499314",
+      "dateCreated": "2018-10-05 07:44:13.747",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndef accChinaFunc(flight_row):\n  destination \u003d flight_row[\"DEST_COUNTRY_NAME\"]\n  origin \u003d flight_row[\"ORIGIN_COUNTRY_NAME\"]\n  if destination \u003d\u003d \"China\":\n    accChina.add(flight_row[\"count\"])\n  if origin \u003d\u003d \"China\":\n    accChina.add(flight_row[\"count\"])\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.775",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453773_-1579201285",
+      "id": "20181005-074413_1124592905",
+      "dateCreated": "2018-10-05 07:44:13.773",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nflights.foreach(lambda flight_row: accChinaFunc(flight_row))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.802",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453801_-1084263161",
+      "id": "20181005-074413_1760642300",
+      "dateCreated": "2018-10-05 07:44:13.801",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\naccChina.value # 953\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.832",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453831_-410243665",
+      "id": "20181005-074413_1811702185",
+      "dateCreated": "2018-10-05 07:44:13.831",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.862",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453860_1480175029",
+      "id": "20181005-074413_43321540",
+      "dateCreated": "2018-10-05 07:44:13.860",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Low_Level_APIs-Chapter_14_Distributed_Variables.py",
+  "id": "2DTPB76R7",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

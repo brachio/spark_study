@@ -1,0 +1,387 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455431_459780607",
+      "id": "20181005-074415_772532952",
+      "dateCreated": "2018-10-05 07:44:15.431",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.452",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455451_893973428",
+      "id": "20181005-074415_1287420405",
+      "dateCreated": "2018-10-05 07:44:15.451",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nval static \u003d spark.read.json(\"/data/activity-data/\")\nval dataSchema \u003d static.schema\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.466",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455465_2068788635",
+      "id": "20181005-074415_1788706510",
+      "dateCreated": "2018-10-05 07:44:15.465",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval streaming \u003d (spark.readStream.schema(dataSchema)\n  .option(\"maxFilesPerTrigger\", 1).json(\"/data/activity-data\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.480",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455479_476666397",
+      "id": "20181005-074415_852231882",
+      "dateCreated": "2018-10-05 07:44:15.479",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval activityCounts \u003d streaming.groupBy(\"gt\").count()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.495",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455493_-865647727",
+      "id": "20181005-074415_1046477298",
+      "dateCreated": "2018-10-05 07:44:15.494",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nspark.conf.set(\"spark.sql.shuffle.partitions\", 5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.511",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455510_-1645163898",
+      "id": "20181005-074415_1231573283",
+      "dateCreated": "2018-10-05 07:44:15.510",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval activityQuery \u003d (activityCounts.writeStream.queryName(\"activity_counts\")\n  .format(\"memory\").outputMode(\"complete\")\n  .start())\n\nThread.sleep(5000)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.530",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455529_-628268375",
+      "id": "20181005-074415_189497951",
+      "dateCreated": "2018-10-05 07:44:15.529",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n/*\n  이 코드 주석을 해제하면 activityQuery 스트리밍 잡이 끝날 때까지 기다립니다.\n  zeppelin note에는 activityQuery를 끝내는 코드가 없으므로 영원히 기다리게 됩니다.\n\n  If uncomment below code, you should wait for activityQuery Streaming Job\u0027s termination.\n  On this zeppelin note, there is no termination code for activityQuery.\n  So you will be waitting forever.\n */\n\n//activityQuery.awaitTermination()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.552",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455551_-1946191825",
+      "id": "20181005-074415_388213512",
+      "dateCreated": "2018-10-05 07:44:15.551",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nspark.streams.active\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.578",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455577_-1519826512",
+      "id": "20181005-074415_495186735",
+      "dateCreated": "2018-10-05 07:44:15.577",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nfor( i \u003c- 1 to 5 ) {\n    spark.sql(\"SELECT * FROM activity_counts\").show()\n    Thread.sleep(1000)\n}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.605",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455604_-1687383061",
+      "id": "20181005-074415_76493518",
+      "dateCreated": "2018-10-05 07:44:15.604",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.expr\nval simpleTransform \u003d (streaming.withColumn(\"stairs\", expr(\"gt like \u0027%stairs%\u0027\"))\n  .where(\"stairs\")\n  .where(\"gt is not null\")\n  .select(\"gt\", \"model\", \"arrival_time\", \"creation_time\")\n  .writeStream\n  .queryName(\"simple_transform\")\n  .format(\"memory\")\n  .outputMode(\"append\")\n  .start())\n\nThread.sleep(5000)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.633",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455632_623920091",
+      "id": "20181005-074415_1051158529",
+      "dateCreated": "2018-10-05 07:44:15.632",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval deviceModelStats \u003d (streaming.cube(\"gt\", \"model\").avg()\n  .drop(\"avg(Arrival_time)\")\n  .drop(\"avg(Creation_Time)\")\n  .drop(\"avg(Index)\")\n  .writeStream.queryName(\"device_counts\").format(\"memory\").outputMode(\"complete\")\n  .start())\n\nThread.sleep(5000)\n\n// in Scala\nval historicalAgg \u003d static.groupBy(\"gt\", \"model\").avg()\nval deviceModelStats \u003d (streaming.drop(\"Arrival_Time\", \"Creation_Time\", \"Index\")\n  .cube(\"gt\", \"model\").avg()\n  .join(historicalAgg, Seq(\"gt\", \"model\"))\n  .writeStream.queryName(\"device_counts1\").format(\"memory\").outputMode(\"complete\")\n  .start())\n\nThread.sleep(5000)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.660",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455659_-2062946565",
+      "id": "20181005-074415_1346065314",
+      "dateCreated": "2018-10-05 07:44:15.659",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n\n// in Scala\n// Subscribe to 1 topic\n/*\nval ds1 \u003d (spark.readStream.format(\"kafka\")\n  .option(\"kafka.bootstrap.servers\", \"host1:port1,host2:port2\")\n  .option(\"subscribe\", \"topic1\")\n  .load())\n*/\n// Subscribe to multiple topics\n/*\nval ds2 \u003d (spark.readStream.format(\"kafka\")\n  .option(\"kafka.bootstrap.servers\", \"host1:port1,host2:port2\")\n  .option(\"subscribe\", \"topic1,topic2\")\n  .load())\n*/\n// Subscribe to a pattern of topics\n/*\nval ds3 \u003d (spark.readStream.format(\"kafka\")\n  .option(\"kafka.bootstrap.servers\", \"host1:port1,host2:port2\")\n  .option(\"subscribePattern\", \"topic.*\")\n  .load())\n*/\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.692",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455690_997577234",
+      "id": "20181005-074415_1848043532",
+      "dateCreated": "2018-10-05 07:44:15.690",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n/*\n// in Scala\n(ds1.selectExpr(\"topic\", \"CAST(key AS STRING)\", \"CAST(value AS STRING)\")\n  .writeStream.format(\"kafka\")\n  .option(\"checkpointLocation\", \"/to/HDFS-compatible/dir\")\n  .option(\"kafka.bootstrap.servers\", \"host1:port1,host2:port2\")\n  .start())\n(ds1.selectExpr(\"CAST(key AS STRING)\", \"CAST(value AS STRING)\")\n  .writeStream.format(\"kafka\")\n  .option(\"kafka.bootstrap.servers\", \"host1:port1,host2:port2\")\n  .option(\"checkpointLocation\", \"/to/HDFS-compatible/dir\")\\\n  .option(\"topic\", \"topic1\")\n  .start())\n*/\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.727",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455726_-939279010",
+      "id": "20181005-074415_27337544",
+      "dateCreated": "2018-10-05 07:44:15.726",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n//in Scala\n/*\ndatasetOfString.write.foreach(new ForeachWriter[String] {\n  def open(partitionId: Long, version: Long): Boolean \u003d {\n    // open a database connection\n  }\n  def process(record: String) \u003d {\n    // write string to connection\n  }\n  def close(errorOrNull: Throwable): Unit \u003d {\n    // close the connection\n  }\n})\n*/\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.762",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455760_1389935510",
+      "id": "20181005-074415_376473838",
+      "dateCreated": "2018-10-05 07:44:15.760",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval socketDF \u003d (spark.readStream.format(\"socket\")\n  .option(\"host\", \"localhost\").option(\"port\", 9999).load())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.801",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455799_1240436204",
+      "id": "20181005-074415_787135654",
+      "dateCreated": "2018-10-05 07:44:15.800",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n//activityCounts.format(\"console\").write()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.841",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455839_-1458255896",
+      "id": "20181005-074415_617387521",
+      "dateCreated": "2018-10-05 07:44:15.839",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nactivityCounts.writeStream.format(\"memory\").queryName(\"my_device_table\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.879",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455878_-1700002340",
+      "id": "20181005-074415_76711239",
+      "dateCreated": "2018-10-05 07:44:15.878",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.streaming.Trigger\n\n(activityCounts.writeStream.trigger(Trigger.ProcessingTime(\"100 seconds\"))\n  .format(\"console\").outputMode(\"complete\").start())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.920",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455919_2036229154",
+      "id": "20181005-074415_1290198914",
+      "dateCreated": "2018-10-05 07:44:15.919",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.streaming.Trigger\n\n(activityCounts.writeStream.trigger(Trigger.Once())\n  .format(\"console\").outputMode(\"complete\").start())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:15.968",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725455967_750837611",
+      "id": "20181005-074415_931876032",
+      "dateCreated": "2018-10-05 07:44:15.967",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\ncase class Flight(DEST_COUNTRY_NAME: String, ORIGIN_COUNTRY_NAME: String,\n  count: BigInt)\nval dataSchema \u003d (spark.read\n  .parquet(\"/data/flight-data/parquet/2010-summary.parquet/\")\n  .schema)\nval flightsDF \u003d (spark.readStream.schema(dataSchema)\n  .parquet(\"/data/flight-data/parquet/2010-summary.parquet/\"))\nval flights \u003d flightsDF.as[Flight]\ndef originIsDestination(flight_row: Flight): Boolean \u003d {\n  return flight_row.ORIGIN_COUNTRY_NAME \u003d\u003d flight_row.DEST_COUNTRY_NAME\n}\n\n(flights.filter(flight_row \u003d\u003e originIsDestination(flight_row))\n  .groupByKey(x \u003d\u003e x.DEST_COUNTRY_NAME).count()\n  .writeStream.queryName(\"device_counts2\").format(\"memory\").outputMode(\"complete\")\n  .start())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.004",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456003_225808366",
+      "id": "20181005-074416_1120434232",
+      "dateCreated": "2018-10-05 07:44:16.003",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.044",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456043_324691053",
+      "id": "20181005-074416_1778942560",
+      "dateCreated": "2018-10-05 07:44:16.043",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Streaming-Chapter_21_Structured_Streaming_Basics.scala",
+  "id": "2DRW6R1DT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

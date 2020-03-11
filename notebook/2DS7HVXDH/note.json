@@ -1,0 +1,1254 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462738_387196047",
+      "id": "20181005-074422_447983839",
+      "dateCreated": "2018-10-05 07:44:22.738",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.753",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462752_646264025",
+      "id": "20181005-074422_1033372828",
+      "dateCreated": "2018-10-05 07:44:22.752",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nval df \u003d (spark.read.format(\"csv\")\n  .option(\"header\", \"true\")\n  .option(\"inferSchema\", \"true\")\n  .load(\"/data/retail-data/by-day/2010-12-01.csv\"))\ndf.printSchema()\ndf.createOrReplaceTempView(\"dfTable\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.761",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462760_-601043333",
+      "id": "20181005-074422_1360655440",
+      "dateCreated": "2018-10-05 07:44:22.760",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.lit\ndf.select(lit(5), lit(\"five\"), lit(5.0))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.769",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462768_1626269531",
+      "id": "20181005-074422_1106437520",
+      "dateCreated": "2018-10-05 07:44:22.768",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.col\n(df.where(col(\"InvoiceNo\").equalTo(536365))\n  .select(\"InvoiceNo\", \"Description\")\n  .show(5, false))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.778",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462777_-1930267958",
+      "id": "20181005-074422_510531783",
+      "dateCreated": "2018-10-05 07:44:22.777",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.col\n(df.where(col(\"InvoiceNo\") \u003d\u003d\u003d 536365)\n  .select(\"InvoiceNo\", \"Description\")\n  .show(5, false))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.794",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462793_1126892564",
+      "id": "20181005-074422_151858343",
+      "dateCreated": "2018-10-05 07:44:22.793",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n(df.where(\"InvoiceNo \u003d 536365\")\n  .show(5, false))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.813",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462811_-1587964690",
+      "id": "20181005-074422_747062665",
+      "dateCreated": "2018-10-05 07:44:22.812",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n(df.where(\"InvoiceNo \u003c\u003e 536365\")\n  .show(5, false))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.832",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462831_-861714311",
+      "id": "20181005-074422_954563757",
+      "dateCreated": "2018-10-05 07:44:22.831",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval priceFilter \u003d col(\"UnitPrice\") \u003e 600\nval descripFilter \u003d col(\"Description\").contains(\"POSTAGE\")\n(df.where(col(\"StockCode\").isin(\"DOT\")).where(priceFilter.or(descripFilter))\n  .show())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.847",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462846_590980538",
+      "id": "20181005-074422_1974394653",
+      "dateCreated": "2018-10-05 07:44:22.846",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval DOTCodeFilter \u003d col(\"StockCode\") \u003d\u003d\u003d \"DOT\"\nval priceFilter \u003d col(\"UnitPrice\") \u003e 600\nval descripFilter \u003d col(\"Description\").contains(\"POSTAGE\")\n(df.withColumn(\"isExpensive\", DOTCodeFilter.and(priceFilter.or(descripFilter)))\n  .where(\"isExpensive\")\n  .select(\"unitPrice\", \"isExpensive\").show(5))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.877",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462875_-105699889",
+      "id": "20181005-074422_1779075675",
+      "dateCreated": "2018-10-05 07:44:22.875",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{expr, not, col}\n(df.withColumn(\"isExpensive\", not(col(\"UnitPrice\").leq(250)))\n  .filter(\"isExpensive\")\n  .select(\"Description\", \"UnitPrice\").show(5))\n(df.withColumn(\"isExpensive\", expr(\"NOT UnitPrice \u003c\u003d 250\"))\n  .filter(\"isExpensive\")\n  .select(\"Description\", \"UnitPrice\").show(5))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.905",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462903_115605784",
+      "id": "20181005-074422_1742410246",
+      "dateCreated": "2018-10-05 07:44:22.904",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndf.where(col(\"Description\").eqNullSafe(\"hello\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.932",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462930_-1052877923",
+      "id": "20181005-074422_553732396",
+      "dateCreated": "2018-10-05 07:44:22.930",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{expr, pow}\nval fabricatedQuantity \u003d pow(col(\"Quantity\") * col(\"UnitPrice\"), 2) + 5\ndf.select(expr(\"CustomerId\"), fabricatedQuantity.alias(\"realQuantity\")).show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.962",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462960_-1448435424",
+      "id": "20181005-074422_1824473547",
+      "dateCreated": "2018-10-05 07:44:22.961",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\ndf.selectExpr(\n  \"CustomerId\",\n  \"(POWER((Quantity * UnitPrice), 2.0) + 5) as realQuantity\").show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.998",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462996_-2066080357",
+      "id": "20181005-074422_1963739920",
+      "dateCreated": "2018-10-05 07:44:22.996",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{round, bround}\ndf.select(round(col(\"UnitPrice\"), 1).alias(\"rounded\"), col(\"UnitPrice\")).show(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.032",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463030_-1163289504",
+      "id": "20181005-074423_1506259938",
+      "dateCreated": "2018-10-05 07:44:23.030",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.lit\ndf.select(round(lit(\"2.5\")), bround(lit(\"2.5\"))).show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.074",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463072_-962842585",
+      "id": "20181005-074423_670348276",
+      "dateCreated": "2018-10-05 07:44:23.072",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{corr}\ndf.stat.corr(\"Quantity\", \"UnitPrice\")\ndf.select(corr(\"Quantity\", \"UnitPrice\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.113",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463111_1113860053",
+      "id": "20181005-074423_573738798",
+      "dateCreated": "2018-10-05 07:44:23.111",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\ndf.describe().show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.151",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463150_-1611868805",
+      "id": "20181005-074423_1164944855",
+      "dateCreated": "2018-10-05 07:44:23.150",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{count, mean, stddev_pop, min, max}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.197",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463196_-1511614670",
+      "id": "20181005-074423_32158210",
+      "dateCreated": "2018-10-05 07:44:23.196",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval colName \u003d \"UnitPrice\"\nval quantileProbs \u003d Array(0.5)\nval relError \u003d 0.05\ndf.stat.approxQuantile(\"UnitPrice\", quantileProbs, relError) // 2.51\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.228",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463227_1509116687",
+      "id": "20181005-074423_1239228206",
+      "dateCreated": "2018-10-05 07:44:23.227",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\ndf.stat.crosstab(\"StockCode\", \"Quantity\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.263",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463261_1645280648",
+      "id": "20181005-074423_791449303",
+      "dateCreated": "2018-10-05 07:44:23.261",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\ndf.stat.freqItems(Seq(\"StockCode\", \"Quantity\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.311",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463309_-83724599",
+      "id": "20181005-074423_1291417646",
+      "dateCreated": "2018-10-05 07:44:23.309",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.monotonically_increasing_id\ndf.select(monotonically_increasing_id()).show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.360",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463359_-1586893687",
+      "id": "20181005-074423_1803687519",
+      "dateCreated": "2018-10-05 07:44:23.359",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{initcap}\ndf.select(initcap(col(\"Description\"))).show(2, false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.409",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463408_248639083",
+      "id": "20181005-074423_94540099",
+      "dateCreated": "2018-10-05 07:44:23.408",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{lower, upper}\ndf.select(col(\"Description\"),\n  lower(col(\"Description\")),\n  upper(lower(col(\"Description\")))).show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.467",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463465_-1544556611",
+      "id": "20181005-074423_2064283770",
+      "dateCreated": "2018-10-05 07:44:23.466",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{lit, ltrim, rtrim, rpad, lpad, trim}\ndf.select(\n    ltrim(lit(\"    HELLO    \")).as(\"ltrim\"),\n    rtrim(lit(\"    HELLO    \")).as(\"rtrim\"),\n    trim(lit(\"    HELLO    \")).as(\"trim\"),\n    lpad(lit(\"HELLO\"), 3, \" \").as(\"lp\"),\n    rpad(lit(\"HELLO\"), 10, \" \").as(\"rp\")).show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.519",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463518_-1897514814",
+      "id": "20181005-074423_363546604",
+      "dateCreated": "2018-10-05 07:44:23.518",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.regexp_replace\nval simpleColors \u003d Seq(\"black\", \"white\", \"red\", \"green\", \"blue\")\nval regexString \u003d simpleColors.map(_.toUpperCase).mkString(\"|\")\n// the | signifies `OR` in regular expression syntax\ndf.select(\n  regexp_replace(col(\"Description\"), regexString, \"COLOR\").alias(\"color_clean\"),\n  col(\"Description\")).show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.565",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463564_20292386",
+      "id": "20181005-074423_756762433",
+      "dateCreated": "2018-10-05 07:44:23.564",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.translate\n(df.select(translate(col(\"Description\"), \"LEET\", \"1337\"), col(\"Description\"))\n  .show(2))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.613",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463612_-1818227227",
+      "id": "20181005-074423_1400459288",
+      "dateCreated": "2018-10-05 07:44:23.612",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.regexp_extract\nval regexString \u003d simpleColors.map(_.toUpperCase).mkString(\"(\", \"|\", \")\")\n// the | signifies OR in regular expression syntax\ndf.select(\n     regexp_extract(col(\"Description\"), regexString, 1).alias(\"color_clean\"),\n     col(\"Description\")).show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.671",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463669_2136835554",
+      "id": "20181005-074423_1803210269",
+      "dateCreated": "2018-10-05 07:44:23.669",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval containsBlack \u003d col(\"Description\").contains(\"BLACK\")\nval containsWhite \u003d col(\"DESCRIPTION\").contains(\"WHITE\")\n(df.withColumn(\"hasSimpleColor\", containsBlack.or(containsWhite))\n  .where(\"hasSimpleColor\")\n  .select(\"Description\").show(3, false))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.719",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463718_414399560",
+      "id": "20181005-074423_299282363",
+      "dateCreated": "2018-10-05 07:44:23.718",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval simpleColors \u003d Seq(\"black\", \"white\", \"red\", \"green\", \"blue\")\nval selectedColumns \u003d simpleColors.map(color \u003d\u003e {\n   col(\"Description\").contains(color.toUpperCase).alias(s\"is_$color\")\n}):+expr(\"*\") // could also append this value\n(df.select(selectedColumns:_*).where(col(\"is_white\").or(col(\"is_red\")))\n  .select(\"Description\").show(3, false))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.759",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463758_1988981376",
+      "id": "20181005-074423_1307017261",
+      "dateCreated": "2018-10-05 07:44:23.758",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndf.printSchema()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.817",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463815_-1760796410",
+      "id": "20181005-074423_1857707669",
+      "dateCreated": "2018-10-05 07:44:23.815",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{current_date, current_timestamp}\nval dateDF \u003d (spark.range(10)\n  .withColumn(\"today\", current_date())\n  .withColumn(\"now\", current_timestamp()))\ndateDF.createOrReplaceTempView(\"dateTable\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.883",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463881_-514693349",
+      "id": "20181005-074423_1015784984",
+      "dateCreated": "2018-10-05 07:44:23.881",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndateDF.printSchema()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.922",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463921_541546856",
+      "id": "20181005-074423_605085121",
+      "dateCreated": "2018-10-05 07:44:23.921",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{date_add, date_sub}\ndateDF.select(date_sub(col(\"today\"), 5), date_add(col(\"today\"), 5)).show(1)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:23.981",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725463979_1337150961",
+      "id": "20181005-074423_1011915679",
+      "dateCreated": "2018-10-05 07:44:23.979",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{datediff, months_between, to_date}\n(dateDF.withColumn(\"week_ago\", date_sub(col(\"today\"), 7))\n  .select(datediff(col(\"week_ago\"), col(\"today\"))).show(1))\n(dateDF.select(\n    to_date(lit(\"2016-01-01\")).alias(\"start\"),\n    to_date(lit(\"2017-05-22\")).alias(\"end\"))\n  .select(months_between(col(\"start\"), col(\"end\"))).show(1))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.046",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464044_1644009691",
+      "id": "20181005-074424_255833183",
+      "dateCreated": "2018-10-05 07:44:24.044",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{to_date, lit}\n(spark.range(5).withColumn(\"date\", lit(\"2017-01-01\"))\n  .select(to_date(col(\"date\"))).show(1))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.110",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464109_-2132552013",
+      "id": "20181005-074424_292007170",
+      "dateCreated": "2018-10-05 07:44:24.109",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndateDF.select(to_date(lit(\"2016-20-12\")),to_date(lit(\"2017-12-11\"))).show(1)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.168",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464166_-932475874",
+      "id": "20181005-074424_1175607877",
+      "dateCreated": "2018-10-05 07:44:24.166",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.to_date\nval dateFormat \u003d \"yyyy-dd-MM\"\nval cleanDateDF \u003d spark.range(1).select(\n    to_date(lit(\"2017-12-11\"), dateFormat).alias(\"date\"),\n    to_date(lit(\"2017-20-12\"), dateFormat).alias(\"date2\"))\ncleanDateDF.createOrReplaceTempView(\"dateTable2\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.238",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464236_66330439",
+      "id": "20181005-074424_176268797",
+      "dateCreated": "2018-10-05 07:44:24.236",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.to_timestamp\ncleanDateDF.select(to_timestamp(col(\"date\"), dateFormat)).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.309",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464307_1021540813",
+      "id": "20181005-074424_1219276080",
+      "dateCreated": "2018-10-05 07:44:24.307",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ncleanDateDF.filter(col(\"date2\") \u003e lit(\"2017-12-12\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.382",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464380_1790553585",
+      "id": "20181005-074424_327751257",
+      "dateCreated": "2018-10-05 07:44:24.380",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ncleanDateDF.filter(col(\"date2\") \u003e \"\u00272017-12-12\u0027\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.453",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464452_-654053937",
+      "id": "20181005-074424_1151267420",
+      "dateCreated": "2018-10-05 07:44:24.452",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.coalesce\ndf.select(coalesce(col(\"Description\"), col(\"CustomerId\"))).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.510",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464510_1277991074",
+      "id": "20181005-074424_1346712476",
+      "dateCreated": "2018-10-05 07:44:24.510",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndf.na.drop()\ndf.na.drop(\"any\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.563",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464562_656331539",
+      "id": "20181005-074424_1267516978",
+      "dateCreated": "2018-10-05 07:44:24.562",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndf.na.drop(\"all\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.615",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464614_-1599853232",
+      "id": "20181005-074424_1177997992",
+      "dateCreated": "2018-10-05 07:44:24.614",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\ndf.na.drop(\"all\", Seq(\"StockCode\", \"InvoiceNo\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.677",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464675_-829296945",
+      "id": "20181005-074424_1615362842",
+      "dateCreated": "2018-10-05 07:44:24.675",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndf.na.fill(\"All Null values become this string\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.761",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464760_1923113555",
+      "id": "20181005-074424_1670201122",
+      "dateCreated": "2018-10-05 07:44:24.760",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\ndf.na.fill(5, Seq(\"StockCode\", \"InvoiceNo\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.819",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464818_-1262957770",
+      "id": "20181005-074424_2088531599",
+      "dateCreated": "2018-10-05 07:44:24.818",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval fillColValues \u003d Map(\"StockCode\" -\u003e 5, \"Description\" -\u003e \"No Value\")\ndf.na.fill(fillColValues)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.896",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464894_-580977667",
+      "id": "20181005-074424_1078271265",
+      "dateCreated": "2018-10-05 07:44:24.895",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\ndf.na.replace(\"Description\", Map(\"\" -\u003e \"UNKNOWN\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:24.986",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725464984_1788773150",
+      "id": "20181005-074424_1981306896",
+      "dateCreated": "2018-10-05 07:44:24.984",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndf.selectExpr(\"(Description, InvoiceNo) as complex\", \"*\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:25.084",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725465083_-307082955",
+      "id": "20181005-074425_60666445",
+      "dateCreated": "2018-10-05 07:44:25.083",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndf.selectExpr(\"struct(Description, InvoiceNo) as complex\", \"*\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:25.172",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725465171_1218328714",
+      "id": "20181005-074425_1909396504",
+      "dateCreated": "2018-10-05 07:44:25.171",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.struct\nval complexDF \u003d df.select(struct(\"Description\", \"InvoiceNo\").alias(\"complex\"))\ncomplexDF.createOrReplaceTempView(\"complexDF\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:25.259",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725465258_-2145321528",
+      "id": "20181005-074425_927810871",
+      "dateCreated": "2018-10-05 07:44:25.258",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ncomplexDF.select(\"complex.Description\")\ncomplexDF.select(col(\"complex\").getField(\"Description\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:25.341",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725465340_305103458",
+      "id": "20181005-074425_757324198",
+      "dateCreated": "2018-10-05 07:44:25.340",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ncomplexDF.select(\"complex.*\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:25.410",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725465409_-2102196475",
+      "id": "20181005-074425_571229750",
+      "dateCreated": "2018-10-05 07:44:25.409",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.split\ndf.select(split(col(\"Description\"), \" \")).show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:25.466",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725465465_850518944",
+      "id": "20181005-074425_966921162",
+      "dateCreated": "2018-10-05 07:44:25.465",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n(df.select(split(col(\"Description\"), \" \").alias(\"array_col\"))\n  .selectExpr(\"array_col[0]\").show(2))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:25.560",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725465558_-1222140711",
+      "id": "20181005-074425_684322024",
+      "dateCreated": "2018-10-05 07:44:25.558",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.size\ndf.select(size(split(col(\"Description\"), \" \"))).show(2) // shows 5 and 3\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:25.657",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725465655_-1604252578",
+      "id": "20181005-074425_412034150",
+      "dateCreated": "2018-10-05 07:44:25.655",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.array_contains\ndf.select(array_contains(split(col(\"Description\"), \" \"), \"WHITE\")).show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:25.753",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725465751_-2124790978",
+      "id": "20181005-074425_1921436180",
+      "dateCreated": "2018-10-05 07:44:25.751",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{split, explode}\n\n(df.withColumn(\"splitted\", split(col(\"Description\"), \" \"))\n  .withColumn(\"exploded\", explode(col(\"splitted\")))\n  .select(\"Description\", \"InvoiceNo\", \"exploded\").show(2))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:25.848",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725465846_-1078114909",
+      "id": "20181005-074425_1853180146",
+      "dateCreated": "2018-10-05 07:44:25.846",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.map\ndf.select(map(col(\"Description\"), col(\"InvoiceNo\")).alias(\"complex_map\")).show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:25.929",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725465928_1533981872",
+      "id": "20181005-074425_217178631",
+      "dateCreated": "2018-10-05 07:44:25.928",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n(df.select(map(col(\"Description\"), col(\"InvoiceNo\")).alias(\"complex_map\"))\n  .selectExpr(\"complex_map[\u0027WHITE METAL LANTERN\u0027]\").show(2))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:26.027",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725466026_280483120",
+      "id": "20181005-074426_1399332009",
+      "dateCreated": "2018-10-05 07:44:26.026",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n(df.select(map(col(\"Description\"), col(\"InvoiceNo\")).alias(\"complex_map\"))\n  .selectExpr(\"explode(complex_map)\").show(2))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:26.104",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725466102_1579062669",
+      "id": "20181005-074426_1349783548",
+      "dateCreated": "2018-10-05 07:44:26.102",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval jsonDF \u003d spark.range(1).selectExpr(\"\"\"\n  \u0027{\"myJSONKey\" : {\"myJSONValue\" : [1, 2, 3]}}\u0027 as jsonString\"\"\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:26.208",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725466206_210042760",
+      "id": "20181005-074426_321177883",
+      "dateCreated": "2018-10-05 07:44:26.206",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{get_json_object, json_tuple}\njsonDF.select(\n    get_json_object(col(\"jsonString\"), \"$.myJSONKey.myJSONValue[1]\") as \"column\",\n    json_tuple(col(\"jsonString\"), \"myJSONKey\")).show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:26.289",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725466287_-579393894",
+      "id": "20181005-074426_577603089",
+      "dateCreated": "2018-10-05 07:44:26.287",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\njsonDF.selectExpr(\n  \"json_tuple(jsonString, \u0027$.myJSONKey.myJSONValue[1]\u0027) as column\").show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:26.378",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725466377_-1258485186",
+      "id": "20181005-074426_1325666063",
+      "dateCreated": "2018-10-05 07:44:26.377",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.to_json\n(df.selectExpr(\"(InvoiceNo, Description) as myStruct\")\n  .select(to_json(col(\"myStruct\"))))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:26.483",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725466481_1421917851",
+      "id": "20181005-074426_1293190147",
+      "dateCreated": "2018-10-05 07:44:26.481",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.from_json\nimport org.apache.spark.sql.types._\nval parseSchema \u003d new StructType(Array(\n  new StructField(\"InvoiceNo\",StringType,true),\n  new StructField(\"Description\",StringType,true)))\n(df.selectExpr(\"(InvoiceNo, Description) as myStruct\")\n  .select(to_json(col(\"myStruct\")).alias(\"newJSON\"))\n  .select(from_json(col(\"newJSON\"), parseSchema), col(\"newJSON\")).show(2))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:26.596",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725466594_1063451715",
+      "id": "20181005-074426_953951450",
+      "dateCreated": "2018-10-05 07:44:26.594",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval udfExampleDF \u003d spark.range(5).toDF(\"num\")\ndef power3(number:Double):Double \u003d number * number * number\npower3(2.0)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:26.705",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725466703_1353280057",
+      "id": "20181005-074426_844764354",
+      "dateCreated": "2018-10-05 07:44:26.704",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.udf\nval power3udf \u003d udf(power3(_:Double):Double)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:26.798",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725466796_2078066530",
+      "id": "20181005-074426_2108618911",
+      "dateCreated": "2018-10-05 07:44:26.796",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nudfExampleDF.select(power3udf(col(\"num\"))).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:26.909",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725466907_-259325404",
+      "id": "20181005-074426_235631821",
+      "dateCreated": "2018-10-05 07:44:26.907",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nspark.udf.register(\"power3\", power3(_:Double):Double)\nudfExampleDF.selectExpr(\"power3(num)\").show(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:27.009",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725467007_33541992",
+      "id": "20181005-074427_971637085",
+      "dateCreated": "2018-10-05 07:44:27.007",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:27.120",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725467119_-728551341",
+      "id": "20181005-074427_485657563",
+      "dateCreated": "2018-10-05 07:44:27.119",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Structured_APIs-Chapter_6_Working_with_Different_Types_of_Data.scala",
+  "id": "2DS7HVXDH",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

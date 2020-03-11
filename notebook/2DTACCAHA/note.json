@@ -1,0 +1,64 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461534_-1507933169",
+      "id": "20181005-074421_1537540879",
+      "dateCreated": "2018-10-05 07:44:21.534",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.548",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461546_1222122105",
+      "id": "20181005-074421_213803694",
+      "dateCreated": "2018-10-05 07:44:21.546",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sql\nSELECT 5, \"five\", 5.0\n\n\n-- COMMAND ----------\n\nSELECT * FROM dfTable WHERE StockCode in (\"DOT\") AND(UnitPrice \u003e 600 OR\n    instr(Description, \"POSTAGE\") \u003e\u003d 1)\n\n\n-- COMMAND ----------\n\nSELECT UnitPrice, (StockCode \u003d \u0027DOT\u0027 AND\n  (UnitPrice \u003e 600 OR instr(Description, \"POSTAGE\") \u003e\u003d 1)) as isExpensive\nFROM dfTable\nWHERE (StockCode \u003d \u0027DOT\u0027 AND\n       (UnitPrice \u003e 600 OR instr(Description, \"POSTAGE\") \u003e\u003d 1))\n\n\n-- COMMAND ----------\n\nSELECT customerId, (POWER((Quantity * UnitPrice), 2.0) + 5) as realQuantity\nFROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT round(2.5), bround(2.5)\n\n\n-- COMMAND ----------\n\nSELECT corr(Quantity, UnitPrice) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT initcap(Description) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT Description, lower(Description), Upper(lower(Description)) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT\n  ltrim(\u0027    HELLLOOOO  \u0027),\n  rtrim(\u0027    HELLLOOOO  \u0027),\n  trim(\u0027    HELLLOOOO  \u0027),\n  lpad(\u0027HELLOOOO  \u0027, 3, \u0027 \u0027),\n  rpad(\u0027HELLOOOO  \u0027, 10, \u0027 \u0027)\nFROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT\n  regexp_replace(Description, \u0027BLACK|WHITE|RED|GREEN|BLUE\u0027, \u0027COLOR\u0027) as\n  color_clean, Description\nFROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT translate(Description, \u0027LEET\u0027, \u00271337\u0027), Description FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT regexp_extract(Description, \u0027(BLACK|WHITE|RED|GREEN|BLUE)\u0027, 1),\n  Description\nFROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT Description FROM dfTable\nWHERE instr(Description, \u0027BLACK\u0027) \u003e\u003d 1 OR instr(Description, \u0027WHITE\u0027) \u003e\u003d 1\n\n\n-- COMMAND ----------\n\nSELECT date_sub(today, 5), date_add(today, 5) FROM dateTable\n\n\n-- COMMAND ----------\n\nSELECT to_date(\u00272016-01-01\u0027), months_between(\u00272016-01-01\u0027, \u00272017-01-01\u0027),\ndatediff(\u00272016-01-01\u0027, \u00272017-01-01\u0027)\nFROM dateTable\n\n\n-- COMMAND ----------\n\nSELECT to_date(date, \u0027yyyy-dd-MM\u0027), to_date(date2, \u0027yyyy-dd-MM\u0027), to_date(date)\nFROM dateTable2\n\n\n-- COMMAND ----------\n\nSELECT to_timestamp(date, \u0027yyyy-dd-MM\u0027), to_timestamp(date2, \u0027yyyy-dd-MM\u0027)\nFROM dateTable2\n\n\n-- COMMAND ----------\n\nSELECT cast(to_date(\"2017-01-01\", \"yyyy-dd-MM\") as timestamp)\n\n\n-- COMMAND ----------\n\nSELECT\n  ifnull(null, \u0027return_value\u0027),\n  nullif(\u0027value\u0027, \u0027value\u0027),\n  nvl(null, \u0027return_value\u0027),\n  nvl2(\u0027not_null\u0027, \u0027return_value\u0027, \"else_value\")\nFROM dfTable LIMIT 1\n\n\n-- COMMAND ----------\n\nSELECT * FROM dfTable WHERE Description IS NOT NULL\n\n\n-- COMMAND ----------\n\nSELECT complex.* FROM complexDF\n\n\n-- COMMAND ----------\n\nSELECT split(Description, \u0027 \u0027) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT split(Description, \u0027 \u0027)[0] FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT array_contains(split(Description, \u0027 \u0027), \u0027WHITE\u0027) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT Description, InvoiceNo, exploded\nFROM (SELECT *, split(Description, \" \") as splitted FROM dfTable)\nLATERAL VIEW explode(splitted) as exploded\n\n\n-- COMMAND ----------\n\nSELECT map(Description, InvoiceNo) as complex_map FROM dfTable\nWHERE Description IS NOT NULL\n\n\n-- COMMAND ----------\n\nSELECT power3(12), power3py(12) -- doesn\u0027t work because of return type\n\n\n-- COMMAND ----------\n\n## Hive UDFs\n\n\n-- COMMAND ----------\n\nCREATE TEMPORARY FUNCTION myFunc AS \u0027com.organization.hive.udf.FunctionName\u0027\n\n\n-- COMMAND ----------\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.560",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461558_-1772792754",
+      "id": "20181005-074421_2001644667",
+      "dateCreated": "2018-10-05 07:44:21.558",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Sql/Structured_APIs-Chapter_6_Working_with_Different_Types_of_Data.sql",
+  "id": "2DTACCAHA",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

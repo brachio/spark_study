@@ -1,0 +1,234 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448125_973390170",
+      "id": "20181005-074408_542426472",
+      "dateCreated": "2018-10-05 07:44:08.125",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.141",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448140_808917674",
+      "id": "20181005-074408_3717478",
+      "dateCreated": "2018-10-05 07:44:08.140",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n%dep\nz.load(\"databricks:spark-deep-learning:0.3.0-spark2.2-s_2.11\")\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.153",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448152_-420418499",
+      "id": "20181005-074408_1032045543",
+      "dateCreated": "2018-10-05 07:44:08.152",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom sparkdl import readImages\nimg_dir \u003d \u0027/data/deep-learning-images/\u0027\nimage_df \u003d readImages(img_dir)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.169",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448167_2061306358",
+      "id": "20181005-074408_988618548",
+      "dateCreated": "2018-10-05 07:44:08.168",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nimage_df.printSchema()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.184",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448183_960893265",
+      "id": "20181005-074408_1544762795",
+      "dateCreated": "2018-10-05 07:44:08.183",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom sparkdl import readImages\nfrom pyspark.sql.functions import lit\ntulips_df \u003d readImages(img_dir + \"/tulips\").withColumn(\"label\", lit(1))\ndaisy_df \u003d readImages(img_dir + \"/daisy\").withColumn(\"label\", lit(0))\ntulips_train, tulips_test \u003d tulips_df.randomSplit([0.6, 0.4])\ndaisy_train, daisy_test \u003d daisy_df.randomSplit([0.6, 0.4])\ntrain_df \u003d tulips_train.unionAll(daisy_train)\ntest_df \u003d tulips_test.unionAll(daisy_test)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.204",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448203_625532974",
+      "id": "20181005-074408_252733355",
+      "dateCreated": "2018-10-05 07:44:08.203",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.classification import LogisticRegression\nfrom pyspark.ml import Pipeline\nfrom sparkdl import DeepImageFeaturizer\nfeaturizer \u003d DeepImageFeaturizer(inputCol\u003d\"image\", outputCol\u003d\"features\",\n  modelName\u003d\"InceptionV3\")\nlr \u003d LogisticRegression(maxIter\u003d1, regParam\u003d0.05, elasticNetParam\u003d0.3,\n  labelCol\u003d\"label\")\np \u003d Pipeline(stages\u003d[featurizer, lr])\np_model \u003d p.fit(train_df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.227",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448226_-361039979",
+      "id": "20181005-074408_1051944052",
+      "dateCreated": "2018-10-05 07:44:08.226",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.evaluation import MulticlassClassificationEvaluator\ntested_df \u003d p_model.transform(test_df)\nevaluator \u003d MulticlassClassificationEvaluator(metricName\u003d\"accuracy\")\nprint(\"Test set accuracy \u003d \" + str(evaluator.evaluate(tested_df.select(\n  \"prediction\", \"label\"))))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.252",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448251_-1143250166",
+      "id": "20181005-074408_1262704065",
+      "dateCreated": "2018-10-05 07:44:08.251",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.sql.types import DoubleType\nfrom pyspark.sql.functions import expr\n# a simple UDF to convert the value to a double\ndef _p1(v):\n  return float(v.array[1])\np1 \u003d udf(_p1, DoubleType())\ndf \u003d tested_df.withColumn(\"p_1\", p1(tested_df.probability))\nwrong_df \u003d df.orderBy(expr(\"abs(p_1 - label)\"), ascending\u003dFalse)\nwrong_df.select(\"filePath\", \"p_1\", \"label\").limit(10).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.278",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448276_-77431547",
+      "id": "20181005-074408_2028883320",
+      "dateCreated": "2018-10-05 07:44:08.277",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom sparkdl import readImages, DeepImagePredictor\nimage_df \u003d readImages(img_dir)\npredictor \u003d DeepImagePredictor(\n  inputCol\u003d\"image\",\n  outputCol\u003d\"predicted_labels\",\n  modelName\u003d\"InceptionV3\",\n  decodePredictions\u003dTrue,\n  topK\u003d10)\npredictions_df \u003d predictor.transform(image_df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.309",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448308_-1126472484",
+      "id": "20181005-074408_509498753",
+      "dateCreated": "2018-10-05 07:44:08.308",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndf \u003d p_model.transform(image_df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.337",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448336_-1154237721",
+      "id": "20181005-074408_1791986781",
+      "dateCreated": "2018-10-05 07:44:08.336",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom keras.applications import InceptionV3\nfrom sparkdl.udf.keras_image_model import registerKerasImageUDF\nfrom keras.applications import InceptionV3\nregisterKerasImageUDF(\"my_keras_inception_udf\", InceptionV3(weights\u003d\"imagenet\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.367",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448366_-799668575",
+      "id": "20181005-074408_399095162",
+      "dateCreated": "2018-10-05 07:44:08.366",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.404",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448403_1820717518",
+      "id": "20181005-074408_1545813600",
+      "dateCreated": "2018-10-05 07:44:08.403",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Advanced_Analytics_and_Machine_Learning-Chapter_31_Deep_Learning.py",
+  "id": "2DUP17XF1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

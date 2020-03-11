@@ -1,0 +1,421 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441071_890636197",
+      "id": "20181005-074401_612093878",
+      "dateCreated": "2018-10-05 07:44:01.071",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.085",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441085_439997922",
+      "id": "20181005-074401_1104163128",
+      "dateCreated": "2018-10-05 07:44:01.085",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nimport org.apache.spark.ml.linalg.Vectors\nval denseVec \u003d Vectors.dense(1.0, 2.0, 3.0)\nval size \u003d 3\nval idx \u003d Array(1,2) // locations of non-zero elements in vector\nval values \u003d Array(2.0,3.0)\nval sparseVec \u003d Vectors.sparse(size, idx, values)\nsparseVec.toDense\ndenseVec.toSparse\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.099",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441098_2071721343",
+      "id": "20181005-074401_394351005",
+      "dateCreated": "2018-10-05 07:44:01.098",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nvar df \u003d spark.read.json(\"/data/simple-ml\")\ndf.orderBy(\"value2\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.112",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441112_189515302",
+      "id": "20181005-074401_504979893",
+      "dateCreated": "2018-10-05 07:44:01.112",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nspark.read.format(\"libsvm\").load(\n  \"/data/sample_libsvm_data.txt\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.125",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441125_1709809976",
+      "id": "20181005-074401_1943322022",
+      "dateCreated": "2018-10-05 07:44:01.125",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.RFormula\nval supervised \u003d (new RFormula()\n  .setFormula(\"lab ~ . + color:value1 + color:value2\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.137",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441137_492232307",
+      "id": "20181005-074401_1006545304",
+      "dateCreated": "2018-10-05 07:44:01.137",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval fittedRF \u003d supervised.fit(df)\nval preparedDF \u003d fittedRF.transform(df)\npreparedDF.show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.151",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441150_-1750151397",
+      "id": "20181005-074401_952260920",
+      "dateCreated": "2018-10-05 07:44:01.150",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval Array(train, test) \u003d preparedDF.randomSplit(Array(0.7, 0.3))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.165",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441165_-1029946351",
+      "id": "20181005-074401_156830537",
+      "dateCreated": "2018-10-05 07:44:01.165",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.classification.LogisticRegression\nval lr \u003d new LogisticRegression().setLabelCol(\"label\").setFeaturesCol(\"features\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.182",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441182_1170844058",
+      "id": "20181005-074401_1633088928",
+      "dateCreated": "2018-10-05 07:44:01.182",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nprintln(lr.explainParams())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.203",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441202_660407986",
+      "id": "20181005-074401_1357331304",
+      "dateCreated": "2018-10-05 07:44:01.202",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval fittedLR \u003d lr.fit(train)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.223",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441222_-1044392350",
+      "id": "20181005-074401_228179242",
+      "dateCreated": "2018-10-05 07:44:01.223",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nfittedLR.transform(train).select(\"label\", \"prediction\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.245",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441244_913525569",
+      "id": "20181005-074401_248659340",
+      "dateCreated": "2018-10-05 07:44:01.245",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval Array(train, test) \u003d df.randomSplit(Array(0.7, 0.3))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.267",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441267_-527044284",
+      "id": "20181005-074401_301306652",
+      "dateCreated": "2018-10-05 07:44:01.267",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval rForm \u003d new RFormula()\nval lr \u003d new LogisticRegression().setLabelCol(\"label\").setFeaturesCol(\"features\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.292",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441292_695874424",
+      "id": "20181005-074401_1084345248",
+      "dateCreated": "2018-10-05 07:44:01.292",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.Pipeline\nval stages \u003d Array(rForm, lr)\nval pipeline \u003d new Pipeline().setStages(stages)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.319",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441318_1204753990",
+      "id": "20181005-074401_789527079",
+      "dateCreated": "2018-10-05 07:44:01.318",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.tuning.ParamGridBuilder\nval params \u003d (new ParamGridBuilder()\n  .addGrid(rForm.formula, Array(\n    \"lab ~ . + color:value1\",\n    \"lab ~ . + color:value1 + color:value2\"))\n  .addGrid(lr.elasticNetParam, Array(0.0, 0.5, 1.0))\n  .addGrid(lr.regParam, Array(0.1, 2.0))\n  .build())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.349",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441348_514758093",
+      "id": "20181005-074401_1460434465",
+      "dateCreated": "2018-10-05 07:44:01.348",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.evaluation.BinaryClassificationEvaluator\nval evaluator \u003d (new BinaryClassificationEvaluator()\n  .setMetricName(\"areaUnderROC\")\n  .setRawPredictionCol(\"prediction\")\n  .setLabelCol(\"label\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.378",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441377_-2035139097",
+      "id": "20181005-074401_1518709438",
+      "dateCreated": "2018-10-05 07:44:01.377",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.tuning.TrainValidationSplit\nval tvs \u003d (new TrainValidationSplit()\n  .setTrainRatio(0.75) // also the default.\n  .setEstimatorParamMaps(params)\n  .setEstimator(pipeline)\n  .setEvaluator(evaluator))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.406",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441406_-689246260",
+      "id": "20181005-074401_2098603330",
+      "dateCreated": "2018-10-05 07:44:01.406",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval tvsFitted \u003d tvs.fit(train)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.435",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441435_-1762305166",
+      "id": "20181005-074401_286760560",
+      "dateCreated": "2018-10-05 07:44:01.435",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nevaluator.evaluate(tvsFitted.transform(test)) // 0.9166666666666667\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.479",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441479_1300600520",
+      "id": "20181005-074401_421721417",
+      "dateCreated": "2018-10-05 07:44:01.479",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.PipelineModel\nimport org.apache.spark.ml.classification.LogisticRegressionModel\nval trainedPipeline \u003d tvsFitted.bestModel.asInstanceOf[PipelineModel]\nval TrainedLR \u003d trainedPipeline.stages(1).asInstanceOf[LogisticRegressionModel]\nval summaryLR \u003d TrainedLR.summary\nsummaryLR.objectiveHistory // 0.6751425885789243, 0.5543659647777687, 0.473776...\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.509",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441509_783697711",
+      "id": "20181005-074401_44898614",
+      "dateCreated": "2018-10-05 07:44:01.509",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ntvsFitted.write.overwrite().save(\"/tmp/modelLocation\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.540",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441540_-389391937",
+      "id": "20181005-074401_709676385",
+      "dateCreated": "2018-10-05 07:44:01.540",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.tuning.TrainValidationSplitModel\nval model \u003d TrainValidationSplitModel.load(\"/tmp/modelLocation\")\nmodel.transform(test)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.574",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441573_-268393526",
+      "id": "20181005-074401_1943441565",
+      "dateCreated": "2018-10-05 07:44:01.573",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:01.617",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725441616_-392830973",
+      "id": "20181005-074401_1638160701",
+      "dateCreated": "2018-10-05 07:44:01.616",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Advanced_Analytics_and_Machine_Learning-Chapter_24_Advanced_Analytics_and_Machine_Learning.scala",
+  "id": "2DUE1WFRT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

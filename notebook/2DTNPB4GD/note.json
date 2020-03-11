@@ -1,0 +1,591 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471800_-1135265464",
+      "id": "20181005-074431_1666513732",
+      "dateCreated": "2018-10-05 07:44:31.800",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.812",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471811_447353569",
+      "id": "20181005-074431_245949367",
+      "dateCreated": "2018-10-05 07:44:31.811",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nval person \u003d (Seq(\n    (0, \"Bill Chambers\", 0, Seq(100)),\n    (1, \"Matei Zaharia\", 1, Seq(500, 250, 100)),\n    (2, \"Michael Armbrust\", 1, Seq(250, 100)))\n  .toDF(\"id\", \"name\", \"graduate_program\", \"spark_status\"))\nval graduateProgram \u003d (Seq(\n    (0, \"Masters\", \"School of Information\", \"UC Berkeley\"),\n    (2, \"Masters\", \"EECS\", \"UC Berkeley\"),\n    (1, \"Ph.D.\", \"EECS\", \"UC Berkeley\"))\n  .toDF(\"id\", \"degree\", \"department\", \"school\"))\nval sparkStatus \u003d (Seq(\n    (500, \"Vice President\"),\n    (250, \"PMC Member\"),\n    (100, \"Contributor\"))\n  .toDF(\"id\", \"status\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.823",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471821_121234690",
+      "id": "20181005-074431_1577295921",
+      "dateCreated": "2018-10-05 07:44:31.821",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nperson.createOrReplaceTempView(\"person\")\ngraduateProgram.createOrReplaceTempView(\"graduateProgram\")\nsparkStatus.createOrReplaceTempView(\"sparkStatus\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.836",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471834_-1260643242",
+      "id": "20181005-074431_1462206316",
+      "dateCreated": "2018-10-05 07:44:31.834",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval joinExpression \u003d person.col(\"graduate_program\") \u003d\u003d\u003d graduateProgram.col(\"id\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.853",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471851_1986279511",
+      "id": "20181005-074431_953402597",
+      "dateCreated": "2018-10-05 07:44:31.851",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval wrongJoinExpression \u003d person.col(\"name\") \u003d\u003d\u003d graduateProgram.col(\"school\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.871",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471869_-1557193709",
+      "id": "20181005-074431_1877671646",
+      "dateCreated": "2018-10-05 07:44:31.869",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nperson.join(graduateProgram, joinExpression).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.892",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471890_-969803861",
+      "id": "20181005-074431_54342677",
+      "dateCreated": "2018-10-05 07:44:31.890",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nvar joinType \u003d \"inner\"\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.916",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471914_1389099286",
+      "id": "20181005-074431_1540589260",
+      "dateCreated": "2018-10-05 07:44:31.914",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nperson.join(graduateProgram, joinExpression, joinType).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.942",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471941_-468476967",
+      "id": "20181005-074431_1380570753",
+      "dateCreated": "2018-10-05 07:44:31.941",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\njoinType \u003d \"outer\"\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.969",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471967_-1034779026",
+      "id": "20181005-074431_661450241",
+      "dateCreated": "2018-10-05 07:44:31.967",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nperson.join(graduateProgram, joinExpression, joinType).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.994",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471992_740953170",
+      "id": "20181005-074431_749280201",
+      "dateCreated": "2018-10-05 07:44:31.992",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\njoinType \u003d \"left_outer\"\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.020",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472018_939345169",
+      "id": "20181005-074432_1093943885",
+      "dateCreated": "2018-10-05 07:44:32.018",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ngraduateProgram.join(person, joinExpression, joinType).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.051",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472049_-505900946",
+      "id": "20181005-074432_451296266",
+      "dateCreated": "2018-10-05 07:44:32.049",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\njoinType \u003d \"right_outer\"\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.083",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472081_602691077",
+      "id": "20181005-074432_996144974",
+      "dateCreated": "2018-10-05 07:44:32.081",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nperson.join(graduateProgram, joinExpression, joinType).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.114",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472112_1096860861",
+      "id": "20181005-074432_1838125650",
+      "dateCreated": "2018-10-05 07:44:32.112",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\njoinType \u003d \"left_semi\"\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.143",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472141_1413713937",
+      "id": "20181005-074432_1907173348",
+      "dateCreated": "2018-10-05 07:44:32.141",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ngraduateProgram.join(person, joinExpression, joinType).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.178",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472177_301059777",
+      "id": "20181005-074432_1928299319",
+      "dateCreated": "2018-10-05 07:44:32.177",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval gradProgram2 \u003d graduateProgram.union(Seq(\n    (0, \"Masters\", \"Duplicated Row\", \"Duplicated School\")).toDF())\n\ngradProgram2.createOrReplaceTempView(\"gradProgram2\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.216",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472214_-1036274318",
+      "id": "20181005-074432_1240089050",
+      "dateCreated": "2018-10-05 07:44:32.214",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ngradProgram2.join(person, joinExpression, joinType).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.262",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472260_-44098266",
+      "id": "20181005-074432_2037503138",
+      "dateCreated": "2018-10-05 07:44:32.260",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\njoinType \u003d \"left_anti\"\ngraduateProgram.join(person, joinExpression, joinType).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.302",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472300_-1585863162",
+      "id": "20181005-074432_1642423688",
+      "dateCreated": "2018-10-05 07:44:32.300",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\njoinType \u003d \"cross\"\ngraduateProgram.join(person, joinExpression, joinType).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.344",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472342_1377941375",
+      "id": "20181005-074432_1280575980",
+      "dateCreated": "2018-10-05 07:44:32.342",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nperson.crossJoin(graduateProgram).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.391",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472389_-519105648",
+      "id": "20181005-074432_288330413",
+      "dateCreated": "2018-10-05 07:44:32.389",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nimport org.apache.spark.sql.functions.expr\n\n(person.withColumnRenamed(\"id\", \"personId\")\n  .join(sparkStatus, expr(\"array_contains(spark_status, id)\")).show())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.440",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472438_-146098888",
+      "id": "20181005-074432_1713141847",
+      "dateCreated": "2018-10-05 07:44:32.438",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval gradProgramDupe \u003d graduateProgram.withColumnRenamed(\"id\", \"graduate_program\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.486",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472484_933672923",
+      "id": "20181005-074432_209976033",
+      "dateCreated": "2018-10-05 07:44:32.484",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval joinExpr \u003d gradProgramDupe.col(\"graduate_program\") \u003d\u003d\u003d person.col(\n  \"graduate_program\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.541",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472539_1061256596",
+      "id": "20181005-074432_1190314003",
+      "dateCreated": "2018-10-05 07:44:32.539",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nperson.join(gradProgramDupe, joinExpr).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.595",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472593_-1469900116",
+      "id": "20181005-074432_535075217",
+      "dateCreated": "2018-10-05 07:44:32.593",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n\n// This statement will fail because of column name duplication.\n\n//person.join(gradProgramDupe, joinExpr).select(\"graduate_program\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.652",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472650_-109974884",
+      "id": "20181005-074432_1337450712",
+      "dateCreated": "2018-10-05 07:44:32.650",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nperson.join(gradProgramDupe,\"graduate_program\").select(\"graduate_program\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.694",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472693_872929031",
+      "id": "20181005-074432_802268202",
+      "dateCreated": "2018-10-05 07:44:32.693",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n(person.join(gradProgramDupe, joinExpr).drop(person.col(\"graduate_program\"))\n  .select(\"graduate_program\").show())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.747",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472746_-1844398619",
+      "id": "20181005-074432_551986181",
+      "dateCreated": "2018-10-05 07:44:32.746",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval joinExpr \u003d person.col(\"graduate_program\") \u003d\u003d\u003d graduateProgram.col(\"id\")\nperson.join(graduateProgram, joinExpr).drop(graduateProgram.col(\"id\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.803",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472802_1415821575",
+      "id": "20181005-074432_1823407938",
+      "dateCreated": "2018-10-05 07:44:32.802",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval gradProgram3 \u003d graduateProgram.withColumnRenamed(\"id\", \"grad_id\")\nval joinExpr \u003d person.col(\"graduate_program\") \u003d\u003d\u003d gradProgram3.col(\"grad_id\")\nperson.join(gradProgram3, joinExpr).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.862",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472860_-804929283",
+      "id": "20181005-074432_1696477908",
+      "dateCreated": "2018-10-05 07:44:32.860",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval joinExpr \u003d person.col(\"graduate_program\") \u003d\u003d\u003d graduateProgram.col(\"id\")\n\nperson.join(graduateProgram, joinExpr).explain()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.921",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472919_1405478917",
+      "id": "20181005-074432_918689464",
+      "dateCreated": "2018-10-05 07:44:32.919",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nimport org.apache.spark.sql.functions.broadcast\nval joinExpr \u003d person.col(\"graduate_program\") \u003d\u003d\u003d graduateProgram.col(\"id\")\nperson.join(broadcast(graduateProgram), joinExpr).explain()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:32.970",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725472968_-1705873288",
+      "id": "20181005-074432_1377444879",
+      "dateCreated": "2018-10-05 07:44:32.968",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:33.010",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725473009_1149133164",
+      "id": "20181005-074433_1002853135",
+      "dateCreated": "2018-10-05 07:44:33.009",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Structured_APIs-Chapter_8_Joins.scala",
+  "id": "2DTNPB4GD",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

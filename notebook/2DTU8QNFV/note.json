@@ -1,0 +1,421 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456290_-822733367",
+      "id": "20181005-074416_356528924",
+      "dateCreated": "2018-10-05 07:44:16.290",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.306",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456305_1341390315",
+      "id": "20181005-074416_362941095",
+      "dateCreated": "2018-10-05 07:44:16.305",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nspark.conf.set(\"spark.sql.shuffle.partitions\", 5)\nval static \u003d spark.read.json(\"/data/activity-data\")\nval streaming \u003d (spark\n  .readStream\n  .schema(static.schema)\n  .option(\"maxFilesPerTrigger\", 10)\n  .json(\"/data/activity-data\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.319",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456318_-1514370497",
+      "id": "20181005-074416_668809159",
+      "dateCreated": "2018-10-05 07:44:16.318",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nstreaming.printSchema()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.333",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456332_-2008264372",
+      "id": "20181005-074416_1597294392",
+      "dateCreated": "2018-10-05 07:44:16.332",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval withEventTime \u003d streaming.selectExpr(\n  \"*\",\n  \"cast(cast(Creation_Time as double)/1000000000 as timestamp) as event_time\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.346",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456345_-1112098384",
+      "id": "20181005-074416_534870728",
+      "dateCreated": "2018-10-05 07:44:16.345",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{window, col}\n(withEventTime.groupBy(window(col(\"event_time\"), \"10 minutes\")).count()\n  .writeStream\n  .queryName(\"events_per_window\")\n  .format(\"memory\")\n  .outputMode(\"complete\")\n  .start())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.362",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456361_442629626",
+      "id": "20181005-074416_1305968014",
+      "dateCreated": "2018-10-05 07:44:16.361",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nspark.sql(\"SELECT * FROM events_per_window\").printSchema()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.380",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456379_1791909519",
+      "id": "20181005-074416_1160753292",
+      "dateCreated": "2018-10-05 07:44:16.379",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n/*\nimport org.apache.spark.sql.functions.{window, col}\n(withEventTime.groupBy(window(col(\"event_time\"), \"10 minutes\"), \"User\").count()\n  .writeStream\n  .queryName(\"events_per_window\")\n  .format(\"memory\")\n  .outputMode(\"complete\")\n  .start())\n*/\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.398",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456397_219989474",
+      "id": "20181005-074416_1057637286",
+      "dateCreated": "2018-10-05 07:44:16.397",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n/*\nimport org.apache.spark.sql.functions.{window, col}\n(withEventTime.groupBy(window(col(\"event_time\"), \"10 minutes\", \"5 minutes\"))\n  .count()\n  .writeStream\n  .queryName(\"events_per_window\")\n  .format(\"memory\")\n  .outputMode(\"complete\")\n  .start())\n*/\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.421",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456419_1306379398",
+      "id": "20181005-074416_1423613196",
+      "dateCreated": "2018-10-05 07:44:16.420",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n/*\nimport org.apache.spark.sql.functions.{window, col}\n(withEventTime\n  .withWatermark(\"event_time\", \"5 hours\")\n  .groupBy(window(col(\"event_time\"), \"10 minutes\", \"5 minutes\"))\n  .count()\n  .writeStream\n  .queryName(\"events_per_window\")\n  .format(\"memory\")\n  .outputMode(\"complete\")\n  .start())\n*/\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.443",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456442_965749578",
+      "id": "20181005-074416_2128692305",
+      "dateCreated": "2018-10-05 07:44:16.442",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.expr\n\n(withEventTime\n  .withWatermark(\"event_time\", \"5 seconds\")\n  .dropDuplicates(\"User\", \"event_time\")\n  .groupBy(\"User\")\n  .count()\n  .writeStream\n  .queryName(\"deduplicated\")\n  .format(\"memory\")\n  .outputMode(\"complete\")\n  .start())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.461",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456461_-1347258961",
+      "id": "20181005-074416_432053768",
+      "dateCreated": "2018-10-05 07:44:16.461",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ncase class InputRow(user:String, timestamp:java.sql.Timestamp, activity:String)\ncase class UserState(user:String,\n  var activity:String,\n  var start:java.sql.Timestamp,\n  var end:java.sql.Timestamp)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.486",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456484_-159947132",
+      "id": "20181005-074416_2015830530",
+      "dateCreated": "2018-10-05 07:44:16.484",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndef updateUserStateWithEvent(state:UserState, input:InputRow):UserState \u003d {\n  if (Option(input.timestamp).isEmpty) {\n    return state\n  }\n  if (state.activity \u003d\u003d input.activity) {\n\n    if (input.timestamp.after(state.end)) {\n      state.end \u003d input.timestamp\n    }\n    if (input.timestamp.before(state.start)) {\n      state.start \u003d input.timestamp\n    }\n  } else {\n    if (input.timestamp.after(state.end)) {\n      state.start \u003d input.timestamp\n      state.end \u003d input.timestamp\n      state.activity \u003d input.activity\n    }\n  }\n\n  state\n}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.512",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456511_2090474",
+      "id": "20181005-074416_2126237844",
+      "dateCreated": "2018-10-05 07:44:16.511",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nimport org.apache.spark.sql.streaming.{GroupStateTimeout, OutputMode, GroupState}\ndef updateAcrossEvents(user:String,\n  inputs: Iterator[InputRow],\n  oldState: GroupState[UserState]):UserState \u003d {\n  var state:UserState \u003d if (oldState.exists) oldState.get else UserState(user,\n        \"\",\n        new java.sql.Timestamp(6284160000000L),\n        new java.sql.Timestamp(6284160L)\n    )\n  // we simply specify an old date that we can compare against and\n  // immediately update based on the values in our data\n\n  for (input \u003c- inputs) {\n    state \u003d updateUserStateWithEvent(state, input)\n    oldState.update(state)\n  }\n  state\n}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.547",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456545_-1166513272",
+      "id": "20181005-074416_1106716192",
+      "dateCreated": "2018-10-05 07:44:16.545",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n/*\nimport org.apache.spark.sql.streaming.GroupStateTimeout\n(withEventTime\n  .selectExpr(\"User as user\",\n    \"cast(Creation_Time/1000000000 as timestamp) as timestamp\", \"gt as activity\")\n  .as[InputRow]\n  .groupByKey(_.user)\n  .mapGroupsWithState(GroupStateTimeout.NoTimeout)(updateAcrossEvents)\n  .writeStream\n  .queryName(\"events_per_window\")\n  .format(\"memory\")\n  .outputMode(\"update\")\n  .start())\n*/\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.579",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456578_-917227275",
+      "id": "20181005-074416_1241570639",
+      "dateCreated": "2018-10-05 07:44:16.578",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ncase class InputRow(device: String, timestamp: java.sql.Timestamp, x: Double)\ncase class DeviceState(device: String, var values: Array[Double],\n  var count: Int)\ncase class OutputRow(device: String, previousAverage: Double)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.615",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456614_2008571833",
+      "id": "20181005-074416_1372195865",
+      "dateCreated": "2018-10-05 07:44:16.614",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndef updateWithEvent(state:DeviceState, input:InputRow):DeviceState \u003d {\n  state.count +\u003d 1\n  // maintain an array of the x-axis values\n  state.values \u003d state.values ++ Array(input.x)\n  state\n}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.653",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456652_-1242049093",
+      "id": "20181005-074416_1875261176",
+      "dateCreated": "2018-10-05 07:44:16.652",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nimport org.apache.spark.sql.streaming.{GroupStateTimeout, OutputMode,\n  GroupState}\n\ndef updateAcrossEvents(device:String, inputs: Iterator[InputRow],\n  oldState: GroupState[DeviceState]):Iterator[OutputRow] \u003d {\n  inputs.toSeq.sortBy(_.timestamp.getTime).toIterator.flatMap { input \u003d\u003e\n    val state \u003d if (oldState.exists) oldState.get\n      else DeviceState(device, Array(), 0)\n\n    val newState \u003d updateWithEvent(state, input)\n    if (newState.count \u003e\u003d 500) {\n      // One of our windows is complete; replace our state with an empty\n      // DeviceState and output the average for the past 500 items from\n      // the old state\n      oldState.update(DeviceState(device, Array(), 0))\n      Iterator(OutputRow(device,\n        newState.values.sum / newState.values.length.toDouble))\n    }\n    else {\n      // Update the current DeviceState object in place and output no\n      // records\n      oldState.update(newState)\n      Iterator()\n    }\n  }\n}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.692",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456691_1074747475",
+      "id": "20181005-074416_1989249852",
+      "dateCreated": "2018-10-05 07:44:16.691",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nimport org.apache.spark.sql.streaming.GroupStateTimeout\n\n(withEventTime\n  .selectExpr(\"Device as device\",\n    \"cast(Creation_Time/1000000000 as timestamp) as timestamp\", \"x\")\n  .as[InputRow]\n  .groupByKey(_.device)\n  .flatMapGroupsWithState(OutputMode.Append,\n    GroupStateTimeout.NoTimeout)(updateAcrossEvents)\n  .writeStream\n  .queryName(\"count_based_device\")\n  .format(\"memory\")\n  .outputMode(\"append\")\n  .start())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.734",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456733_-1393298005",
+      "id": "20181005-074416_214887934",
+      "dateCreated": "2018-10-05 07:44:16.733",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ncase class InputRow(uid:String, timestamp:java.sql.Timestamp, x:Double,\n  activity:String)\ncase class UserSession(val uid:String, var timestamp:java.sql.Timestamp,\n  var activities: Array[String], var values: Array[Double])\ncase class UserSessionOutput(val uid:String, var activities: Array[String],\n  var xAvg:Double)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.775",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456773_221386897",
+      "id": "20181005-074416_1714020664",
+      "dateCreated": "2018-10-05 07:44:16.773",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndef updateWithEvent(state:UserSession, input:InputRow):UserSession \u003d {\n  // handle malformed dates\n  if (Option(input.timestamp).isEmpty) {\n    return state\n  }\n\n  state.timestamp \u003d input.timestamp\n  state.values \u003d state.values ++ Array(input.x)\n  if (!state.activities.contains(input.activity)) {\n    state.activities \u003d state.activities ++ Array(input.activity)\n  }\n  state\n}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.820",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456818_-1924771854",
+      "id": "20181005-074416_1304216048",
+      "dateCreated": "2018-10-05 07:44:16.818",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nimport org.apache.spark.sql.streaming.{GroupStateTimeout, OutputMode,\n  GroupState}\n\ndef updateAcrossEvents(uid:String,\n  inputs: Iterator[InputRow],\n  oldState: GroupState[UserSession]):Iterator[UserSessionOutput] \u003d {\n\n  inputs.toSeq.sortBy(_.timestamp.getTime).toIterator.flatMap { input \u003d\u003e\n    val state \u003d if (oldState.exists) oldState.get else UserSession(\n    uid,\n    new java.sql.Timestamp(6284160000000L),\n    Array(),\n    Array())\n    val newState \u003d updateWithEvent(state, input)\n\n    if (oldState.hasTimedOut) {\n      val state \u003d oldState.get\n      oldState.remove()\n      Iterator(UserSessionOutput(uid,\n      state.activities,\n      newState.values.sum / newState.values.length.toDouble))\n    } else if (state.values.length \u003e 1000) {\n      val state \u003d oldState.get\n      oldState.remove()\n      Iterator(UserSessionOutput(uid,\n      state.activities,\n      newState.values.sum / newState.values.length.toDouble))\n    } else {\n      oldState.update(newState)\n      oldState.setTimeoutTimestamp(newState.timestamp.getTime(), \"5 seconds\")\n      Iterator()\n    }\n\n  }\n}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.868",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456866_886899270",
+      "id": "20181005-074416_2010447295",
+      "dateCreated": "2018-10-05 07:44:16.866",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n/*\nimport org.apache.spark.sql.streaming.GroupStateTimeout\n\n(withEventTime.where(\"x is not null\")\n  .selectExpr(\"user as uid\",\n    \"cast(Creation_Time/1000000000 as timestamp) as timestamp\",\n    \"x\", \"gt as activity\")\n  .as[InputRow]\n  .withWatermark(\"timestamp\", \"5 seconds\")\n  .groupByKey(_.uid)\n  .flatMapGroupsWithState(OutputMode.Append,\n    GroupStateTimeout.EventTimeTimeout)(updateAcrossEvents)\n  .writeStream\n  .queryName(\"count_based_device\")\n  .format(\"memory\")\n  .start())\n*/\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.921",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456920_1355357199",
+      "id": "20181005-074416_1597467873",
+      "dateCreated": "2018-10-05 07:44:16.920",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.969",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456968_-2089937206",
+      "id": "20181005-074416_2015890978",
+      "dateCreated": "2018-10-05 07:44:16.968",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Streaming-Chapter_22_Event-Time_and_Stateful_Processing.scala",
+  "id": "2DTU8QNFV",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

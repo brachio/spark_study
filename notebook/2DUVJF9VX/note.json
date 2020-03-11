@@ -1,0 +1,234 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446442_-157225086",
+      "id": "20181005-074406_948895539",
+      "dateCreated": "2018-10-05 07:44:06.442",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.458",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446456_53850862",
+      "id": "20181005-074406_1627068966",
+      "dateCreated": "2018-10-05 07:44:06.456",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nimport org.apache.spark.ml.feature.VectorAssembler\n\nval va \u003d (new VectorAssembler()\n  .setInputCols(Array(\"Quantity\", \"UnitPrice\"))\n  .setOutputCol(\"features\"))\n\nval sales \u003d (va.transform(spark.read.format(\"csv\")\n  .option(\"header\", \"true\")\n  .option(\"inferSchema\", \"true\")\n  .load(\"/data/retail-data/by-day/*.csv\")\n  .limit(50)\n  .coalesce(1)\n  .where(\"Description IS NOT NULL\")))\n\nsales.cache()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.469",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446468_1939349908",
+      "id": "20181005-074406_2116988105",
+      "dateCreated": "2018-10-05 07:44:06.468",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.clustering.KMeans\nval km \u003d new KMeans().setK(5)\nprintln(km.explainParams())\nval kmModel \u003d km.fit(sales)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.482",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446481_-716041839",
+      "id": "20181005-074406_472091087",
+      "dateCreated": "2018-10-05 07:44:06.481",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval summary \u003d kmModel.summary\nsummary.clusterSizes // number of points\nkmModel.computeCost(sales)\nprintln(\"Cluster Centers: \")\nkmModel.clusterCenters.foreach(println)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.497",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446496_1131653887",
+      "id": "20181005-074406_333461452",
+      "dateCreated": "2018-10-05 07:44:06.496",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.clustering.BisectingKMeans\nval bkm \u003d new BisectingKMeans().setK(5).setMaxIter(5)\nprintln(bkm.explainParams())\nval bkmModel \u003d bkm.fit(sales)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.513",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446512_-1282535365",
+      "id": "20181005-074406_1477355075",
+      "dateCreated": "2018-10-05 07:44:06.512",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval summary \u003d bkmModel.summary\nsummary.clusterSizes // number of points\nkmModel.computeCost(sales)\nprintln(\"Cluster Centers: \")\nkmModel.clusterCenters.foreach(println)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.533",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446532_1564193041",
+      "id": "20181005-074406_925678168",
+      "dateCreated": "2018-10-05 07:44:06.532",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.clustering.GaussianMixture\nval gmm \u003d new GaussianMixture().setK(5)\nprintln(gmm.explainParams())\nval model \u003d gmm.fit(sales)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.557",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446556_1264776048",
+      "id": "20181005-074406_2125846072",
+      "dateCreated": "2018-10-05 07:44:06.556",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval summary \u003d model.summary\nmodel.weights\nmodel.gaussiansDF.show()\nsummary.cluster.show()\nsummary.clusterSizes\nsummary.probability.show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.586",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446585_-349943009",
+      "id": "20181005-074406_924281495",
+      "dateCreated": "2018-10-05 07:44:06.585",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.{Tokenizer, CountVectorizer}\nval tkn \u003d new Tokenizer().setInputCol(\"Description\").setOutputCol(\"DescOut\")\nval tokenized \u003d tkn.transform(sales.drop(\"features\"))\nval cv \u003d (new CountVectorizer()\n  .setInputCol(\"DescOut\")\n  .setOutputCol(\"features\")\n  .setVocabSize(500)\n  .setMinTF(0)\n  .setMinDF(0)\n  .setBinary(true))\nval cvFitted \u003d cv.fit(tokenized)\nval prepped \u003d cvFitted.transform(tokenized)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.613",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446612_728593317",
+      "id": "20181005-074406_1645604574",
+      "dateCreated": "2018-10-05 07:44:06.613",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.clustering.LDA\nval lda \u003d new LDA().setK(10).setMaxIter(5)\nprintln(lda.explainParams())\nval model \u003d lda.fit(prepped)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.644",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446643_2057491582",
+      "id": "20181005-074406_731094173",
+      "dateCreated": "2018-10-05 07:44:06.643",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nmodel.describeTopics(3).show()\ncvFitted.vocabulary\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.674",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446673_-1817456459",
+      "id": "20181005-074406_369195705",
+      "dateCreated": "2018-10-05 07:44:06.673",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.705",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446704_-249682754",
+      "id": "20181005-074406_376933126",
+      "dateCreated": "2018-10-05 07:44:06.704",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Advanced_Analytics_and_Machine_Learning-Chapter_29_Unsupervised_Learning.scala",
+  "id": "2DUVJF9VX",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

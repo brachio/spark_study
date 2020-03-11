@@ -1,0 +1,81 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454705_458889300",
+      "id": "20181005-074414_211975609",
+      "dateCreated": "2018-10-05 07:44:14.705",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.719",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454717_-679975483",
+      "id": "20181005-074414_217341465",
+      "dateCreated": "2018-10-05 07:44:14.717",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nimport org.apache.spark.sql.SparkSession\nval spark \u003d (SparkSession.builder\n  .master(\"mesos://HOST:5050\")\n  .appName(\"my app\")\n  .config(\"spark.executor.uri\", \"\u003cpath to spark-2.2.0.tar.gz uploaded above\u003e\")\n  .getOrCreate())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.731",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454730_946135938",
+      "id": "20181005-074414_514243321",
+      "dateCreated": "2018-10-05 07:44:14.730",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.744",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454743_-1187403794",
+      "id": "20181005-074414_1174751364",
+      "dateCreated": "2018-10-05 07:44:14.743",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Production_Applications-Chapter_17_Deploying_Spark.scala",
+  "id": "2DT6YRATT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

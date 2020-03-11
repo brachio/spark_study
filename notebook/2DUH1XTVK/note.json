@@ -1,0 +1,404 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447449_953846489",
+      "id": "20181005-074407_223861448",
+      "dateCreated": "2018-10-05 07:44:07.449",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.465",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447463_-2104666322",
+      "id": "20181005-074407_1987262570",
+      "dateCreated": "2018-10-05 07:44:07.463",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n%dep\nz.load(\"graphframes:graphframes:0.6.0-spark2.2-s_2.11\")\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.479",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447478_365851058",
+      "id": "20181005-074407_1150599573",
+      "dateCreated": "2018-10-05 07:44:07.478",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval bikeStations \u003d (spark.read.option(\"header\",\"true\")\n  .csv(\"/data/bike-data/201508_station_data.csv\"))\nval tripData \u003d (spark.read.option(\"header\",\"true\")\n  .csv(\"/data/bike-data/201508_trip_data.csv\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.495",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447494_928857874",
+      "id": "20181005-074407_1308056660",
+      "dateCreated": "2018-10-05 07:44:07.494",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval stationVertices \u003d bikeStations.withColumnRenamed(\"name\", \"id\").distinct()\nval tripEdges \u003d (tripData\n  .withColumnRenamed(\"Start Station\", \"src\")\n  .withColumnRenamed(\"End Station\", \"dst\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.511",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447510_430512463",
+      "id": "20181005-074407_645527015",
+      "dateCreated": "2018-10-05 07:44:07.510",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.graphframes.GraphFrame\nval stationGraph \u003d GraphFrame(stationVertices, tripEdges)\nstationGraph.cache()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.530",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447529_774125781",
+      "id": "20181005-074407_593152575",
+      "dateCreated": "2018-10-05 07:44:07.529",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nprintln(s\"Total Number of Stations: ${stationGraph.vertices.count()}\")\nprintln(s\"Total Number of Trips in Graph: ${stationGraph.edges.count()}\")\nprintln(s\"Total Number of Trips in Original Data: ${tripData.count()}\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.552",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447551_688440868",
+      "id": "20181005-074407_695795011",
+      "dateCreated": "2018-10-05 07:44:07.551",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.desc\nstationGraph.edges.groupBy(\"src\", \"dst\").count().orderBy(desc(\"count\")).show(10)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.578",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447577_-1843264964",
+      "id": "20181005-074407_1743642569",
+      "dateCreated": "2018-10-05 07:44:07.577",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n(stationGraph.edges\n  .where(\"src \u003d \u0027Townsend at 7th\u0027 OR dst \u003d \u0027Townsend at 7th\u0027\")\n  .groupBy(\"src\", \"dst\").count()\n  .orderBy(desc(\"count\"))\n  .show(10))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.606",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447605_300618055",
+      "id": "20181005-074407_1748266861",
+      "dateCreated": "2018-10-05 07:44:07.605",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval townAnd7thEdges \u003d (stationGraph.edges\n  .where(\"src \u003d \u0027Townsend at 7th\u0027 OR dst \u003d \u0027Townsend at 7th\u0027\"))\nval subgraph \u003d GraphFrame(stationGraph.vertices, townAnd7thEdges)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.628",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447627_382087324",
+      "id": "20181005-074407_992689675",
+      "dateCreated": "2018-10-05 07:44:07.627",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval motifs \u003d stationGraph.find(\"(a)-[ab]-\u003e(b); (b)-[bc]-\u003e(c); (c)-[ca]-\u003e(a)\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.654",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447653_336843341",
+      "id": "20181005-074407_68943136",
+      "dateCreated": "2018-10-05 07:44:07.653",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.expr\n(motifs.selectExpr(\"*\",\n    \"to_timestamp(ab.`Start Date`, \u0027MM/dd/yyyy HH:mm\u0027) as abStart\",\n    \"to_timestamp(bc.`Start Date`, \u0027MM/dd/yyyy HH:mm\u0027) as bcStart\",\n    \"to_timestamp(ca.`Start Date`, \u0027MM/dd/yyyy HH:mm\u0027) as caStart\")\n  .where(\"ca.`Bike #` \u003d bc.`Bike #`\").where(\"ab.`Bike #` \u003d bc.`Bike #`\")\n  .where(\"a.id !\u003d b.id\").where(\"b.id !\u003d c.id\")\n  .where(\"abStart \u003c bcStart\").where(\"bcStart \u003c caStart\")\n  .orderBy(expr(\"cast(caStart as long) - cast(abStart as long)\"))\n  .selectExpr(\"a.id\", \"b.id\", \"c.id\", \"ab.`Start Date`\", \"ca.`End Date`\")\n  .limit(1).show(false))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.682",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447681_-1897660359",
+      "id": "20181005-074407_546238192",
+      "dateCreated": "2018-10-05 07:44:07.681",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.desc\nval ranks \u003d stationGraph.pageRank.resetProbability(0.15).maxIter(10).run()\nranks.vertices.orderBy(desc(\"pagerank\")).select(\"id\", \"pagerank\").show(10)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.709",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447708_-298321852",
+      "id": "20181005-074407_717390628",
+      "dateCreated": "2018-10-05 07:44:07.708",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval inDeg \u003d stationGraph.inDegrees\ninDeg.orderBy(desc(\"inDegree\")).show(5, false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.741",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447740_2033638279",
+      "id": "20181005-074407_1081094162",
+      "dateCreated": "2018-10-05 07:44:07.740",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval outDeg \u003d stationGraph.outDegrees\noutDeg.orderBy(desc(\"outDegree\")).show(5, false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.779",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447776_-1786690580",
+      "id": "20181005-074407_1467729195",
+      "dateCreated": "2018-10-05 07:44:07.777",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval degreeRatio \u003d (inDeg.join(outDeg, Seq(\"id\"))\n  .selectExpr(\"id\", \"double(inDegree)/double(outDegree) as degreeRatio\"))\ndegreeRatio.orderBy(desc(\"degreeRatio\")).show(10, false)\ndegreeRatio.orderBy(\"degreeRatio\").show(10, false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.817",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447816_90230499",
+      "id": "20181005-074407_359094465",
+      "dateCreated": "2018-10-05 07:44:07.816",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n(stationGraph.bfs.fromExpr(\"id \u003d \u0027Townsend at 7th\u0027\")\n  .toExpr(\"id \u003d \u0027Spear at Folsom\u0027\").maxPathLength(2).run().show(10))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.846",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447846_460015507",
+      "id": "20181005-074407_537277973",
+      "dateCreated": "2018-10-05 07:44:07.846",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nspark.sparkContext.setCheckpointDir(\"/tmp/checkpoints\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.871",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447871_-513230923",
+      "id": "20181005-074407_254419154",
+      "dateCreated": "2018-10-05 07:44:07.871",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval minGraph \u003d GraphFrame(stationVertices, tripEdges.sample(false, 0.1))\nval cc \u003d minGraph.connectedComponents.run()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.904",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447903_-2045647494",
+      "id": "20181005-074407_393493044",
+      "dateCreated": "2018-10-05 07:44:07.903",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\ncc.where(\"component !\u003d 0\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.944",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447943_-224449646",
+      "id": "20181005-074407_1892217379",
+      "dateCreated": "2018-10-05 07:44:07.943",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval scc \u003d minGraph.stronglyConnectedComponents.maxIter(3).run()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:07.979",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725447978_-818989213",
+      "id": "20181005-074407_1559166260",
+      "dateCreated": "2018-10-05 07:44:07.979",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nscc.groupBy(\"component\").count().show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.013",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448012_-699938367",
+      "id": "20181005-074408_1074378579",
+      "dateCreated": "2018-10-05 07:44:08.012",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.062",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448061_-244675083",
+      "id": "20181005-074408_1032324989",
+      "dateCreated": "2018-10-05 07:44:08.061",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Advanced_Analytics_and_Machine_Learning-Chapter_30_Graph_Analysis.scala",
+  "id": "2DUH1XTVK",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

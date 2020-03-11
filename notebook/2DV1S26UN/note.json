@@ -1,0 +1,132 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454416_-209897442",
+      "id": "20181005-074414_1515148399",
+      "dateCreated": "2018-10-05 07:44:14.416",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.431",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454429_18036597",
+      "id": "20181005-074414_284814084",
+      "dateCreated": "2018-10-05 07:44:14.429",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// Creating a SparkSession in Scala\nimport org.apache.spark.sql.SparkSession\nval spark \u003d (SparkSession.builder().appName(\"Databricks Spark Example\")\n  .config(\"spark.sql.warehouse.dir\", \"/user/hive/warehouse\")\n  .getOrCreate())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.458",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454457_216071798",
+      "id": "20181005-074414_778725317",
+      "dateCreated": "2018-10-05 07:44:14.457",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.SparkContext\nval sc \u003d SparkContext.getOrCreate()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.472",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454471_1135224564",
+      "id": "20181005-074414_1878204296",
+      "dateCreated": "2018-10-05 07:44:14.471",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n//step4.explain()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.485",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454484_263421689",
+      "id": "20181005-074414_541735028",
+      "dateCreated": "2018-10-05 07:44:14.484",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nspark.conf.set(\"spark.sql.shuffle.partitions\", 50)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.499",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454497_1200718894",
+      "id": "20181005-074414_2136943180",
+      "dateCreated": "2018-10-05 07:44:14.497",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.519",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454517_1599671916",
+      "id": "20181005-074414_1422303020",
+      "dateCreated": "2018-10-05 07:44:14.518",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Production_Applications-Chapter_15_How_Spark_Runs_on_a_Cluster.scala",
+  "id": "2DV1S26UN",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

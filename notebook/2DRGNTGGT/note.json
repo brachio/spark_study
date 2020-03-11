@@ -1,0 +1,166 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461634_-473658317",
+      "id": "20181005-074421_352315176",
+      "dateCreated": "2018-10-05 07:44:21.634",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.647",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461646_289054533",
+      "id": "20181005-074421_957720595",
+      "dateCreated": "2018-10-05 07:44:21.646",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nperson \u003d spark.createDataFrame([\n    (0, \"Bill Chambers\", 0, [100]),\n    (1, \"Matei Zaharia\", 1, [500, 250, 100]),\n    (2, \"Michael Armbrust\", 1, [250, 100])])\\\n  .toDF(\"id\", \"name\", \"graduate_program\", \"spark_status\")\ngraduateProgram \u003d spark.createDataFrame([\n    (0, \"Masters\", \"School of Information\", \"UC Berkeley\"),\n    (2, \"Masters\", \"EECS\", \"UC Berkeley\"),\n    (1, \"Ph.D.\", \"EECS\", \"UC Berkeley\")])\\\n  .toDF(\"id\", \"degree\", \"department\", \"school\")\nsparkStatus \u003d spark.createDataFrame([\n    (500, \"Vice President\"),\n    (250, \"PMC Member\"),\n    (100, \"Contributor\")])\\\n  .toDF(\"id\", \"status\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.657",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461656_902193078",
+      "id": "20181005-074421_1477062722",
+      "dateCreated": "2018-10-05 07:44:21.656",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\njoinExpression \u003d person[\"graduate_program\"] \u003d\u003d graduateProgram[\u0027id\u0027]\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.669",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461668_1731818534",
+      "id": "20181005-074421_173336839",
+      "dateCreated": "2018-10-05 07:44:21.668",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwrongJoinExpression \u003d person[\"name\"] \u003d\u003d graduateProgram[\"school\"]\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.685",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461684_159352467",
+      "id": "20181005-074421_264081189",
+      "dateCreated": "2018-10-05 07:44:21.684",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\njoinType \u003d \"inner\"\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.703",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461701_-2071161967",
+      "id": "20181005-074421_533091514",
+      "dateCreated": "2018-10-05 07:44:21.701",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ngradProgram2 \u003d graduateProgram.union(spark.createDataFrame([\n    (0, \"Masters\", \"Duplicated Row\", \"Duplicated School\")]))\n\ngradProgram2.createOrReplaceTempView(\"gradProgram2\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.723",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461722_1160155153",
+      "id": "20181005-074421_357899352",
+      "dateCreated": "2018-10-05 07:44:21.722",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.sql.functions import expr\n\nperson.withColumnRenamed(\"id\", \"personId\")\\\n  .join(sparkStatus, expr(\"array_contains(spark_status, id)\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.747",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461745_-734652089",
+      "id": "20181005-074421_1374078984",
+      "dateCreated": "2018-10-05 07:44:21.745",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.786",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461785_-2143112991",
+      "id": "20181005-074421_1278635543",
+      "dateCreated": "2018-10-05 07:44:21.785",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Structured_APIs-Chapter_8_Joins.py",
+  "id": "2DRGNTGGT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

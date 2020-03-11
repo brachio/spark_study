@@ -1,0 +1,98 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449422_1745078716",
+      "id": "20181005-074409_1922388839",
+      "dateCreated": "2018-10-05 07:44:09.422",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.436",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449435_-2131583515",
+      "id": "20181005-074409_1956850558",
+      "dateCreated": "2018-10-05 07:44:09.435",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// allows us to include spark packages\nresolvers +\u003d \"bintray-spark-packages\" at\n  \"https://dl.bintray.com/spark-packages/maven/\"\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.448",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449447_256931133",
+      "id": "20181005-074409_1811754359",
+      "dateCreated": "2018-10-05 07:44:09.447",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nlibraryDependencies ++\u003d Seq(\n...\n  // spark packages\n  \"graphframes\" % \"graphframes\" % \"0.4.0-spark2.1-s_2.11\",\n\n)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.462",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449461_836127686",
+      "id": "20181005-074409_1681229400",
+      "dateCreated": "2018-10-05 07:44:09.461",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.478",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449477_-1945130677",
+      "id": "20181005-074409_1833646208",
+      "dateCreated": "2018-10-05 07:44:09.477",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Ecosystem-Chapter_33_Ecosystem_and_Community.scala",
+  "id": "2DRE1NN5J",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

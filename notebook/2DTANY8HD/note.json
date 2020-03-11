@@ -1,0 +1,64 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461490_-409289848",
+      "id": "20181005-074421_1716938918",
+      "dateCreated": "2018-10-05 07:44:21.490",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.502",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461500_-1933297039",
+      "id": "20181005-074421_2083223716",
+      "dateCreated": "2018-10-05 07:44:21.500",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sql\nSELECT * FROM dataFrameTable\nSELECT columnName FROM dataFrameTable\nSELECT columnName * 10, otherColumn, someOtherCol as c FROM dataFrameTable\n\n\n-- COMMAND ----------\n\nSELECT DEST_COUNTRY_NAME FROM dfTable LIMIT 2\n\n\n-- COMMAND ----------\n\nSELECT DEST_COUNTRY_NAME, ORIGIN_COUNTRY_NAME FROM dfTable LIMIT 2\n\n\n-- COMMAND ----------\n\nSELECT DEST_COUNTRY_NAME as destination FROM dfTable LIMIT 2\n\n\n-- COMMAND ----------\n\nSELECT *, (DEST_COUNTRY_NAME \u003d ORIGIN_COUNTRY_NAME) as withinCountry\nFROM dfTable\nLIMIT 2\n\n\n-- COMMAND ----------\n\nSELECT avg(count), count(distinct(DEST_COUNTRY_NAME)) FROM dfTable LIMIT 2\n\n\n-- COMMAND ----------\n\nSELECT *, 1 as One FROM dfTable LIMIT 2\n\n\n-- COMMAND ----------\n\nSELECT *, 1 as numberOne FROM dfTable LIMIT 2\n\n\n-- COMMAND ----------\n\nSELECT `This Long Column-Name`, `This Long Column-Name` as `new col`\nFROM dfTableLong LIMIT 2\n\n\n-- COMMAND ----------\n\nset spark.sql.caseSensitive true\n\n\n-- COMMAND ----------\n\nSELECT *, cast(count as long) AS count2 FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT * FROM dfTable WHERE count \u003c 2 LIMIT 2\n\n\n-- COMMAND ----------\n\nSELECT * FROM dfTable WHERE count \u003c 2 AND ORIGIN_COUNTRY_NAME !\u003d \"Croatia\"\nLIMIT 2\n\n\n-- COMMAND ----------\n\nSELECT COUNT(DISTINCT(ORIGIN_COUNTRY_NAME, DEST_COUNTRY_NAME)) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT COUNT(DISTINCT ORIGIN_COUNTRY_NAME) FROM dfTable\n\n\n-- COMMAND ----------\n\nSELECT * FROM dfTable ORDER BY count DESC, DEST_COUNTRY_NAME ASC LIMIT 2\n\n\n-- COMMAND ----------\n\nSELECT * FROM dfTable LIMIT 6\n\n\n-- COMMAND ----------\n\nSELECT * FROM dfTable ORDER BY count desc LIMIT 6\n\n\n-- COMMAND ----------\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.512",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461511_-560978271",
+      "id": "20181005-074421_260674994",
+      "dateCreated": "2018-10-05 07:44:21.511",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Sql/Structured_APIs-Chapter_5_Basic_Structured_Operations.sql",
+  "id": "2DTANY8HD",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

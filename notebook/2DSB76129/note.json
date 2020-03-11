@@ -1,0 +1,115 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454906_1454397660",
+      "id": "20181005-074414_1312989229",
+      "dateCreated": "2018-10-05 07:44:14.906",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.920",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454918_-337657617",
+      "id": "20181005-074414_141380333",
+      "dateCreated": "2018-10-05 07:44:14.918",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n# Original loading code that does *not* cache DataFrame\nDF1 \u003d spark.read.format(\"csv\")\\\n  .option(\"inferSchema\", \"true\")\\\n  .option(\"header\", \"true\")\\\n  .load(\"/data/flight-data/csv/2015-summary.csv\")\nDF2 \u003d DF1.groupBy(\"DEST_COUNTRY_NAME\").count().collect()\nDF3 \u003d DF1.groupBy(\"ORIGIN_COUNTRY_NAME\").count().collect()\nDF4 \u003d DF1.groupBy(\"count\").count().collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.932",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454931_-1580581357",
+      "id": "20181005-074414_1205464201",
+      "dateCreated": "2018-10-05 07:44:14.931",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nDF1.cache()\nDF1.count()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.946",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454945_-1379771023",
+      "id": "20181005-074414_562657490",
+      "dateCreated": "2018-10-05 07:44:14.945",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nDF2 \u003d DF1.groupBy(\"DEST_COUNTRY_NAME\").count().collect()\nDF3 \u003d DF1.groupBy(\"ORIGIN_COUNTRY_NAME\").count().collect()\nDF4 \u003d DF1.groupBy(\"count\").count().collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.965",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454964_1233333128",
+      "id": "20181005-074414_1196131143",
+      "dateCreated": "2018-10-05 07:44:14.964",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.986",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454985_674767220",
+      "id": "20181005-074414_333733114",
+      "dateCreated": "2018-10-05 07:44:14.985",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Production_Applications-Chapter_19_Performance_Tuning.py",
+  "id": "2DSB76129",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

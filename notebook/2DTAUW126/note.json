@@ -1,0 +1,132 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457405_-1155274633",
+      "id": "20181005-074417_1570000635",
+      "dateCreated": "2018-10-05 07:44:17.405",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.419",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457418_-247695335",
+      "id": "20181005-074417_280348307",
+      "dateCreated": "2018-10-05 07:44:17.418",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\nspark.sql(\"SELECT 1 + 1\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.433",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457432_152778542",
+      "id": "20181005-074417_1966925595",
+      "dateCreated": "2018-10-05 07:44:17.432",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n(spark.read.json(\"/data/flight-data/json/2015-summary.json\")\n  .createOrReplaceTempView(\"some_sql_view\")) // DF \u003d\u003e SQL\n\n(spark.sql(\"\"\"\nSELECT DEST_COUNTRY_NAME, sum(count)\nFROM some_sql_view GROUP BY DEST_COUNTRY_NAME\n\"\"\")\n  .where(\"DEST_COUNTRY_NAME like \u0027S%\u0027\").where(\"`sum(count)` \u003e 10\")\n  .count()) // SQL \u003d\u003e DF\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.447",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457446_-1211669999",
+      "id": "20181005-074417_831375347",
+      "dateCreated": "2018-10-05 07:44:17.446",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval flights \u003d (spark.read.format(\"json\")\n  .load(\"/data/flight-data/json/2015-summary.json\"))\nval just_usa_df \u003d flights.where(\"dest_country_name \u003d \u0027United States\u0027\")\njust_usa_df.selectExpr(\"*\").explain\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.463",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457462_6178239",
+      "id": "20181005-074417_588539254",
+      "dateCreated": "2018-10-05 07:44:17.462",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndef power3(number:Double):Double \u003d number * number * number\nspark.udf.register(\"power3\", power3(_:Double):Double)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.485",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457483_1526970482",
+      "id": "20181005-074417_1017628244",
+      "dateCreated": "2018-10-05 07:44:17.483",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.503",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457502_-1214375176",
+      "id": "20181005-074417_1445109791",
+      "dateCreated": "2018-10-05 07:44:17.502",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Structured_APIs-Chapter_10_Spark_SQL.scala",
+  "id": "2DTAUW126",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

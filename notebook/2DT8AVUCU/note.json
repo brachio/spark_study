@@ -1,0 +1,166 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457146_-415040468",
+      "id": "20181005-074417_536624294",
+      "dateCreated": "2018-10-05 07:44:17.146",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.161",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457160_-387490843",
+      "id": "20181005-074417_1526440211",
+      "dateCreated": "2018-10-05 07:44:17.160",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n%dep\nz.load(\"org.apache.kafka:kafka-clients:0.10.2.2\")\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.175",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457173_-1636419102",
+      "id": "20181005-074417_1984455771",
+      "dateCreated": "2018-10-05 07:44:17.173",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval static \u003d spark.read.json(\"/data/activity-data\")\nval streaming \u003d (spark\n  .readStream\n  .schema(static.schema)\n  .option(\"maxFilesPerTrigger\", 10)\n  .json(\"/data/activity-data\")\n  .groupBy(\"gt\")\n  .count())\nval query \u003d (streaming\n  .writeStream\n  .outputMode(\"complete\")\n  .option(\"checkpointLocation\", \"/some/location/\")\n  .queryName(\"test_stream\")\n  .format(\"memory\")\n  .start())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.191",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457189_234710714",
+      "id": "20181005-074417_407369923",
+      "dateCreated": "2018-10-05 07:44:17.189",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nquery.status\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.207",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457206_1887202575",
+      "id": "20181005-074417_2124454661",
+      "dateCreated": "2018-10-05 07:44:17.206",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nquery.recentProgress\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.230",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457228_1540061577",
+      "id": "20181005-074417_2100537411",
+      "dateCreated": "2018-10-05 07:44:17.228",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n//val spark: SparkSession \u003d ...\n\nspark.streams.addListener(new StreamingQueryListener() {\n    override def onQueryStarted(queryStarted: QueryStartedEvent): Unit \u003d {\n        println(\"Query started: \" + queryStarted.id)\n    }\n    override def onQueryTerminated(\n      queryTerminated: QueryTerminatedEvent): Unit \u003d {\n        println(\"Query terminated: \" + queryTerminated.id)\n    }\n    override def onQueryProgress(queryProgress: QueryProgressEvent): Unit \u003d {\n        println(\"Query made progress: \" + queryProgress.progress)\n    }\n}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.252",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457251_496169964",
+      "id": "20181005-074417_1529145862",
+      "dateCreated": "2018-10-05 07:44:17.251",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nimport java.util.Properties\nimport org.apache.kafka.clients.producer.KafkaProducer\nimport org.apache.spark.sql.streaming.StreamingQueryListener\n\nclass KafkaMetrics(servers: String) extends org.apache.spark.sql.streaming.StreamingQueryListener {\n  val kafkaProperties \u003d new java.util.Properties()\n  kafkaProperties.put(\n    \"bootstrap.servers\",\n    servers)\n  kafkaProperties.put(\n    \"key.serializer\",\n    \"kafkashaded.org.apache.kafka.common.serialization.StringSerializer\")\n  kafkaProperties.put(\n    \"value.serializer\",\n    \"kafkashaded.org.apache.kafka.common.serialization.StringSerializer\")\n\n  val producer \u003d new org.apache.kafka.clients.producer.KafkaProducer[String, String](kafkaProperties)\n\n  import org.apache.spark.sql.streaming.StreamingQueryListener\n  import org.apache.kafka.clients.producer.KafkaProducer\n  import org.apache.kafka.clients.producer.ProducerRecord\n\n  override def onQueryProgress(event:\n                               StreamingQueryListener.QueryProgressEvent): Unit \u003d {\n    producer.send(new ProducerRecord(\"streaming-metrics\",\n      event.progress.json))\n  }\n  override def onQueryStarted(event:\n                              StreamingQueryListener.QueryStartedEvent): Unit \u003d {}\n  override def onQueryTerminated(event:\n                                 StreamingQueryListener.QueryTerminatedEvent): Unit \u003d {}\n}\n\n\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.272",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457271_30700712",
+      "id": "20181005-074417_408942213",
+      "dateCreated": "2018-10-05 07:44:17.271",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.299",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457297_-54414866",
+      "id": "20181005-074417_1020850857",
+      "dateCreated": "2018-10-05 07:44:17.297",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Streaming-Chapter_23_Structured_Streaming_in_Production.scala",
+  "id": "2DT8AVUCU",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

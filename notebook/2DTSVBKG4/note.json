@@ -1,0 +1,421 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448612_1642304376",
+      "id": "20181005-074408_972249165",
+      "dateCreated": "2018-10-05 07:44:08.612",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.626",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448625_-350831663",
+      "id": "20181005-074408_674363768",
+      "dateCreated": "2018-10-05 07:44:08.625",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\nlibrary(SparkR)\nspark \u003c- sparkR.session()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.638",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448637_-778756928",
+      "id": "20181005-074408_454997632",
+      "dateCreated": "2018-10-05 07:44:08.637",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nretail.data \u003c- read.df(\n  \"/data/retail-data/all/\",\n  \"csv\",\n  header\u003d\"true\",\n  inferSchema\u003d\"true\")\nprint(str(retail.data))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.651",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448650_2011788516",
+      "id": "20181005-074408_2145240252",
+      "dateCreated": "2018-10-05 07:44:08.650",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nlocal.retail.data \u003c- take(retail.data, 5)\nprint(str(local.retail.data))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.663",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448662_-970742357",
+      "id": "20181005-074408_2095260086",
+      "dateCreated": "2018-10-05 07:44:08.662",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\n# collect brings it from Spark to your local environment\ncollect(count(groupBy(retail.data, \"country\")))\n# createDataFrame comverts a data.frame\n# from your local environment to Spark\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.676",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448675_-1068115331",
+      "id": "20181005-074408_917283889",
+      "dateCreated": "2018-10-05 07:44:08.675",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\n?na.omit # refers to SparkR due to package loading order\n?stats::na.omit # refers explicitly to stats\n?SparkR::na.omit # refers explicitly to sparkR\u0027s null value filtering\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.693",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448692_1367937338",
+      "id": "20181005-074408_1801585495",
+      "dateCreated": "2018-10-05 07:44:08.692",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nsample(mtcars) # fails\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.718",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448716_13795188",
+      "id": "20181005-074408_2028712070",
+      "dateCreated": "2018-10-05 07:44:08.717",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nbase::sample(some.r.data.frame) # some.r.data.frame \u003d R data.frame type\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.748",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448747_-435499380",
+      "id": "20181005-074408_274343800",
+      "dateCreated": "2018-10-05 07:44:08.747",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\n?to_date # to Data DataFrame column manipulation\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.777",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448776_-1345577112",
+      "id": "20181005-074408_634502881",
+      "dateCreated": "2018-10-05 07:44:08.776",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\ntbls \u003c- sql(\"SHOW TABLES\")\n\ncollect(\n  select(\n    filter(tbls, like(tbls$tableName, \"%production%\")),\n    \"tableName\",\n    \"isTemporary\"))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.810",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448808_-2114863217",
+      "id": "20181005-074408_1333518228",
+      "dateCreated": "2018-10-05 07:44:08.808",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nlibrary(magrittr)\n\ntbls %\u003e%\n  filter(like(tbls$tableName, \"%production%\")) %\u003e%\n  select(\"tableName\", \"isTemporary\") %\u003e%\n  collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.845",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448844_-583128471",
+      "id": "20181005-074408_785968881",
+      "dateCreated": "2018-10-05 07:44:08.844",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nretail.data \u003c- read.df(\n  \"/data/retail-data/all/\",\n  \"csv\",\n  header\u003d\"true\",\n  inferSchema\u003d\"true\")\nflight.data \u003c- read.df(\n  \"/data/flight-data/parquet/2010-summary.parquet\",\n  \"parquet\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.874",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448873_1262981653",
+      "id": "20181005-074408_718503065",
+      "dateCreated": "2018-10-05 07:44:08.873",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nmodel \u003c- spark.glm(retail.data, Quantity ~ UnitPrice + Country,\n  family\u003d\u0027gaussian\u0027)\nsummary(model)\npredict(model, retail.data)\n\nwrite.ml(model, \"/tmp/myModelOutput\", overwrite\u003dT)\nnewModel \u003c- read.ml(\"/tmp/myModelOutput\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.906",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448905_907821239",
+      "id": "20181005-074408_191482017",
+      "dateCreated": "2018-10-05 07:44:08.905",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nfamilies \u003c- c(\"gaussian\", \"poisson\")\ntrain \u003c- function(family) {\n  model \u003c- glm(Sepal.Length ~ Sepal.Width + Species, iris, family \u003d family)\n  summary(model)\n}\n# Return a list of model\u0027s summaries\nmodel.summaries \u003c- spark.lapply(families, train)\n\n# Print the summary of each model\nprint(model.summaries)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.942",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448941_11805761",
+      "id": "20181005-074408_1669782249",
+      "dateCreated": "2018-10-05 07:44:08.941",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\ndf \u003c- withColumnRenamed(createDataFrame(as.data.frame(1:100)), \"1:100\", \"col\")\noutputSchema \u003c- structType(\n  structField(\"col\", \"integer\"),\n  structField(\"newColumn\", \"double\"))\n\nudfFunc \u003c- function (remote.data.frame) {\n  remote.data.frame[\u0027newColumn\u0027] \u003d remote.data.frame$col * 2\n  remote.data.frame\n}\n# outputs SparkDataFrame, so it requires a schema\ntake(dapply(df, udfFunc, outputSchema), 5)\n# collects all results to a, so no schema required.\n# however this will fail if the result is large\ndapplyCollect(df, udfFunc)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.983",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448982_-2124057645",
+      "id": "20181005-074408_2079902183",
+      "dateCreated": "2018-10-05 07:44:08.982",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nlocal \u003c- as.data.frame(1:100)\nlocal[\u0027groups\u0027] \u003c- c(\"a\", \"b\")\n\ndf \u003c- withColumnRenamed(createDataFrame(local), \"1:100\", \"col\")\n\noutputSchema \u003c- structType(\n  structField(\"col\", \"integer\"),\n  structField(\"groups\", \"string\"),\n  structField(\"newColumn\", \"double\"))\n\nudfFunc \u003c- function (key, remote.data.frame) {\n  if (key \u003d\u003d \"a\") {\n    remote.data.frame[\u0027newColumn\u0027] \u003d remote.data.frame$col * 2\n  } else if (key \u003d\u003d \"b\") {\n    remote.data.frame[\u0027newColumn\u0027] \u003d remote.data.frame$col * 3\n  } else if (key \u003d\u003d \"c\") {\n    remote.data.frame[\u0027newColumn\u0027] \u003d remote.data.frame$col * 4\n  }\n\n  remote.data.frame\n}\n# outputs SparkDataFrame, so it requires a schema\ntake(gapply(df,\n            \"groups\",\n            udfFunc,\n            outputSchema), 50)\n\ngapplyCollect(df,\n             \"groups\",\n             udfFunc)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.022",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449020_-2109141808",
+      "id": "20181005-074409_823273691",
+      "dateCreated": "2018-10-05 07:44:09.021",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\ninstall.packages(\"sparklyr\")\nlibrary(sparklyr)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.072",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449070_1354558737",
+      "id": "20181005-074409_1732542666",
+      "dateCreated": "2018-10-05 07:44:09.070",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nsc \u003c- spark_connect(master \u003d \"local\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.119",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449118_1550711347",
+      "id": "20181005-074409_1860366067",
+      "dateCreated": "2018-10-05 07:44:09.118",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nspark_connect(master \u003d \"local\", config \u003d spark_config())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.163",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449162_-629581329",
+      "id": "20181005-074409_1048188745",
+      "dateCreated": "2018-10-05 07:44:09.162",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nlibrary(DBI)\nallTables \u003c- dbGetQuery(sc, \"SHOW TABLES\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.207",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449206_-509254177",
+      "id": "20181005-074409_377291779",
+      "dateCreated": "2018-10-05 07:44:09.206",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nsetShufflePartitions \u003c- dbGetQuery(sc, \"SET spark.sql.shuffle.partitions\u003d10\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.256",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449255_1529408663",
+      "id": "20181005-074409_572020250",
+      "dateCreated": "2018-10-05 07:44:09.255",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n\nspark_write_csv(tbl_name, location)\nspark_write_json(tbl_name, location)\nspark_write_parquet(tbl_name, location)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.307",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449306_-1476941941",
+      "id": "20181005-074409_1072456648",
+      "dateCreated": "2018-10-05 07:44:09.306",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%r\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.359",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449358_715529911",
+      "id": "20181005-074409_538040298",
+      "dateCreated": "2018-10-05 07:44:09.358",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-R/Ecosystem-Chapter_32_Language_Specifics.r",
+  "id": "2DTSVBKG4",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

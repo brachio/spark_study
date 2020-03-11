@@ -1,0 +1,81 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457340_-445653407",
+      "id": "20181005-074417_1104757582",
+      "dateCreated": "2018-10-05 07:44:17.340",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.355",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457354_2065825607",
+      "id": "20181005-074417_762270837",
+      "dateCreated": "2018-10-05 07:44:17.354",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nspark.read.json(\"/data/flight-data/json/2015-summary.json\")\\\n  .createOrReplaceTempView(\"some_sql_view\") # DF \u003d\u003e SQL\n\nspark.sql(\"\"\"\nSELECT DEST_COUNTRY_NAME, sum(count)\nFROM some_sql_view GROUP BY DEST_COUNTRY_NAME\n\"\"\")\\\n  .where(\"DEST_COUNTRY_NAME like \u0027S%\u0027\").where(\"`sum(count)` \u003e 10\")\\\n  .count() # SQL \u003d\u003e DF\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.368",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457366_1308805210",
+      "id": "20181005-074417_992039052",
+      "dateCreated": "2018-10-05 07:44:17.366",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:17.383",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725457381_793401474",
+      "id": "20181005-074417_789791671",
+      "dateCreated": "2018-10-05 07:44:17.382",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Structured_APIs-Chapter_10_Spark_SQL.py",
+  "id": "2DTW3XD2K",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

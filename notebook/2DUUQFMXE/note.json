@@ -1,0 +1,64 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448446_-1568651188",
+      "id": "20181005-074408_1577984787",
+      "dateCreated": "2018-10-05 07:44:08.446",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.462",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448461_-974854695",
+      "id": "20181005-074408_849369407",
+      "dateCreated": "2018-10-05 07:44:08.461",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// This Java code was contributed by @neeleshkumar-mannur\n\nimport java.io.IOException;\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport org.apache.spark.ml.Pipeline;\nimport org.apache.spark.ml.PipelineModel;\nimport org.apache.spark.ml.PipelineStage;\nimport org.apache.spark.ml.classification.LogisticRegression;\nimport org.apache.spark.ml.classification.LogisticRegressionModel;\nimport org.apache.spark.ml.classification.LogisticRegressionTrainingSummary;\nimport org.apache.spark.ml.evaluation.BinaryClassificationEvaluator;\nimport org.apache.spark.ml.feature.RFormula;\nimport org.apache.spark.ml.feature.RFormulaModel;\nimport org.apache.spark.ml.linalg.Vector;\nimport org.apache.spark.ml.linalg.Vectors;\nimport org.apache.spark.ml.param.ParamMap;\nimport org.apache.spark.ml.tuning.ParamGridBuilder;\nimport org.apache.spark.ml.tuning.TrainValidationSplit;\nimport org.apache.spark.ml.tuning.TrainValidationSplitModel;\nimport org.apache.spark.sql.Dataset;\nimport org.apache.spark.sql.Row;\nimport org.apache.spark.sql.SparkSession;\n\npublic class Advanced_Analytics_and_Machine_Learning_Chapter_24_Advanced_Analytics_and_Machine_Learning {\n\n\tpublic static void main(String[] args) throws IOException {\n\t\tSparkSession spark \u003d SparkSession\n\t\t\t\t.builder()\n\t\t\t\t.master(\"local[*]\")\n\t\t\t\t.appName(\"Chapter24AdvancedAnalyticsAndMachineLearning\")\n\t\t\t\t.getOrCreate();\n\n\t\t// Creating a Dense Vector\n\t\tVector denseVector \u003d Vectors.dense(1.0, 2.0, 3.0);\n\t\tSystem.out.println(\"Dense Vector:\" + denseVector.toString());\n\n\t\t// Creating a Sparse Vector\n\t\tint size \u003d 3;\n\t\tint[] idx \u003d new int[] { 1, 2 };\n\t\tdouble[] values \u003d new double[] { 2.0, 3.0 };\n\n\t\tVector sparseVector \u003d Vectors.sparse(size, idx, values);\n\t\tSystem.out.println(\"Sparse Vector:\" + sparseVector.toString());\n\n\t\t// Reading the simple json file into a Dataframe / Dataset\n\t\tDataset\u003cRow\u003e df \u003d spark.read().json(\"data/simple-ml\");\n\t\tdf.orderBy(\"value2\").show();\n\n\t\t// Initializing RFormula\n\t\tRFormula supervised \u003d new RFormula().setFormula(\"lab ~ . + color:value1 + color:value2\");\n\n\t\t// Applying RFormula\n\t\tRFormulaModel fittedRF \u003d supervised.fit(df);\n\t\tDataset\u003cRow\u003e preparedDF \u003d fittedRF.transform(df);\n\t\tpreparedDF.show();\n\n\t\t// Splitting PreparedDF into Train DF and Test DF\n\t\tDataset\u003cRow\u003e[] trainTestDataArray \u003d preparedDF.randomSplit(new double[] { 0.7, 0.3 });\n\t\tDataset\u003cRow\u003e train \u003d trainTestDataArray[0];\n\t\tDataset\u003cRow\u003e test \u003d trainTestDataArray[1];\n\n\t\t// Displaying sample data from both train as well as test dataset\n\t\ttrain.show();\n\t\ttest.show();\n\t\t\n\t\t// Applying Logistic Regression on the split data\n\t\tLogisticRegression logisticRegression \u003d new LogisticRegression().setLabelCol(\"label\")\n\t\t\t\t.setFeaturesCol(\"features\");\n\n\t\t// Printing the params\n\t\tSystem.out.println(logisticRegression.explainParams());\n\n\t\t// Fitting Train dataset into the model\n\t\tLogisticRegressionModel fittedLR \u003d logisticRegression.fit(train);\n\t\tfittedLR.transform(train).select(\"label\",\"prediction\").show();\n\t\t\n\t\t// Splitting the original dataset into train and test set\n\t\tDataset\u003cRow\u003e [] trainTestSet \u003d df.randomSplit(new double [] {0.7, 0.3});\n\t\ttrain \u003d trainTestSet[0];\n\t\ttest \u003d trainTestSet[1];\n\t\t\n\t\t// Initializing RFormula\n\t\tRFormula rForm \u003d new RFormula();\n\n\t\t// Reinitializing the Logistic Regression model since it is already trained on other data\n\t\tlogisticRegression \u003d new LogisticRegression().setLabelCol(\"label\").setFeaturesCol(\"features\");\n\t\t\n\t\t// Creating a Pipeline for execution\n\t\tPipelineStage[] stages \u003d new PipelineStage[2];\n\t\tstages[0] \u003d rForm;\n\t\tstages[1] \u003d logisticRegression;\n\n\t\tPipeline pipeline \u003d new Pipeline().setStages(stages);\n\n\t\t// Applying Param Grid Builder\n\t\tList\u003cString\u003e paramValues \u003d new ArrayList\u003cString\u003e();\n\t\tparamValues.add(\"lab ~ . + color:value1\");\n\t\tparamValues.add(\"lab ~ . + color:value1 + color:value2\");\n\n\t\tParamMap [] params \u003d new ParamGridBuilder()\n\t\t\t\t.addGrid(rForm.formula(), scala.collection.JavaConverters\n\t\t\t\t\t\t.asScalaIteratorConverter(paramValues.iterator()).asScala().toSeq())\n\t\t\t\t.addGrid(logisticRegression.elasticNetParam(), new double [] {0.0, 0.5, 1.0})\n\t\t\t\t.addGrid(logisticRegression.regParam(), new double [] {0.1, 2.0})\n\t\t\t\t.build();\n\t\t\n\t\t// Obtaining the Evaluator\n\t\tBinaryClassificationEvaluator evaluator \u003d new BinaryClassificationEvaluator()\n\t\t\t\t.setMetricName(\"areaUnderROC\")\n\t\t\t\t.setRawPredictionCol(\"prediction\")\n\t\t\t\t.setLabelCol(\"label\");\n\t\t\n\t\t// Creating Train Validation Split\n\t\tTrainValidationSplit trainValidationSplit \u003d new TrainValidationSplit()\n\t\t\t\t.setTrainRatio(0.75)\n\t\t\t\t.setEstimatorParamMaps(params)\n\t\t\t\t.setEstimator(pipeline)\n\t\t\t\t.setEvaluator(evaluator);\n\t\t\n\t\tTrainValidationSplitModel tvsFitted \u003d trainValidationSplit.fit(train);\n\t\t\n\t\tevaluator.evaluate(tvsFitted.transform(test));\n\t\t\n\t\t// Getting the best Model\n\t\tPipelineModel trainedPipeline \u003d (PipelineModel) tvsFitted.bestModel();\n\t\tLogisticRegressionModel trainedLR \u003d (LogisticRegressionModel) trainedPipeline.stages()[1];\n\t\tLogisticRegressionTrainingSummary summaryLR \u003d trainedLR.summary();\n\t\t\n\t\tfor(double objectiveHist: summaryLR.objectiveHistory()) {\n\t\t\tSystem.out.println(objectiveHist);\n\t\t}\n\t\t\n\t\t// Persisting the model to disk\n\t\ttvsFitted.write().overwrite().save(\"tmp/modelLocation\");\n\t\t\n\t\t// Loading the persisted model from disk and testing\n\t\tTrainValidationSplitModel model \u003d TrainValidationSplitModel.load(\"tmp/modelLocation\");\n\t\tDataset\u003cRow\u003e tested \u003d model.transform(test);\n\t\t\n\t\ttested.show();\n\t}\n}",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.475",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448475_418149668",
+      "id": "20181005-074408_538410360",
+      "dateCreated": "2018-10-05 07:44:08.475",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Java/Advanced_Analytics_and_Machine_Learning_Chapter_24_Advanced_Analytics_and_Machine_Learning.java",
+  "id": "2DUUQFMXE",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

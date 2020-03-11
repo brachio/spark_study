@@ -1,0 +1,370 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439006_2146739327",
+      "id": "20181005-074359_109925631",
+      "dateCreated": "2018-10-05 07:43:59.006",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.021",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439020_2000107455",
+      "id": "20181005-074359_628481906",
+      "dateCreated": "2018-10-05 07:43:59.020",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nstaticDataFrame \u003d spark.read.format(\"csv\")\\\n  .option(\"header\", \"true\")\\\n  .option(\"inferSchema\", \"true\")\\\n  .load(\"/data/retail-data/by-day/*.csv\")\n\nstaticDataFrame.createOrReplaceTempView(\"retail_data\")\nstaticSchema \u003d staticDataFrame.schema\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.034",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439034_-568496996",
+      "id": "20181005-074359_2087704311",
+      "dateCreated": "2018-10-05 07:43:59.034",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.sql.functions import window, column, desc, col\nstaticDataFrame\\\n  .selectExpr(\n    \"CustomerId\",\n    \"(UnitPrice * Quantity) as total_cost\",\n    \"InvoiceDate\")\\\n  .groupBy(\n    col(\"CustomerId\"), window(col(\"InvoiceDate\"), \"1 day\"))\\\n  .sum(\"total_cost\")\\\n  .show(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.047",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439046_-788849313",
+      "id": "20181005-074359_2048733358",
+      "dateCreated": "2018-10-05 07:43:59.047",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nstreamingDataFrame \u003d spark.readStream\\\n    .schema(staticSchema)\\\n    .option(\"maxFilesPerTrigger\", 1)\\\n    .format(\"csv\")\\\n    .option(\"header\", \"true\")\\\n    .load(\"/data/retail-data/by-day/*.csv\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.062",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439061_808719140",
+      "id": "20181005-074359_1418807060",
+      "dateCreated": "2018-10-05 07:43:59.061",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\npurchaseByCustomerPerHour \u003d streamingDataFrame\\\n  .selectExpr(\n    \"CustomerId\",\n    \"(UnitPrice * Quantity) as total_cost\",\n    \"InvoiceDate\")\\\n  .groupBy(\n    col(\"CustomerId\"), window(col(\"InvoiceDate\"), \"1 day\"))\\\n  .sum(\"total_cost\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.085",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439084_-1771317231",
+      "id": "20181005-074359_552896459",
+      "dateCreated": "2018-10-05 07:43:59.085",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\npurchaseByCustomerPerHour.writeStream\\\n    .format(\"memory\")\\\n    .queryName(\"customer_purchases\")\\\n    .outputMode(\"complete\")\\\n    .start()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.110",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439109_817013741",
+      "id": "20181005-074359_358933143",
+      "dateCreated": "2018-10-05 07:43:59.110",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nspark.sql(\"\"\"\n  SELECT *\n  FROM customer_purchases\n  ORDER BY `sum(total_cost)` DESC\n  \"\"\")\\\n  .show(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.136",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439135_96282295",
+      "id": "20181005-074359_1733707989",
+      "dateCreated": "2018-10-05 07:43:59.135",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.sql.functions import date_format, col\npreppedDataFrame \u003d staticDataFrame\\\n  .na.fill(0)\\\n  .withColumn(\"day_of_week\", date_format(col(\"InvoiceDate\"), \"EEEE\"))\\\n  .coalesce(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.166",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439165_-786875603",
+      "id": "20181005-074359_1071916834",
+      "dateCreated": "2018-10-05 07:43:59.165",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ntrainDataFrame \u003d preppedDataFrame\\\n  .where(\"InvoiceDate \u003c \u00272011-07-01\u0027\")\ntestDataFrame \u003d preppedDataFrame\\\n  .where(\"InvoiceDate \u003e\u003d \u00272011-07-01\u0027\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.190",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439189_494552059",
+      "id": "20181005-074359_893617892",
+      "dateCreated": "2018-10-05 07:43:59.189",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import StringIndexer\nindexer \u003d StringIndexer()\\\n  .setInputCol(\"day_of_week\")\\\n  .setOutputCol(\"day_of_week_index\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.217",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439216_368720454",
+      "id": "20181005-074359_223588506",
+      "dateCreated": "2018-10-05 07:43:59.216",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import OneHotEncoder\nencoder \u003d OneHotEncoder()\\\n  .setInputCol(\"day_of_week_index\")\\\n  .setOutputCol(\"day_of_week_encoded\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.247",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439246_1999650960",
+      "id": "20181005-074359_487912263",
+      "dateCreated": "2018-10-05 07:43:59.246",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import VectorAssembler\n\nvectorAssembler \u003d VectorAssembler()\\\n  .setInputCols([\"UnitPrice\", \"Quantity\", \"day_of_week_encoded\"])\\\n  .setOutputCol(\"features\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.293",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439293_1409699954",
+      "id": "20181005-074359_1761653927",
+      "dateCreated": "2018-10-05 07:43:59.293",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml import Pipeline\n\ntransformationPipeline \u003d Pipeline()\\\n  .setStages([indexer, encoder, vectorAssembler])\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.332",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439331_439139975",
+      "id": "20181005-074359_1653517051",
+      "dateCreated": "2018-10-05 07:43:59.331",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfittedPipeline \u003d transformationPipeline.fit(trainDataFrame)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.366",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439366_-2078966683",
+      "id": "20181005-074359_1540705869",
+      "dateCreated": "2018-10-05 07:43:59.366",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ntransformedTraining \u003d fittedPipeline.transform(trainDataFrame)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.407",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439406_-1462248400",
+      "id": "20181005-074359_1612725857",
+      "dateCreated": "2018-10-05 07:43:59.406",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.clustering import KMeans\nkmeans \u003d KMeans()\\\n  .setK(20)\\\n  .setSeed(1L)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.448",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439448_-1511790923",
+      "id": "20181005-074359_2037765852",
+      "dateCreated": "2018-10-05 07:43:59.448",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nkmModel \u003d kmeans.fit(transformedTraining)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.484",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439484_-924270461",
+      "id": "20181005-074359_1364256470",
+      "dateCreated": "2018-10-05 07:43:59.484",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ntransformedTest \u003d fittedPipeline.transform(testDataFrame)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.532",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439531_-1407970048",
+      "id": "20181005-074359_611414951",
+      "dateCreated": "2018-10-05 07:43:59.531",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.sql import Row\n\nspark.sparkContext.parallelize([Row(1), Row(2), Row(3)]).toDF()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.568",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439567_-157488771",
+      "id": "20181005-074359_577392491",
+      "dateCreated": "2018-10-05 07:43:59.567",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:59.604",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725439603_-958198139",
+      "id": "20181005-074359_282336809",
+      "dateCreated": "2018-10-05 07:43:59.603",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/A_Gentle_Introduction_to_Spark-Chapter_3_A_Tour_of_Sparks_Toolset.py",
+  "id": "2DRXDC62U",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

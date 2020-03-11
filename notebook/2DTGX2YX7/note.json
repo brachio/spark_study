@@ -1,0 +1,710 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442841_178014650",
+      "id": "20181005-074402_131322825",
+      "dateCreated": "2018-10-05 07:44:02.841",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.857",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442856_-367966039",
+      "id": "20181005-074402_832946916",
+      "dateCreated": "2018-10-05 07:44:02.856",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nval sales \u003d (spark.read.format(\"csv\")\n  .option(\"header\", \"true\")\n  .option(\"inferSchema\", \"true\")\n  .load(\"/data/retail-data/by-day/*.csv\")\n  .coalesce(5)\n  .where(\"Description IS NOT NULL\"))\nval fakeIntDF \u003d spark.read.parquet(\"/data/simple-ml-integers\")\nvar simpleDF \u003d spark.read.json(\"/data/simple-ml\")\nval scaleDF \u003d spark.read.parquet(\"/data/simple-ml-scaling\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.869",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442868_-884803018",
+      "id": "20181005-074402_334726843",
+      "dateCreated": "2018-10-05 07:44:02.868",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nsales.cache()\nsales.show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.877",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442877_2131777029",
+      "id": "20181005-074402_1261691716",
+      "dateCreated": "2018-10-05 07:44:02.877",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.Tokenizer\nval tkn \u003d new Tokenizer().setInputCol(\"Description\")\ntkn.transform(sales.select(\"Description\")).show(false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.887",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442886_1043123537",
+      "id": "20181005-074402_1252369743",
+      "dateCreated": "2018-10-05 07:44:02.886",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.StandardScaler\nval ss \u003d new StandardScaler().setInputCol(\"features\")\nss.fit(scaleDF).transform(scaleDF).show(false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.902",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442901_-1188510013",
+      "id": "20181005-074402_710277621",
+      "dateCreated": "2018-10-05 07:44:02.901",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.RFormula\nval supervised \u003d (new RFormula()\n  .setFormula(\"lab ~ . + color:value1 + color:value2\"))\nsupervised.fit(simpleDF).transform(simpleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.918",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442918_-646070128",
+      "id": "20181005-074402_194635414",
+      "dateCreated": "2018-10-05 07:44:02.918",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.SQLTransformer\n\nval basicTransformation \u003d (new SQLTransformer()\n  .setStatement(\"\"\"\n    SELECT sum(Quantity), count(*), CustomerID\n    FROM __THIS__\n    GROUP BY CustomerID\n  \"\"\"))\n\nbasicTransformation.transform(sales).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.940",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442940_-1257262068",
+      "id": "20181005-074402_1035442724",
+      "dateCreated": "2018-10-05 07:44:02.940",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.VectorAssembler\nval va \u003d new VectorAssembler().setInputCols(Array(\"int1\", \"int2\", \"int3\"))\nva.transform(fakeIntDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.968",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442967_740565388",
+      "id": "20181005-074402_465098161",
+      "dateCreated": "2018-10-05 07:44:02.967",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval contDF \u003d spark.range(20).selectExpr(\"cast(id as double)\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:02.996",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725442995_1708363742",
+      "id": "20181005-074402_1193644985",
+      "dateCreated": "2018-10-05 07:44:02.996",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.Bucketizer\nval bucketBorders \u003d Array(-1.0, 5.0, 10.0, 250.0, 600.0)\nval bucketer \u003d new Bucketizer().setSplits(bucketBorders).setInputCol(\"id\")\nbucketer.transform(contDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.025",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443024_-591783370",
+      "id": "20181005-074403_484865652",
+      "dateCreated": "2018-10-05 07:44:03.024",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.QuantileDiscretizer\nval bucketer \u003d new QuantileDiscretizer().setNumBuckets(5).setInputCol(\"id\").setOutputCol(\"output\")\nval fittedBucketer \u003d bucketer.fit(contDF)\nfittedBucketer.transform(contDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.056",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443056_-169175585",
+      "id": "20181005-074403_769324997",
+      "dateCreated": "2018-10-05 07:44:03.056",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.StandardScaler\nval sScaler \u003d new StandardScaler().setInputCol(\"features\")\nsScaler.fit(scaleDF).transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.092",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443091_1896550203",
+      "id": "20181005-074403_1336410657",
+      "dateCreated": "2018-10-05 07:44:03.091",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.MinMaxScaler\nval minMax \u003d new MinMaxScaler().setMin(5).setMax(10).setInputCol(\"features\")\nval fittedminMax \u003d minMax.fit(scaleDF)\nfittedminMax.transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.135",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443134_1297532863",
+      "id": "20181005-074403_718272132",
+      "dateCreated": "2018-10-05 07:44:03.134",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.MaxAbsScaler\nval maScaler \u003d new MaxAbsScaler().setInputCol(\"features\")\nval fittedmaScaler \u003d maScaler.fit(scaleDF)\nfittedmaScaler.transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.165",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443164_721117723",
+      "id": "20181005-074403_663400155",
+      "dateCreated": "2018-10-05 07:44:03.164",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.ElementwiseProduct\nimport org.apache.spark.ml.linalg.Vectors\nval scaleUpVec \u003d Vectors.dense(10.0, 15.0, 20.0)\nval scalingUp \u003d (new ElementwiseProduct()\n  .setScalingVec(scaleUpVec)\n  .setInputCol(\"features\"))\nscalingUp.transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.207",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443206_-1866844560",
+      "id": "20181005-074403_1067831836",
+      "dateCreated": "2018-10-05 07:44:03.206",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.Normalizer\nval manhattanDistance \u003d new Normalizer().setP(1).setInputCol(\"features\")\nmanhattanDistance.transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.249",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443248_762211042",
+      "id": "20181005-074403_1828168453",
+      "dateCreated": "2018-10-05 07:44:03.248",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.StringIndexer\nval lblIndxr \u003d new StringIndexer().setInputCol(\"lab\").setOutputCol(\"labelInd\")\nval idxRes \u003d lblIndxr.fit(simpleDF).transform(simpleDF)\nidxRes.show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.291",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443290_1568623782",
+      "id": "20181005-074403_813914717",
+      "dateCreated": "2018-10-05 07:44:03.290",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval valIndexer \u003d (new StringIndexer()\n  .setInputCol(\"value1\")\n  .setOutputCol(\"valueInd\"))\n\nvalIndexer.fit(simpleDF).transform(simpleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.332",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443331_1561938367",
+      "id": "20181005-074403_928875834",
+      "dateCreated": "2018-10-05 07:44:03.331",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nvalIndexer.setHandleInvalid(\"skip\")\nvalIndexer.fit(simpleDF).setHandleInvalid(\"skip\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.365",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443364_1775036781",
+      "id": "20181005-074403_1687234004",
+      "dateCreated": "2018-10-05 07:44:03.364",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.IndexToString\nval labelReverse \u003d new IndexToString().setInputCol(\"labelInd\")\nlabelReverse.transform(idxRes).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.405",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443405_-28380659",
+      "id": "20181005-074403_2121009893",
+      "dateCreated": "2018-10-05 07:44:03.405",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.VectorIndexer\nimport org.apache.spark.ml.linalg.Vectors\nval idxIn \u003d (spark.createDataFrame(Seq(\n  (Vectors.dense(1, 2, 3),1),\n  (Vectors.dense(2, 5, 6),2),\n  (Vectors.dense(1, 8, 9),3)\n)).toDF(\"features\", \"label\"))\nval indxr \u003d (new VectorIndexer()\n  .setInputCol(\"features\")\n  .setOutputCol(\"idxed\")\n  .setMaxCategories(2))\nindxr.fit(idxIn).transform(idxIn).show\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.441",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443441_73346296",
+      "id": "20181005-074403_478264399",
+      "dateCreated": "2018-10-05 07:44:03.441",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.{StringIndexer, OneHotEncoder}\nval lblIndxr \u003d new StringIndexer().setInputCol(\"color\").setOutputCol(\"colorInd\")\nval colorLab \u003d lblIndxr.fit(simpleDF).transform(simpleDF.select(\"color\"))\nval ohe \u003d new OneHotEncoder().setInputCol(\"colorInd\")\nohe.transform(colorLab).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.475",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443475_-1346769231",
+      "id": "20181005-074403_141054496",
+      "dateCreated": "2018-10-05 07:44:03.475",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.Tokenizer\nval tkn \u003d new Tokenizer().setInputCol(\"Description\").setOutputCol(\"DescOut\")\nval tokenized \u003d tkn.transform(sales.select(\"Description\"))\ntokenized.show(false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.512",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443512_1719719073",
+      "id": "20181005-074403_804496329",
+      "dateCreated": "2018-10-05 07:44:03.512",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.RegexTokenizer\nval rt \u003d (new RegexTokenizer()\n  .setInputCol(\"Description\")\n  .setOutputCol(\"DescOut\")\n  .setPattern(\" \") // simplest expression\n  .setToLowercase(true))\nrt.transform(sales.select(\"Description\")).show(false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.557",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443556_583048477",
+      "id": "20181005-074403_427064101",
+      "dateCreated": "2018-10-05 07:44:03.556",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.RegexTokenizer\nval rt \u003d (new RegexTokenizer()\n  .setInputCol(\"Description\")\n  .setOutputCol(\"DescOut\")\n  .setPattern(\" \")\n  .setGaps(false)\n  .setToLowercase(true))\nrt.transform(sales.select(\"Description\")).show(false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.610",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443609_-995611077",
+      "id": "20181005-074403_240019076",
+      "dateCreated": "2018-10-05 07:44:03.609",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.StopWordsRemover\nval englishStopWords \u003d StopWordsRemover.loadDefaultStopWords(\"english\")\nval stops \u003d (new StopWordsRemover()\n  .setStopWords(englishStopWords)\n  .setInputCol(\"DescOut\"))\nstops.transform(tokenized).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.666",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443665_-1762217441",
+      "id": "20181005-074403_261358712",
+      "dateCreated": "2018-10-05 07:44:03.665",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.NGram\nval unigram \u003d new NGram().setInputCol(\"DescOut\").setN(1)\nval bigram \u003d new NGram().setInputCol(\"DescOut\").setN(2)\nunigram.transform(tokenized.select(\"DescOut\")).show(false)\nbigram.transform(tokenized.select(\"DescOut\")).show(false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.723",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443722_342103102",
+      "id": "20181005-074403_637000421",
+      "dateCreated": "2018-10-05 07:44:03.722",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.CountVectorizer\nval cv \u003d (new CountVectorizer()\n  .setInputCol(\"DescOut\")\n  .setOutputCol(\"countVec\")\n  .setVocabSize(500)\n  .setMinTF(1)\n  .setMinDF(2))\nval fittedCV \u003d cv.fit(tokenized)\nfittedCV.transform(tokenized).show(false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.779",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443778_109541126",
+      "id": "20181005-074403_1614509528",
+      "dateCreated": "2018-10-05 07:44:03.778",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval tfIdfIn \u003d (tokenized\n  .where(\"array_contains(DescOut, \u0027red\u0027)\")\n  .select(\"DescOut\")\n  .limit(10))\ntfIdfIn.show(false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.839",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443838_-647001545",
+      "id": "20181005-074403_585289787",
+      "dateCreated": "2018-10-05 07:44:03.838",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.{HashingTF, IDF}\nval tf \u003d (new HashingTF()\n  .setInputCol(\"DescOut\")\n  .setOutputCol(\"TFOut\")\n  .setNumFeatures(10000))\nval idf \u003d (new IDF()\n  .setInputCol(\"TFOut\")\n  .setOutputCol(\"IDFOut\")\n  .setMinDocFreq(2))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.906",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443905_787667548",
+      "id": "20181005-074403_927372131",
+      "dateCreated": "2018-10-05 07:44:03.905",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nidf.fit(tf.transform(tfIdfIn)).transform(tf.transform(tfIdfIn)).show(false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:03.974",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725443973_556106993",
+      "id": "20181005-074403_1324883763",
+      "dateCreated": "2018-10-05 07:44:03.973",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.Word2Vec\nimport org.apache.spark.ml.linalg.Vector\nimport org.apache.spark.sql.Row\n// Input data: Each row is a bag of words from a sentence or document.\nval documentDF \u003d spark.createDataFrame(Seq(\n  \"Hi I heard about Spark\".split(\" \"),\n  \"I wish Java could use case classes\".split(\" \"),\n  \"Logistic regression models are neat\".split(\" \")\n).map(Tuple1.apply)).toDF(\"text\")\n// Learn a mapping from words to Vectors.\nval word2Vec \u003d (new Word2Vec()\n  .setInputCol(\"text\")\n  .setOutputCol(\"result\")\n  .setVectorSize(3)\n  .setMinCount(0))\nval model \u003d word2Vec.fit(documentDF)\nval result \u003d model.transform(documentDF)\nresult.collect().foreach { case Row(text: Seq[_], features: Vector) \u003d\u003e\n  println(s\"Text: [${text.mkString(\", \")}] \u003d\u003e \\nVector: $features\\n\")\n}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.041",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444040_1773176097",
+      "id": "20181005-074404_891176370",
+      "dateCreated": "2018-10-05 07:44:04.040",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.PCA\nval pca \u003d new PCA().setInputCol(\"features\").setK(2)\npca.fit(scaleDF).transform(scaleDF).show(false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.124",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444123_497520579",
+      "id": "20181005-074404_1812539161",
+      "dateCreated": "2018-10-05 07:44:04.124",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.PolynomialExpansion\nval pe \u003d new PolynomialExpansion().setInputCol(\"features\").setDegree(2)\npe.transform(scaleDF).show(false)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.196",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444195_-934881678",
+      "id": "20181005-074404_1653126327",
+      "dateCreated": "2018-10-05 07:44:04.195",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.{ChiSqSelector, Tokenizer}\nimport org.apache.spark.sql.functions._\n\nval tkn \u003d new Tokenizer().setInputCol(\"Description\").setOutputCol(\"DescOut\")\nval tokenized \u003d (tkn\n  .transform(sales.select(\"Description\", \"CustomerId\"))\n  .where(\"CustomerId IS NOT NULL\"))\nval prechi \u003d fittedCV.transform(tokenized)\nval chisq \u003d (new ChiSqSelector()\n  .setFeaturesCol(\"countVec\")\n  .setLabelCol(\"CustomerId\")\n  .setNumTopFeatures(2))\n(chisq.fit(prechi).transform(prechi)\n  .drop(\"customerId\", \"Description\", \"DescOut\").show())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.251",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444250_996766542",
+      "id": "20181005-074404_946901137",
+      "dateCreated": "2018-10-05 07:44:04.250",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval fittedPCA \u003d pca.fit(scaleDF)\nfittedPCA.write.overwrite().save(\"/tmp/fittedPCA\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.299",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444298_-1578626659",
+      "id": "20181005-074404_271236788",
+      "dateCreated": "2018-10-05 07:44:04.298",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.ml.feature.PCAModel\nval loadedPCA \u003d PCAModel.load(\"/tmp/fittedPCA\")\nloadedPCA.transform(scaleDF).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.368",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444367_-1205613664",
+      "id": "20181005-074404_710723339",
+      "dateCreated": "2018-10-05 07:44:04.367",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nclass MyTokenizer(override val uid: String) extends org.apache.spark.ml.UnaryTransformer[String, Seq[String], MyTokenizer] with org.apache.spark.ml.util.DefaultParamsWritable {\n  import org.apache.spark.ml.util.{DefaultParamsReadable, DefaultParamsWritable,Identifiable}\n  import org.apache.spark.sql.types.{ArrayType, StringType, DataType}\n  import org.apache.spark.ml.param.{IntParam, ParamValidators}\n\n  def this() \u003d this(org.apache.spark.ml.util.Identifiable.randomUID(\"myTokenizer\"))\n\n  val maxWords: IntParam \u003d new IntParam(this, \"maxWords\",\n    \"The max number of words to return.\",\n    ParamValidators.gtEq(0))\n\n  def setMaxWords(value: Int): this.type \u003d set(maxWords, value)\n\n  def getMaxWords: Integer \u003d $(maxWords)\n\n  override protected def createTransformFunc: String \u003d\u003e Seq[String] \u003d (\n                                                                        inputString: String) \u003d\u003e {\n    inputString.split(\"\\\\s\").take($(maxWords))\n  }\n\n  override protected def validateInputType(inputType: DataType): Unit \u003d {\n    require(\n      inputType \u003d\u003d StringType, s\"Bad input type: $inputType. Requires String.\")\n  }\n\n  override protected def outputDataType: DataType \u003d new ArrayType(StringType,\n    true)\n}\n\nimport org.apache.spark.ml.util.DefaultParamsReadable\n// this will allow you to read it back in by using this object.\nobject MyTokenizer extends DefaultParamsReadable[MyTokenizer]\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.438",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444437_-1381857552",
+      "id": "20181005-074404_161592334",
+      "dateCreated": "2018-10-05 07:44:04.437",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval myT \u003d new MyTokenizer().setInputCol(\"someCol\").setMaxWords(2)\nmyT.transform(Seq(\"hello world. This text won\u0027t show.\").toDF(\"someCol\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.486",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444486_-2143815381",
+      "id": "20181005-074404_418634871",
+      "dateCreated": "2018-10-05 07:44:04.486",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:04.542",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725444541_-2037407944",
+      "id": "20181005-074404_72562817",
+      "dateCreated": "2018-10-05 07:44:04.541",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Advanced_Analytics_and_Machine_Learning-Chapter_25_Preprocessing_and_Feature_Engineering.scala",
+  "id": "2DTGX2YX7",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

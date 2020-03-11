@@ -1,0 +1,608 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470382_2024771032",
+      "id": "20181005-074430_20815099",
+      "dateCreated": "2018-10-05 07:44:30.383",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.399",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470398_849621910",
+      "id": "20181005-074430_303230479",
+      "dateCreated": "2018-10-05 07:44:30.398",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nval df \u003d (spark.read.format(\"csv\")\n  .option(\"header\", \"true\")\n  .option(\"inferSchema\", \"true\")\n  .load(\"/data/retail-data/all/*.csv\")\n  .coalesce(5))\ndf.cache()\ndf.createOrReplaceTempView(\"dfTable\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.410",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470409_-332834062",
+      "id": "20181005-074430_2029874889",
+      "dateCreated": "2018-10-05 07:44:30.409",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndf.count() \u003d\u003d 541909\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.422",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470421_327473961",
+      "id": "20181005-074430_140604688",
+      "dateCreated": "2018-10-05 07:44:30.421",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.count\ndf.select(count(\"StockCode\")).show() // 541909\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.436",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470435_1775885682",
+      "id": "20181005-074430_202889269",
+      "dateCreated": "2018-10-05 07:44:30.435",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.countDistinct\ndf.select(countDistinct(\"StockCode\")).show() // 4070\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.451",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470450_-1312912435",
+      "id": "20181005-074430_1577464046",
+      "dateCreated": "2018-10-05 07:44:30.450",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.approx_count_distinct\ndf.select(approx_count_distinct(\"StockCode\", 0.1)).show() // 3364\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.473",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470471_-1915803301",
+      "id": "20181005-074430_2142099236",
+      "dateCreated": "2018-10-05 07:44:30.471",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{first, last}\ndf.select(first(\"StockCode\"), last(\"StockCode\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.496",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470494_74633379",
+      "id": "20181005-074430_858519325",
+      "dateCreated": "2018-10-05 07:44:30.494",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{min, max}\ndf.select(min(\"Quantity\"), max(\"Quantity\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.523",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470522_-1426772688",
+      "id": "20181005-074430_408286070",
+      "dateCreated": "2018-10-05 07:44:30.522",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.sum\ndf.select(sum(\"Quantity\")).show() // 5176450\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.548",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470547_-1361679503",
+      "id": "20181005-074430_532746600",
+      "dateCreated": "2018-10-05 07:44:30.547",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.sumDistinct\ndf.select(sumDistinct(\"Quantity\")).show() // 29310\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.576",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470575_2134208325",
+      "id": "20181005-074430_958986028",
+      "dateCreated": "2018-10-05 07:44:30.575",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{sum, count, avg, expr}\n\n(df.select(\n    count(\"Quantity\").alias(\"total_transactions\"),\n    sum(\"Quantity\").alias(\"total_purchases\"),\n    avg(\"Quantity\").alias(\"avg_purchases\"),\n    expr(\"mean(Quantity)\").alias(\"mean_purchases\"))\n  .selectExpr(\n    \"total_purchases/total_transactions\",\n    \"avg_purchases\",\n    \"mean_purchases\").show())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.605",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470603_1008401233",
+      "id": "20181005-074430_357047082",
+      "dateCreated": "2018-10-05 07:44:30.603",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{var_pop, stddev_pop}\nimport org.apache.spark.sql.functions.{var_samp, stddev_samp}\ndf.select(var_pop(\"Quantity\"), var_samp(\"Quantity\"),\n  stddev_pop(\"Quantity\"), stddev_samp(\"Quantity\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.635",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470633_-2038610558",
+      "id": "20181005-074430_1941499709",
+      "dateCreated": "2018-10-05 07:44:30.633",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nimport org.apache.spark.sql.functions.{skewness, kurtosis}\ndf.select(skewness(\"Quantity\"), kurtosis(\"Quantity\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.674",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470673_-1868175857",
+      "id": "20181005-074430_1307993157",
+      "dateCreated": "2018-10-05 07:44:30.673",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{corr, covar_pop, covar_samp}\ndf.select(corr(\"InvoiceNo\", \"Quantity\"), covar_samp(\"InvoiceNo\", \"Quantity\"),\n    covar_pop(\"InvoiceNo\", \"Quantity\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.705",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470703_-1210229622",
+      "id": "20181005-074430_658430018",
+      "dateCreated": "2018-10-05 07:44:30.703",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{collect_set, collect_list}\ndf.agg(collect_set(\"Country\"), collect_list(\"Country\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.743",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470741_-1819714886",
+      "id": "20181005-074430_581149564",
+      "dateCreated": "2018-10-05 07:44:30.741",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\ndf.groupBy(\"InvoiceNo\", \"CustomerId\").count().show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.777",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470775_-1923322376",
+      "id": "20181005-074430_191644435",
+      "dateCreated": "2018-10-05 07:44:30.775",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.count\n\ndf.groupBy(\"InvoiceNo\").agg(\n  count(\"Quantity\").alias(\"quan\"),\n  expr(\"count(Quantity)\")).show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.818",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470816_-498584924",
+      "id": "20181005-074430_490020956",
+      "dateCreated": "2018-10-05 07:44:30.816",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\ndf.groupBy(\"InvoiceNo\").agg(\"Quantity\"-\u003e\"avg\", \"Quantity\"-\u003e\"stddev_pop\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.862",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470860_-1499874761",
+      "id": "20181005-074430_598632837",
+      "dateCreated": "2018-10-05 07:44:30.860",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{col, to_date}\nval dfWithDate \u003d df.withColumn(\"date\", to_date(col(\"InvoiceDate\"),\n  \"MM/d/yyyy H:mm\"))\ndfWithDate.createOrReplaceTempView(\"dfWithDate\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.901",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470899_-1454078231",
+      "id": "20181005-074430_679664915",
+      "dateCreated": "2018-10-05 07:44:30.899",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.expressions.Window\nimport org.apache.spark.sql.functions.col\nval windowSpec \u003d (Window\n  .partitionBy(\"CustomerId\", \"date\")\n  .orderBy(col(\"Quantity\").desc)\n  .rowsBetween(Window.unboundedPreceding, Window.currentRow))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.945",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470943_-94600773",
+      "id": "20181005-074430_175216086",
+      "dateCreated": "2018-10-05 07:44:30.943",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nimport org.apache.spark.sql.functions.max\nval maxPurchaseQuantity \u003d max(col(\"Quantity\")).over(windowSpec)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:30.992",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725470990_-1550402629",
+      "id": "20181005-074430_1446424878",
+      "dateCreated": "2018-10-05 07:44:30.990",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{dense_rank, rank}\nval purchaseDenseRank \u003d dense_rank().over(windowSpec)\nval purchaseRank \u003d rank().over(windowSpec)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.045",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471043_-774216590",
+      "id": "20181005-074431_556812654",
+      "dateCreated": "2018-10-05 07:44:31.043",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.col\n\n(dfWithDate.where(\"CustomerId IS NOT NULL\").orderBy(\"CustomerId\")\n  .select(\n    col(\"CustomerId\"),\n    col(\"date\"),\n    col(\"Quantity\"),\n    purchaseRank.alias(\"quantityRank\"),\n    purchaseDenseRank.alias(\"quantityDenseRank\"),\n    maxPurchaseQuantity.alias(\"maxPurchaseQuantity\")).show())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.094",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471092_311067413",
+      "id": "20181005-074431_331869876",
+      "dateCreated": "2018-10-05 07:44:31.092",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval dfNoNull \u003d dfWithDate.drop()\ndfNoNull.createOrReplaceTempView(\"dfNoNull\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.141",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471139_1615410604",
+      "id": "20181005-074431_572467139",
+      "dateCreated": "2018-10-05 07:44:31.139",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nval rolledUpDF \u003d (dfNoNull.rollup(\"Date\", \"Country\").agg(sum(\"Quantity\"))\n  .selectExpr(\"Date\", \"Country\", \"`sum(Quantity)` as total_quantity\")\n  .orderBy(\"Date\"))\nrolledUpDF.show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.202",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471199_-1410249153",
+      "id": "20181005-074431_1942161813",
+      "dateCreated": "2018-10-05 07:44:31.200",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nrolledUpDF.where(\"Country IS NULL\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.258",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471256_1213249784",
+      "id": "20181005-074431_1815946931",
+      "dateCreated": "2018-10-05 07:44:31.256",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\nrolledUpDF.where(\"Date IS NULL\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.306",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471305_-255149035",
+      "id": "20181005-074431_1143948247",
+      "dateCreated": "2018-10-05 07:44:31.305",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n(dfNoNull.cube(\"Date\", \"Country\").agg(sum(col(\"Quantity\")))\n  .select(\"Date\", \"Country\", \"sum(Quantity)\").orderBy(\"Date\").show())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.362",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471360_-1025296228",
+      "id": "20181005-074431_2041213254",
+      "dateCreated": "2018-10-05 07:44:31.360",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.sql.functions.{grouping_id, sum, expr}\n\n(dfNoNull.cube(\"customerId\", \"stockCode\").agg(grouping_id(), sum(\"Quantity\"))\n.orderBy(expr(\"grouping_id()\").desc)\n.show())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.418",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471416_129429232",
+      "id": "20181005-074431_731879776",
+      "dateCreated": "2018-10-05 07:44:31.416",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval pivoted \u003d dfWithDate.groupBy(\"date\").pivot(\"Country\").sum()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.481",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471479_553275299",
+      "id": "20181005-074431_1172426371",
+      "dateCreated": "2018-10-05 07:44:31.479",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\npivoted.where(\"date \u003e \u00272011-12-05\u0027\").select(\"date\" ,\"`USA_sum(Quantity)`\").show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.548",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471546_-757095536",
+      "id": "20181005-074431_3098968",
+      "dateCreated": "2018-10-05 07:44:31.546",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n// in Scala\nclass BoolAnd extends org.apache.spark.sql.expressions.UserDefinedAggregateFunction {\n  import org.apache.spark.sql.types.{StructType, StructField, BooleanType, DataType}\n  import org.apache.spark.sql.expressions.MutableAggregationBuffer\n  import org.apache.spark.sql.Row\n\n  def inputSchema: org.apache.spark.sql.types.StructType \u003d\n    StructType(StructField(\"value\", BooleanType) :: Nil)\n  def bufferSchema: StructType \u003d StructType(\n    StructField(\"result\", BooleanType) :: Nil\n  )\n  def dataType: DataType \u003d BooleanType\n  def deterministic: Boolean \u003d true\n  def initialize(buffer: MutableAggregationBuffer): Unit \u003d {\n    buffer(0) \u003d true\n  }\n  def update(buffer: MutableAggregationBuffer, input: Row): Unit \u003d {\n    buffer(0) \u003d buffer.getAs[Boolean](0) \u0026\u0026 input.getAs[Boolean](0)\n  }\n  def merge(buffer1: MutableAggregationBuffer, buffer2: Row): Unit \u003d {\n    buffer1(0) \u003d buffer1.getAs[Boolean](0) \u0026\u0026 buffer2.getAs[Boolean](0)\n  }\n  def evaluate(buffer: Row): Any \u003d {\n    buffer(0)\n  }\n}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.608",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471607_1583624662",
+      "id": "20181005-074431_576793814",
+      "dateCreated": "2018-10-05 07:44:31.607",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval ba \u003d new BoolAnd\nspark.udf.register(\"booland\", ba)\nimport org.apache.spark.sql.functions._\n(spark.range(1)\n  .selectExpr(\"explode(array(TRUE, TRUE, TRUE)) as t\")\n  .selectExpr(\"explode(array(TRUE, FALSE, TRUE)) as f\", \"t\")\n  .select(ba(col(\"t\")), expr(\"booland(f)\"))\n  .show())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.657",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471656_1745363149",
+      "id": "20181005-074431_1898431237",
+      "dateCreated": "2018-10-05 07:44:31.656",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:31.724",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725471722_578941298",
+      "id": "20181005-074431_1946472149",
+      "dateCreated": "2018-10-05 07:44:31.722",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Structured_APIs-Chapter_7_Aggregations.scala",
+  "id": "2DU48DD99",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,115 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448504_-353132268",
+      "id": "20181005-074408_1298099533",
+      "dateCreated": "2018-10-05 07:44:08.504",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.518",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448517_-1864196904",
+      "id": "20181005-074408_1722345502",
+      "dateCreated": "2018-10-05 07:44:08.517",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nimport pandas as pd\ndf \u003d pd.DataFrame({\"first\":range(200), \"second\":range(50,250)})\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.530",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448529_-647185768",
+      "id": "20181005-074408_739637718",
+      "dateCreated": "2018-10-05 07:44:08.529",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nsparkDF \u003d spark.createDataFrame(df)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.543",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448542_-317274937",
+      "id": "20181005-074408_1827817785",
+      "dateCreated": "2018-10-05 07:44:08.542",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nnewPDF \u003d sparkDF.toPandas()\nnewPDF.head()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.561",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448560_313733153",
+      "id": "20181005-074408_1670047440",
+      "dateCreated": "2018-10-05 07:44:08.560",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:08.581",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725448580_-1841109778",
+      "id": "20181005-074408_1925730065",
+      "dateCreated": "2018-10-05 07:44:08.580",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Ecosystem-Chapter_32_Language_Specifics.py",
+  "id": "2DTN76F1T",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

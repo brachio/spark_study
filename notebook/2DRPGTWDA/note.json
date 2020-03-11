@@ -1,0 +1,98 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454334_-1884854592",
+      "id": "20181005-074414_1581695130",
+      "dateCreated": "2018-10-05 07:44:14.334",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.349",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454347_-907985145",
+      "id": "20181005-074414_235095456",
+      "dateCreated": "2018-10-05 07:44:14.348",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n# Creating a SparkSession in Python\nfrom pyspark.sql import SparkSession\nspark \u003d SparkSession.builder.master(\"local\").appName(\"Word Count\")\\\n    .config(\"spark.some.config.option\", \"some-value\")\\\n    .getOrCreate()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.362",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454360_873153344",
+      "id": "20181005-074414_1619389104",
+      "dateCreated": "2018-10-05 07:44:14.360",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndf1 \u003d spark.range(2, 10000000, 2)\ndf2 \u003d spark.range(2, 10000000, 4)\nstep1 \u003d df1.repartition(5)\nstep12 \u003d df2.repartition(6)\nstep2 \u003d step1.selectExpr(\"id * 5 as id\")\nstep3 \u003d step2.join(step12, [\"id\"])\nstep4 \u003d step3.selectExpr(\"sum(id)\")\n\nstep4.collect() # 2500000000000\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.373",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454372_-1179576263",
+      "id": "20181005-074414_890562492",
+      "dateCreated": "2018-10-05 07:44:14.372",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.388",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454387_-653969205",
+      "id": "20181005-074414_1912968679",
+      "dateCreated": "2018-10-05 07:44:14.387",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Production_Applications-Chapter_15_How_Spark_Runs_on_a_Cluster.py",
+  "id": "2DRPGTWDA",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

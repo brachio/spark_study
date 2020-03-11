@@ -1,0 +1,81 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725437614_-1489880396",
+      "id": "20181005-074357_1471591209",
+      "dateCreated": "2018-10-05 07:43:57.615",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:57.703",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725437694_507252146",
+      "id": "20181005-074357_341068337",
+      "dateCreated": "2018-10-05 07:43:57.694",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\ncd ~/Downloads\ntar -xf spark-2.2.0-bin-hadoop2.7.tgz\ncd spark-2.2.0-bin-hadoop2.7.tgz\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:57.731",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725437729_-1000789682",
+      "id": "20181005-074357_54124799",
+      "dateCreated": "2018-10-05 07:43:57.729",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:43:57.760",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725437759_1393661416",
+      "id": "20181005-074357_1274201347",
+      "dateCreated": "2018-10-05 07:43:57.759",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/A_Gentle_Introduction_to_Spark-Chapter_1_Defining_Spark.scala",
+  "id": "2DU5XHBAR",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

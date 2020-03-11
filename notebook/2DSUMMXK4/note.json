@@ -1,0 +1,370 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449517_285912711",
+      "id": "20181005-074409_128586019",
+      "dateCreated": "2018-10-05 07:44:09.517",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.534",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449533_-1231587566",
+      "id": "20181005-074409_1881738187",
+      "dateCreated": "2018-10-05 07:44:09.533",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nspark.range(10).rdd\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.547",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449546_-235390633",
+      "id": "20181005-074409_1399316012",
+      "dateCreated": "2018-10-05 07:44:09.546",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nspark.range(10).toDF(\"id\").rdd.map(lambda row: row[0])\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.563",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449561_-552178505",
+      "id": "20181005-074409_351057143",
+      "dateCreated": "2018-10-05 07:44:09.561",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nspark.range(10).rdd.toDF()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.586",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449585_-1647009285",
+      "id": "20181005-074409_1827297134",
+      "dateCreated": "2018-10-05 07:44:09.585",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nmyCollection \u003d \"Spark The Definitive Guide : Big Data Processing Made Simple\"\\\n  .split(\" \")\nwords \u003d spark.sparkContext.parallelize(myCollection, 2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.606",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449604_-1748226984",
+      "id": "20181005-074409_1262784031",
+      "dateCreated": "2018-10-05 07:44:09.604",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwords.setName(\"myWords\")\nwords.name() # myWords\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.627",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449626_1400745844",
+      "id": "20181005-074409_1196491560",
+      "dateCreated": "2018-10-05 07:44:09.626",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndef startsWithS(individual):\n  return individual.startswith(\"S\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.649",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449648_1538225332",
+      "id": "20181005-074409_2015233162",
+      "dateCreated": "2018-10-05 07:44:09.648",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwords.filter(lambda word: startsWithS(word)).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.670",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449669_350650538",
+      "id": "20181005-074409_8093323",
+      "dateCreated": "2018-10-05 07:44:09.669",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwords2 \u003d words.map(lambda word: (word, word[0], word.startswith(\"S\")))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.694",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449692_-1598778653",
+      "id": "20181005-074409_47263832",
+      "dateCreated": "2018-10-05 07:44:09.693",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwords2.filter(lambda record: record[2]).take(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.721",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449720_-2069157365",
+      "id": "20181005-074409_329514972",
+      "dateCreated": "2018-10-05 07:44:09.720",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwords.flatMap(lambda word: list(word)).take(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.747",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449746_-1969280029",
+      "id": "20181005-074409_442449817",
+      "dateCreated": "2018-10-05 07:44:09.746",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwords.sortBy(lambda word: len(word) * -1).take(2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.777",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449776_-604181761",
+      "id": "20181005-074409_1095684308",
+      "dateCreated": "2018-10-05 07:44:09.776",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfiftyFiftySplit \u003d words.randomSplit([0.5, 0.5])\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.800",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449800_-1068925723",
+      "id": "20181005-074409_559444501",
+      "dateCreated": "2018-10-05 07:44:09.800",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nspark.sparkContext.parallelize(range(1, 21)).reduce(lambda x, y: x + y) # 210\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.821",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449820_-1753179927",
+      "id": "20181005-074409_274908305",
+      "dateCreated": "2018-10-05 07:44:09.820",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndef wordLengthReducer(leftWord, rightWord):\n  if len(leftWord) \u003e len(rightWord):\n    return leftWord\n  else:\n    return rightWord\n\nwords.reduce(wordLengthReducer)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.846",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449845_1488230395",
+      "id": "20181005-074409_1737702533",
+      "dateCreated": "2018-10-05 07:44:09.845",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwords.getStorageLevel()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.888",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449887_-1875122058",
+      "id": "20181005-074409_637808268",
+      "dateCreated": "2018-10-05 07:44:09.887",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwords.mapPartitions(lambda part: [1]).sum() # 2\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.922",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449922_-1500679825",
+      "id": "20181005-074409_2055516352",
+      "dateCreated": "2018-10-05 07:44:09.922",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndef indexedFunc(partitionIndex, withinPartIterator):\n  return [\"partition: {} \u003d\u003e {}\".format(partitionIndex,\n    x) for x in withinPartIterator]\nwords.mapPartitionsWithIndex(indexedFunc).collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.947",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449947_294952217",
+      "id": "20181005-074409_900697659",
+      "dateCreated": "2018-10-05 07:44:09.947",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nspark.sparkContext.parallelize([\"Hello\", \"World\"], 2).glom().collect()\n# [[\u0027Hello\u0027], [\u0027World\u0027]]\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:09.976",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725449974_539670530",
+      "id": "20181005-074409_314007045",
+      "dateCreated": "2018-10-05 07:44:09.974",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:10.021",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725450020_-167274591",
+      "id": "20181005-074410_1126853532",
+      "dateCreated": "2018-10-05 07:44:10.020",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Low_Level_APIs-Chapter_12_RDD_Basics.py",
+  "id": "2DSUMMXK4",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,455 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461870_-1841699112",
+      "id": "20181005-074421_832330128",
+      "dateCreated": "2018-10-05 07:44:21.870",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.886",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461884_-2081992311",
+      "id": "20181005-074421_412545955",
+      "dateCreated": "2018-10-05 07:44:21.884",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\ncsvFile \u003d spark.read.format(\"csv\")\\\n  .option(\"header\", \"true\")\\\n  .option(\"mode\", \"FAILFAST\")\\\n  .option(\"inferSchema\", \"true\")\\\n  .load(\"/data/flight-data/csv/2010-summary.csv\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.898",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461897_500619919",
+      "id": "20181005-074421_898708185",
+      "dateCreated": "2018-10-05 07:44:21.897",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ncsvFile.write.format(\"csv\").mode(\"overwrite\").option(\"sep\", \"\\t\")\\\n  .save(\"/tmp/my-tsv-file.tsv\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.911",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461910_-1814538745",
+      "id": "20181005-074421_592557019",
+      "dateCreated": "2018-10-05 07:44:21.910",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nspark.read.format(\"json\").option(\"mode\", \"FAILFAST\")\\\n  .option(\"inferSchema\", \"true\")\\\n  .load(\"/data/flight-data/json/2010-summary.json\").show(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.925",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461923_885469928",
+      "id": "20181005-074421_1898377448",
+      "dateCreated": "2018-10-05 07:44:21.923",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ncsvFile.write.format(\"json\").mode(\"overwrite\").save(\"/tmp/my-json-file.json\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.941",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461940_-1251360885",
+      "id": "20181005-074421_394998057",
+      "dateCreated": "2018-10-05 07:44:21.940",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nspark.read.format(\"parquet\")\\\n  .load(\"/data/flight-data/parquet/2010-summary.parquet\").show(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.964",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461962_1708353577",
+      "id": "20181005-074421_1112648858",
+      "dateCreated": "2018-10-05 07:44:21.962",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ncsvFile.write.format(\"parquet\").mode(\"overwrite\")\\\n  .save(\"/tmp/my-parquet-file.parquet\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.985",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461983_-765627759",
+      "id": "20181005-074421_177188839",
+      "dateCreated": "2018-10-05 07:44:21.983",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nspark.read.format(\"orc\").load(\"/data/flight-data/orc/2010-summary.orc\").show(5)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.011",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462010_-1008192774",
+      "id": "20181005-074422_328192364",
+      "dateCreated": "2018-10-05 07:44:22.010",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ncsvFile.write.format(\"orc\").mode(\"overwrite\").save(\"/tmp/my-json-file.orc\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.041",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462040_1870242836",
+      "id": "20181005-074422_538878406",
+      "dateCreated": "2018-10-05 07:44:22.040",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndriver \u003d \"org.sqlite.JDBC\"\npath \u003d \"/data/flight-data/jdbc/my-sqlite.db\"\nurl \u003d \"jdbc:sqlite:\" + path\ntablename \u003d \"flight_info\"\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.069",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462068_-553690609",
+      "id": "20181005-074422_1821542150",
+      "dateCreated": "2018-10-05 07:44:22.068",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndbDataFrame \u003d spark.read.format(\"jdbc\").option(\"url\", url)\\\n  .option(\"dbtable\", tablename).option(\"driver\",  driver).load()\n\n\u0027\u0027\u0027\npgDF \u003d spark.read.format(\"jdbc\")\\\n  .option(\"driver\", \"org.postgresql.Driver\")\\\n  .option(\"url\", \"jdbc:postgresql://database_server\")\\\n  .option(\"dbtable\", \"schema.tablename\")\\\n  .option(\"user\", \"username\").option(\"password\", \"my-secret-password\").load()\n\u0027\u0027\u0027\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.100",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462097_474435493",
+      "id": "20181005-074422_1793277419",
+      "dateCreated": "2018-10-05 07:44:22.097",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndbDataFrame.filter(\"DEST_COUNTRY_NAME in (\u0027Anguilla\u0027, \u0027Sweden\u0027)\").explain()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.137",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462135_-1903060721",
+      "id": "20181005-074422_640083220",
+      "dateCreated": "2018-10-05 07:44:22.136",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\npushdownQuery \u003d \"\"\"(SELECT DISTINCT(DEST_COUNTRY_NAME) FROM flight_info)\n  AS flight_info\"\"\"\ndbDataFrame \u003d spark.read.format(\"jdbc\")\\\n  .option(\"url\", url).option(\"dbtable\", pushdownQuery).option(\"driver\",  driver)\\\n  .load()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.170",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462169_-1179555350",
+      "id": "20181005-074422_1689929632",
+      "dateCreated": "2018-10-05 07:44:22.169",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ndbDataFrame \u003d spark.read.format(\"jdbc\")\\\n  .option(\"url\", url).option(\"dbtable\", tablename).option(\"driver\",  driver)\\\n  .option(\"numPartitions\", 10).load()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.202",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462201_1275519498",
+      "id": "20181005-074422_1780715310",
+      "dateCreated": "2018-10-05 07:44:22.201",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nprops \u003d {\"driver\":\"org.sqlite.JDBC\"}\npredicates \u003d [\n  \"DEST_COUNTRY_NAME \u003d \u0027Sweden\u0027 OR ORIGIN_COUNTRY_NAME \u003d \u0027Sweden\u0027\",\n  \"DEST_COUNTRY_NAME \u003d \u0027Anguilla\u0027 OR ORIGIN_COUNTRY_NAME \u003d \u0027Anguilla\u0027\"]\nspark.read.jdbc(url, tablename, predicates\u003dpredicates, properties\u003dprops).show()\nspark.read.jdbc(url,tablename,predicates\u003dpredicates,properties\u003dprops)\\\n  .rdd.getNumPartitions() # 2\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.236",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462234_-491835648",
+      "id": "20181005-074422_1164283386",
+      "dateCreated": "2018-10-05 07:44:22.235",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nprops \u003d {\"driver\":\"org.sqlite.JDBC\"}\npredicates \u003d [\n  \"DEST_COUNTRY_NAME !\u003d \u0027Sweden\u0027 OR ORIGIN_COUNTRY_NAME !\u003d \u0027Sweden\u0027\",\n  \"DEST_COUNTRY_NAME !\u003d \u0027Anguilla\u0027 OR ORIGIN_COUNTRY_NAME !\u003d \u0027Anguilla\u0027\"]\nspark.read.jdbc(url, tablename, predicates\u003dpredicates, properties\u003dprops).count()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.276",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462274_512606371",
+      "id": "20181005-074422_577674461",
+      "dateCreated": "2018-10-05 07:44:22.274",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ncolName \u003d \"count\"\nlowerBound \u003d 0L\nupperBound \u003d 348113L # this is the max count in our database\nnumPartitions \u003d 10\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.315",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462313_-115375793",
+      "id": "20181005-074422_1151977768",
+      "dateCreated": "2018-10-05 07:44:22.313",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nspark.read.jdbc(url, tablename, column\u003dcolName, properties\u003dprops,\n                lowerBound\u003dlowerBound, upperBound\u003dupperBound,\n                numPartitions\u003dnumPartitions).count() # 255\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.360",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462359_1072020861",
+      "id": "20181005-074422_1212382746",
+      "dateCreated": "2018-10-05 07:44:22.359",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nnewPath \u003d \"jdbc:sqlite://tmp/my-sqlite.db\"\ncsvFile.write.jdbc(newPath, tablename, mode\u003d\"overwrite\", properties\u003dprops)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.394",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462392_170585116",
+      "id": "20181005-074422_805698255",
+      "dateCreated": "2018-10-05 07:44:22.392",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nspark.read.jdbc(newPath, tablename, properties\u003dprops).count() # 255\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.436",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462435_-537950500",
+      "id": "20181005-074422_1248744010",
+      "dateCreated": "2018-10-05 07:44:22.435",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ncsvFile.write.jdbc(newPath, tablename, mode\u003d\"append\", properties\u003dprops)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.482",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462480_876018183",
+      "id": "20181005-074422_140769069",
+      "dateCreated": "2018-10-05 07:44:22.480",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nspark.read.jdbc(newPath, tablename, properties\u003dprops).count() # 765\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.533",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462531_-151836545",
+      "id": "20181005-074422_644359394",
+      "dateCreated": "2018-10-05 07:44:22.531",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\n\ncsvFile.limit(10).select(\"DEST_COUNTRY_NAME\", \"count\")\\\n  .write.partitionBy(\"count\").text(\"/tmp/five-csv-files2py.csv\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.580",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462579_385069604",
+      "id": "20181005-074422_1823320807",
+      "dateCreated": "2018-10-05 07:44:22.579",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\ncsvFile.limit(10).write.mode(\"overwrite\").partitionBy(\"DEST_COUNTRY_NAME\")\\\n  .save(\"/tmp/partitioned-files.parquet\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.625",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462623_-344106572",
+      "id": "20181005-074422_817531343",
+      "dateCreated": "2018-10-05 07:44:22.623",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:22.677",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725462675_55831467",
+      "id": "20181005-074422_707223778",
+      "dateCreated": "2018-10-05 07:44:22.675",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Structured_APIs-Chapter_9_Data_Sources.py",
+  "id": "2DRDAF9B1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

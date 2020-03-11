@@ -1,0 +1,234 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446125_-1312654121",
+      "id": "20181005-074406_1206335407",
+      "dateCreated": "2018-10-05 07:44:06.125",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.141",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446140_612916534",
+      "id": "20181005-074406_551165403",
+      "dateCreated": "2018-10-05 07:44:06.140",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nfrom pyspark.ml.feature import VectorAssembler\nva \u003d VectorAssembler()\\\n  .setInputCols([\"Quantity\", \"UnitPrice\"])\\\n  .setOutputCol(\"features\")\n\nsales \u003d va.transform(spark.read.format(\"csv\")\n  .option(\"header\", \"true\")\n  .option(\"inferSchema\", \"true\")\n  .load(\"/data/retail-data/by-day/*.csv\")\n  .limit(50)\n  .coalesce(1)\n  .where(\"Description IS NOT NULL\"))\n\nsales.cache()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.154",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446154_-873152934",
+      "id": "20181005-074406_554095085",
+      "dateCreated": "2018-10-05 07:44:06.154",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.clustering import KMeans\nkm \u003d KMeans().setK(5)\nprint km.explainParams()\nkmModel \u003d km.fit(sales)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.169",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446169_2051155623",
+      "id": "20181005-074406_1819806478",
+      "dateCreated": "2018-10-05 07:44:06.169",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nsummary \u003d kmModel.summary\nprint summary.clusterSizes # number of points\nkmModel.computeCost(sales)\ncenters \u003d kmModel.clusterCenters()\nprint(\"Cluster Centers: \")\nfor center in centers:\n    print(center)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.185",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446184_-313062777",
+      "id": "20181005-074406_1811070158",
+      "dateCreated": "2018-10-05 07:44:06.184",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.clustering import BisectingKMeans\nbkm \u003d BisectingKMeans().setK(5).setMaxIter(5)\nbkmModel \u003d bkm.fit(sales)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.207",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446206_2059418139",
+      "id": "20181005-074406_1300359871",
+      "dateCreated": "2018-10-05 07:44:06.206",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nsummary \u003d bkmModel.summary\nprint summary.clusterSizes # number of points\nkmModel.computeCost(sales)\ncenters \u003d kmModel.clusterCenters()\nprint(\"Cluster Centers: \")\nfor center in centers:\n    print(center)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.231",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446230_91329334",
+      "id": "20181005-074406_1952114099",
+      "dateCreated": "2018-10-05 07:44:06.230",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.clustering import GaussianMixture\ngmm \u003d GaussianMixture().setK(5)\nprint gmm.explainParams()\nmodel \u003d gmm.fit(sales)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.253",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446252_-1867677278",
+      "id": "20181005-074406_1698435175",
+      "dateCreated": "2018-10-05 07:44:06.252",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nsummary \u003d model.summary\nprint model.weights\nmodel.gaussiansDF.show()\nsummary.cluster.show()\nsummary.clusterSizes\nsummary.probability.show()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.280",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446279_-1596717530",
+      "id": "20181005-074406_1679666215",
+      "dateCreated": "2018-10-05 07:44:06.279",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.feature import Tokenizer, CountVectorizer\ntkn \u003d Tokenizer().setInputCol(\"Description\").setOutputCol(\"DescOut\")\ntokenized \u003d tkn.transform(sales.drop(\"features\"))\ncv \u003d CountVectorizer()\\\n  .setInputCol(\"DescOut\")\\\n  .setOutputCol(\"features\")\\\n  .setVocabSize(500)\\\n  .setMinTF(0)\\\n  .setMinDF(0)\\\n  .setBinary(True)\ncvFitted \u003d cv.fit(tokenized)\nprepped \u003d cvFitted.transform(tokenized)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.308",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446306_-1480873253",
+      "id": "20181005-074406_1456151681",
+      "dateCreated": "2018-10-05 07:44:06.306",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.ml.clustering import LDA\nlda \u003d LDA().setK(10).setMaxIter(5)\nprint lda.explainParams()\nmodel \u003d lda.fit(prepped)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.342",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446341_632281824",
+      "id": "20181005-074406_1837072455",
+      "dateCreated": "2018-10-05 07:44:06.341",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nmodel.describeTopics(3).show()\ncvFitted.vocabulary\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.366",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446365_1438131821",
+      "id": "20181005-074406_299183017",
+      "dateCreated": "2018-10-05 07:44:06.365",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:06.395",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725446394_1911327461",
+      "id": "20181005-074406_2094941218",
+      "dateCreated": "2018-10-05 07:44:06.394",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Advanced_Analytics_and_Machine_Learning-Chapter_29_Unsupervised_Learning.py",
+  "id": "2DSKE2CY6",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

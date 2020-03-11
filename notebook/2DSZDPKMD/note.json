@@ -1,0 +1,285 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453911_-762741348",
+      "id": "20181005-074413_660365090",
+      "dateCreated": "2018-10-05 07:44:13.911",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.927",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453925_-425153243",
+      "id": "20181005-074413_1426001708",
+      "dateCreated": "2018-10-05 07:44:13.925",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n// in Scala\nval myCollection \u003d (\"Spark The Definitive Guide : Big Data Processing Made Simple\"\n  .split(\" \"))\nval words \u003d spark.sparkContext.parallelize(myCollection, 2)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.942",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453941_-1404706956",
+      "id": "20181005-074413_383842916",
+      "dateCreated": "2018-10-05 07:44:13.941",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval supplementalData \u003d Map(\"Spark\" -\u003e 1000, \"Definitive\" -\u003e 200,\n                           \"Big\" -\u003e -300, \"Simple\" -\u003e 100)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.957",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453956_451341957",
+      "id": "20181005-074413_653758470",
+      "dateCreated": "2018-10-05 07:44:13.956",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval suppBroadcast \u003d spark.sparkContext.broadcast(supplementalData)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.973",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453972_-1939984067",
+      "id": "20181005-074413_1575931175",
+      "dateCreated": "2018-10-05 07:44:13.972",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nsuppBroadcast.value\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:13.991",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725453990_-1175315831",
+      "id": "20181005-074413_1962195255",
+      "dateCreated": "2018-10-05 07:44:13.990",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\n(words.map(word \u003d\u003e (word, suppBroadcast.value.getOrElse(word, 0)))\n  .sortBy(wordPair \u003d\u003e wordPair._2)\n  .collect())\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.012",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454011_1516237497",
+      "id": "20181005-074414_161344754",
+      "dateCreated": "2018-10-05 07:44:14.011",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\ncase class Flight(DEST_COUNTRY_NAME: String,\n                  ORIGIN_COUNTRY_NAME: String, count: BigInt)\nval flights \u003d (spark.read\n  .parquet(\"/data/flight-data/parquet/2010-summary.parquet\")\n  .as[Flight])\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.036",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454035_606295609",
+      "id": "20181005-074414_1282778579",
+      "dateCreated": "2018-10-05 07:44:14.035",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport org.apache.spark.util.LongAccumulator\nval accUnnamed \u003d new LongAccumulator\nval acc \u003d spark.sparkContext.register(accUnnamed)\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.063",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454062_1624385919",
+      "id": "20181005-074414_1353667026",
+      "dateCreated": "2018-10-05 07:44:14.062",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nval accChina \u003d new LongAccumulator\nval accChina2 \u003d spark.sparkContext.longAccumulator(\"China\")\nspark.sparkContext.register(accChina, \"China\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.087",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454085_1410762326",
+      "id": "20181005-074414_2047710268",
+      "dateCreated": "2018-10-05 07:44:14.085",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\ndef accChinaFunc(flight_row: Flight) \u003d {\n  val destination \u003d flight_row.DEST_COUNTRY_NAME\n  val origin \u003d flight_row.ORIGIN_COUNTRY_NAME\n  if (destination \u003d\u003d \"China\") {\n    accChina.add(flight_row.count.toLong)\n  }\n  if (origin \u003d\u003d \"China\") {\n    accChina.add(flight_row.count.toLong)\n  }\n}\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.115",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454114_1373905983",
+      "id": "20181005-074414_1618679069",
+      "dateCreated": "2018-10-05 07:44:14.114",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nflights.foreach(flight_row \u003d\u003e accChinaFunc(flight_row))\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.143",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454142_1640934398",
+      "id": "20181005-074414_324596027",
+      "dateCreated": "2018-10-05 07:44:14.142",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\naccChina.value // 953\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.171",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454170_-1881370402",
+      "id": "20181005-074414_464851974",
+      "dateCreated": "2018-10-05 07:44:14.170",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nimport scala.collection.mutable.ArrayBuffer\nval arr \u003d ArrayBuffer[BigInt]()\n\nclass EvenAccumulator extends org.apache.spark.util.AccumulatorV2[BigInt, BigInt] {\n  import org.apache.spark.util.AccumulatorV2\n  private var num:BigInt \u003d 0\n  def reset(): Unit \u003d {\n    this.num \u003d 0\n  }\n  def add(intValue: BigInt): Unit \u003d {\n    if (intValue % 2 \u003d\u003d 0) {\n      this.num +\u003d intValue\n    }\n  }\n  def merge(other: AccumulatorV2[BigInt,BigInt]): Unit \u003d {\n    this.num +\u003d other.value\n  }\n  def value():BigInt \u003d {\n    this.num\n  }\n  def copy(): AccumulatorV2[BigInt,BigInt] \u003d {\n    new EvenAccumulator\n  }\n  def isZero():Boolean \u003d {\n    this.num \u003d\u003d 0\n  }\n}\nval acc \u003d new EvenAccumulator\nval newAcc \u003d sc.register(acc, \"evenAcc\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.206",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454205_-1714806175",
+      "id": "20181005-074414_1164320177",
+      "dateCreated": "2018-10-05 07:44:14.205",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n\n// in Scala\nacc.value // 0\nflights.foreach(flight_row \u003d\u003e acc.add(flight_row.count))\nacc.value // 31390\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.246",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454245_1198583536",
+      "id": "20181005-074414_11890753",
+      "dateCreated": "2018-10-05 07:44:14.245",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.286",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454284_-295487200",
+      "id": "20181005-074414_1638448999",
+      "dateCreated": "2018-10-05 07:44:14.285",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Scala/Low_Level_APIs-Chapter_14_Distributed_Variables.scala",
+  "id": "2DSZDPKMD",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

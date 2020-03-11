@@ -1,0 +1,81 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454771_-1712578184",
+      "id": "20181005-074414_99443776",
+      "dateCreated": "2018-10-05 07:44:14.771",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.787",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454785_-947234786",
+      "id": "20181005-074414_2089565728",
+      "dateCreated": "2018-10-05 07:44:14.786",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nspark.read\\\n  .option(\"header\", \"true\")\\\n  .csv(\"/data/retail-data/all/online-retail-dataset.csv\")\\\n  .repartition(2)\\\n  .selectExpr(\"instr(Description, \u0027GLASS\u0027) \u003e\u003d 1 as is_glass\")\\\n  .groupBy(\"is_glass\")\\\n  .count()\\\n  .collect()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.801",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454800_1941061850",
+      "id": "20181005-074414_801930132",
+      "dateCreated": "2018-10-05 07:44:14.800",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:14.815",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725454814_-1035662533",
+      "id": "20181005-074414_1400932319",
+      "dateCreated": "2018-10-05 07:44:14.814",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Production_Applications-Chapter_18_Monitoring_and_Debugging.py",
+  "id": "2DT8R7WGX",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,64 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461818_830090355",
+      "id": "20181005-074421_1296775675",
+      "dateCreated": "2018-10-05 07:44:21.818",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.832",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461831_1435325990",
+      "id": "20181005-074421_1705340778",
+      "dateCreated": "2018-10-05 07:44:21.831",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sql\nSELECT * FROM person JOIN graduateProgram\n  ON person.graduate_program \u003d graduateProgram.id\n\n\n-- COMMAND ----------\n\nSELECT * FROM person INNER JOIN graduateProgram\n  ON person.graduate_program \u003d graduateProgram.id\n\n\n-- COMMAND ----------\n\nSELECT * FROM person FULL OUTER JOIN graduateProgram\n  ON graduate_program \u003d graduateProgram.id\n\n\n-- COMMAND ----------\n\nSELECT * FROM graduateProgram LEFT OUTER JOIN person\n  ON person.graduate_program \u003d graduateProgram.id\n\n\n-- COMMAND ----------\n\nSELECT * FROM person RIGHT OUTER JOIN graduateProgram\n  ON person.graduate_program \u003d graduateProgram.id\n\n\n-- COMMAND ----------\n\nSELECT * FROM gradProgram2 LEFT SEMI JOIN person\n  ON gradProgram2.id \u003d person.graduate_program\n\n\n-- COMMAND ----------\n\nSELECT * FROM graduateProgram LEFT ANTI JOIN person\n  ON graduateProgram.id \u003d person.graduate_program\n\n\n-- COMMAND ----------\n\nSELECT * FROM graduateProgram NATURAL JOIN person\n\n\n-- COMMAND ----------\n\nSELECT * FROM graduateProgram CROSS JOIN person\n  ON graduateProgram.id \u003d person.graduate_program\n\n\n-- COMMAND ----------\n\nSELECT * FROM graduateProgram CROSS JOIN person\n\n\n-- COMMAND ----------\n\nSELECT * FROM\n  (select id as personId, name, graduate_program, spark_status FROM person)\n  INNER JOIN sparkStatus ON array_contains(spark_status, id)\n\n\n-- COMMAND ----------\n\nSELECT /*+ MAPJOIN(graduateProgram) */ * FROM person JOIN graduateProgram\n  ON person.graduate_program \u003d graduateProgram.id\n\n\n-- COMMAND ----------\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:21.844",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725461843_-443903526",
+      "id": "20181005-074421_65049477",
+      "dateCreated": "2018-10-05 07:44:21.843",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Sql/Structured_APIs-Chapter_8_Joins.sql",
+  "id": "2DRASPWT6",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

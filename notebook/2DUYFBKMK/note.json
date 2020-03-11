@@ -1,0 +1,132 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456155_364838024",
+      "id": "20181005-074416_1140080958",
+      "dateCreated": "2018-10-05 07:44:16.155",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%sh\n# For prevent crash with other note\u0027s execution,\n# I recommend to restart spark interpreter.\n# ?? ?? ??? ??? ???? ?? ???? ??, ?? ??? ?? spark interpreter ????? ?? ?????.\n\ncurl -X PUT http://localhost:8080/api/interpreter/setting/restart/spark",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.168",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456167_1795132243",
+      "id": "20181005-074416_371135881",
+      "dateCreated": "2018-10-05 07:44:16.167",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\nspark.conf.set(\"spark.sql.shuffle.partitions\", 5)\nstatic \u003d spark.read.json(\"/data/activity-data\")\nstreaming \u003d spark\\\n  .readStream\\\n  .schema(static.schema)\\\n  .option(\"maxFilesPerTrigger\", 10)\\\n  .json(\"/data/activity-data\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.180",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456179_-812134463",
+      "id": "20181005-074416_1650221582",
+      "dateCreated": "2018-10-05 07:44:16.179",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nwithEventTime \u003d streaming.selectExpr(\n  \"*\",\n  \"cast(cast(Creation_Time as double)/1000000000 as timestamp) as event_time\")\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.194",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456193_-1872326923",
+      "id": "20181005-074416_1389552692",
+      "dateCreated": "2018-10-05 07:44:16.193",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.sql.functions import window, col\nwithEventTime.groupBy(window(col(\"event_time\"), \"10 minutes\")).count()\\\n  .writeStream\\\n  .queryName(\"pyevents_per_window\")\\\n  .format(\"memory\")\\\n  .outputMode(\"complete\")\\\n  .start()\n\u0027\u0027\u0027\nfrom pyspark.sql.functions import window, col\nwithEventTime.groupBy(window(col(\"event_time\"), \"10 minutes\"), \"User\").count()\\\n  .writeStream\\\n  .queryName(\"pyevents_per_window\")\\\n  .format(\"memory\")\\\n  .outputMode(\"complete\")\\\n  .start()\n\nfrom pyspark.sql.functions import window, col\nwithEventTime.groupBy(window(col(\"event_time\"), \"10 minutes\", \"5 minutes\"))\\\n  .count()\\\n  .writeStream\\\n  .queryName(\"pyevents_per_window\")\\\n  .format(\"memory\")\\\n  .outputMode(\"complete\")\\\n  .start()\n\nfrom pyspark.sql.functions import window, col\nwithEventTime\\\n  .withWatermark(\"event_time\", \"30 minutes\")\\\n  .groupBy(window(col(\"event_time\"), \"10 minutes\", \"5 minutes\"))\\\n  .count()\\\n  .writeStream\\\n  .queryName(\"pyevents_per_window\")\\\n  .format(\"memory\")\\\n  .outputMode(\"complete\")\\\n  .start()\n\u0027\u0027\u0027\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.210",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456209_627660620",
+      "id": "20181005-074416_437470459",
+      "dateCreated": "2018-10-05 07:44:16.209",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n\nfrom pyspark.sql.functions import expr\n\nwithEventTime\\\n  .withWatermark(\"event_time\", \"5 seconds\")\\\n  .dropDuplicates([\"User\", \"event_time\"])\\\n  .groupBy(\"User\")\\\n  .count()\\\n  .writeStream\\\n  .queryName(\"pydeduplicated\")\\\n  .format(\"memory\")\\\n  .outputMode(\"complete\")\\\n  .start()\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.231",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456230_1127893372",
+      "id": "20181005-074416_1591068081",
+      "dateCreated": "2018-10-05 07:44:16.230",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Paragraph insert revised",
+      "text": "%spark.pyspark\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-10-05 07:44:16.250",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1538725456249_1425680643",
+      "id": "20181005-074416_831050317",
+      "dateCreated": "2018-10-05 07:44:16.249",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark-The-Definitive-Guide-Python/Streaming-Chapter_22_Event-Time_and_Stateful_Processing.py",
+  "id": "2DUYFBKMK",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
